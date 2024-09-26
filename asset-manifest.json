@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/React-Bootcamp/static/css/main.b3d29439.css",
+    "main.js": "/React-Bootcamp/static/js/main.a25b6d44.js",
+    "static/js/453.ed3810f9.chunk.js": "/React-Bootcamp/static/js/453.ed3810f9.chunk.js",
+    "static/media/jacket.jpg": "/React-Bootcamp/static/media/jacket.6cc22a3d375e5354f956.jpg",
+    "static/media/dress.jpg": "/React-Bootcamp/static/media/dress.4058494db6ac4c1b2a54.jpg",
+    "static/media/shoes.jpg": "/React-Bootcamp/static/media/shoes.033fb94d4ec52367b6cd.jpg",
+    "index.html": "/React-Bootcamp/index.html",
+    "main.b3d29439.css.map": "/React-Bootcamp/static/css/main.b3d29439.css.map",
+    "main.a25b6d44.js.map": "/React-Bootcamp/static/js/main.a25b6d44.js.map",
+    "453.ed3810f9.chunk.js.map": "/React-Bootcamp/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b3d29439.css",
+    "static/js/main.a25b6d44.js"
+  ]
+}
