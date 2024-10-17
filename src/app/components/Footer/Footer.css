@@ -1,0 +1,36 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.8rem 4.8rem;
+  background-color: var(--accent);
+  gap: 1.2rem;
+  color: var(--text-color);
+  font-size: 1.6rem;
+}
+footer a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+footer a:hover {
+  color: var(--primary-color);
+  transition: 0.4s;
+}
+footer a:active {
+  color: var(--backround-color);
+}
+.footer-cont {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.rights {
+  font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 375px) {
+  footer {
+    padding: 1.2rem 2.4rem;
+  }
+}
