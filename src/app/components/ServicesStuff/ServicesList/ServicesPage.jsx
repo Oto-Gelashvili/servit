@@ -16,7 +16,7 @@ export default function ServicesPage() {
           tier={service.tier}
           price={service.price}
           name={service.name}
-          id={`${service.title.replace(/\s+/g, '-').toLowerCase()}-${service.id}`}
+          id={`${service.title.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase()}-${service.id}`}
         />
       ))}
     </div>
