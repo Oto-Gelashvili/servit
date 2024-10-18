@@ -13,11 +13,51 @@
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
   justify-items: center;
-  padding: 4.8rem;
+  padding-inline: 4.8rem;
+  padding-block: 1.6rem;
   margin-bottom: 8.4rem;
   gap: 2.4rem;
 }
-
+.services-main .sorter {
+  padding-inline: 4.8rem;
+  padding-top: 4.8rem;
+  display: grid;
+  justify-content: right;
+}
+.services-main .sorter .SortButton {
+  width: 200px;
+  border: 1px solid #ccc;
+  padding: 1.2rem 2.4rem;
+  border-radius: 12px;
+  color: #fff;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  font-size: 1.6rem;
+  position: relative;
+}
+.services-main .sortMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  overflow-y: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-radius: 12px;
+  background-color: var(--accent);
+  margin-top: 1px;
+}
+.services-main .sortOption {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.4rem;
+  color: var(--text-color);
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px solid var(--primary-color);
+}
 @media only screen and (max-width: 1400px) {
   .services-list {
     grid-template-columns: repeat(3, 1fr);

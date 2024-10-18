@@ -1,10 +1,36 @@
 import ServiceItem from './ServiceItem/ServiceItem';
-import services from './ServicesData'; // Import the data
+import services from './ServicesData';
 
-export default function ServicesPage() {
+const convertTierToNumber = (tier) => {
+  const match = tier.match(/\d+/);
+  return match ? parseInt(match[0], 10) : 0;
+};
+
+const convertPriceToNumber = (price) => {
+  if (price === 'TBD') return 0;
+  const match = price.match(/\d+/);
+  return match ? parseInt(match[0], 10) : 0;
+};
+
+export default function ServicesPage({ sortType }) {
+  const sortedServices = [...services].sort((a, b) => {
+    switch (sortType) {
+      case 'Price High to Low':
+        return convertPriceToNumber(b.price) - convertPriceToNumber(a.price);
+      case 'Price Low to High':
+        return convertPriceToNumber(a.price) - convertPriceToNumber(b.price);
+      case 'Tier High to Low':
+        return convertTierToNumber(b.tier) - convertTierToNumber(a.tier);
+      case 'Tier Low to High':
+        return convertTierToNumber(a.tier) - convertTierToNumber(b.tier);
+      default:
+        return 0; // No sorting
+    }
+  });
+
   return (
     <div className="services-list">
-      {services.map((service) => (
+      {sortedServices.map((service) => (
         <ServiceItem
           key={service.id}
           img={service.img}
