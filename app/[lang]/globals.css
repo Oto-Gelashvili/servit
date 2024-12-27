@@ -113,3 +113,12 @@ a {
   font-size: 2.4rem;
   color: var(--accent);
 }
+.home .homeBtn {
+  background-color: var(--primary-color);
+  color: var(--active-color);
+  padding: 1.2rem 4.8rem;
+  border-radius: 12px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

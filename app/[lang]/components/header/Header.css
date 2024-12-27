@@ -62,7 +62,7 @@ header .toggle:hover {
 header .toggle:active {
   color: var(--active-color);
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1400px) {
   header .hamburger {
     display: flex;
   }

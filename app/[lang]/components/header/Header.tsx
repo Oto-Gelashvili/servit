@@ -19,6 +19,7 @@ interface HeaderProps {
       pricing: string;
       products: string;
       profile: string;
+      createProduct: string;
     };
   };
 }
@@ -47,6 +48,9 @@ const Header: FC<HeaderProps> = ({ lang, dictionary }) => {
         </Link>
         <Link href={`/${lang}/pricing`} className="nav-link">
           {dictionary.header.pricing}
+        </Link>
+        <Link href={`/${lang}/createProduct`} className="nav-link">
+          {dictionary.header.createProduct}
         </Link>
       </nav>
       <div className="registration-cont">

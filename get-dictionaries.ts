@@ -3,6 +3,7 @@ interface Dictionary {
     title: string;
     desc: string;
     omw: string;
+    btn: string;
   };
   about: {
     title: string;
@@ -23,6 +24,7 @@ interface Dictionary {
     logout: string;
     products: string;
     profile: string;
+    createProduct: string;
   };
   sorter: {
     options: string;
@@ -98,6 +100,21 @@ interface Dictionary {
   };
   payment: {
     success: string;
+  };
+  addPage: {
+    title: string;
+    name: string;
+    price: string;
+    category: string;
+    tags: string;
+    brand: string;
+    imageURL: string;
+    width: string;
+    height: string;
+    depth: string;
+    weight: string;
+    description: string;
+    submit: string;
   };
 }
 

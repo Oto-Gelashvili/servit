@@ -38,7 +38,7 @@ export default async function Products({ lang }: ProductsProps) {
             <Link href={`/${lang}/products/${product.id}`} passHref>
               <div className="img-container">
                 <Image
-                  src={product.thumbnail || '/path/to/default-image.png'} // Provide fallback image
+                  src={product.thumbnail || '/images/cool-background.png'} // Provide fallback image
                   alt={product.title || 'Product Image'}
                   fill
                   priority

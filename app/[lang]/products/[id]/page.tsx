@@ -6,8 +6,8 @@ import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import QuantitySelector from '../../utils/quantitySelector';
 import { getItemById } from '../../utils/supabaseUtils'; // Import the function to fetch data from Supabase
 import { getDictionary, Locale } from '../../../../get-dictionaries';
+import BuyButton from '../../components/Products/BuyButton'; // Import the BuyButton component
 
-// Function to render the stars based on rating
 const renderStars = (rating: number) => {
   const roundedRating = Math.round(rating * 2) / 2; // Round to nearest 0.5
   const fullStars = Math.floor(roundedRating); // Get the full star count
@@ -24,7 +24,6 @@ const renderStars = (rating: number) => {
   return stars;
 };
 
-// Function to format the date if necessary
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   return date.toLocaleDateString('en-US', {
@@ -106,7 +105,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
           <div className="buttons">
             <button className="addCartBtn">{dictionary.productsID.cart}</button>
-            <button className="buyBtn">{dictionary.productsID.buy}</button>
+            <BuyButton product={product} dictionary={dictionary} />
           </div>
         </div>
         <div className="textSection">

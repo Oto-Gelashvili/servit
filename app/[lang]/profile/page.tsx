@@ -15,7 +15,12 @@ async function ProfilePage({ params }: { params: { lang: Locale } }) {
   const user = session?.user as Auth0User | undefined;
   const dictionary = await getDictionary(params.lang);
 
-  if (!user) return <main>Unauthorized</main>;
+  if (!user)
+    return (
+      <main className="flex flex-1 justify-center items-center text-4xl  text-purple-700">
+        User Not Found
+      </main>
+    );
 
   return (
     <main className="profile-main">
