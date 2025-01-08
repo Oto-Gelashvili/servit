@@ -2,13 +2,18 @@
 
 // import { useRouter } from 'next/router';
 import { getStripe } from '../../../../lib/stripe-client';
-
+import { Locale } from '../../../../get-dictionaries';
 interface BuyButtonProps {
   product: any;
   dictionary: any;
+  locale: Locale;
 }
 
-export default function BuyButton({ product, dictionary }: BuyButtonProps) {
+export default function BuyButton({
+  product,
+  dictionary,
+  locale,
+}: BuyButtonProps) {
   //   const router = useRouter();
 
   const handleBuyNow = async () => {
@@ -17,7 +22,7 @@ export default function BuyButton({ product, dictionary }: BuyButtonProps) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ product }),
+      body: JSON.stringify({ product, locale }),
     });
 
     const { sessionId } = await response.json();

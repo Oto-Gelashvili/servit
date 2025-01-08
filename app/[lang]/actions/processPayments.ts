@@ -54,6 +54,7 @@ export async function processPayment(sessionId: string) {
         thumbnail: metadata.thumbnail,
         Date: metadata.Date,
         user_id: metadata.user_id,
+        locale: metadata.locale,
       },
     ]);
 

@@ -13,6 +13,7 @@
     "aboutLink": "About Us",
     "contactLink": "Contact",
     "policies": "Policies",
+    "profile": "Profile",
     "rights": "© 2024 ServIt. All rights reserved."
   },
   "header": {
@@ -24,6 +25,7 @@
     "pricing": "Pricing",
     "home": "Home",
     "logout": "Log out",
+    "orders": "Orders",
     "createProduct": "Add Product"
   },
   "sorter": {
@@ -130,5 +132,8 @@
     "weight": "weight",
     "description": "Description",
     "submit": "Submit"
+  },
+  "order": {
+    "title": "Your Orders"
   }
 }

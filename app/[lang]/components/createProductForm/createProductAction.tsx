@@ -119,9 +119,6 @@ export default async function createProduct(formData: FormData) {
       throw new Error(`Database error: ${error.message}`);
     }
     revalidatePath(`/${lang}/products`);
-
-    // Redirect to the product page with correct locale path
-    // The middleware will handle adding the locale prefix if needed
     redirect(`/${lang}/products/${data.id}`);
   } catch (error) {
     console.error('Error creating product:', error);

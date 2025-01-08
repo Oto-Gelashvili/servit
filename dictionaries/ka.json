@@ -13,6 +13,7 @@
     "aboutLink": "ჩვენს შესახებ",
     "contactLink": "კონტაქტები",
     "policies": "პოლიტიკა",
+    "profile": "პროფილი",
     "rights": "© 2024 ServIt. All rights reserved."
   },
   "header": {
@@ -24,6 +25,7 @@
     "pricing": "ფასები",
     "home": "მთავარი",
     "logout": "გასვლა",
+    "orders": "შეკვეთები",
     "createProduct": "პროდუქტის დამატება"
   },
   "sorter": {
@@ -130,5 +132,8 @@
     "weight": "წონა",
     "description": "აღწერა",
     "submit": "დამატება"
+  },
+  "order": {
+    "title": "შენი შეკვეთები"
   }
 }

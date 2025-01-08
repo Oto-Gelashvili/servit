@@ -7,6 +7,7 @@ interface FooterDictionary {
     contactLink: string;
     policies: string;
     rights: string;
+    profile: string;
   };
 }
 
@@ -27,6 +28,9 @@ export default function Footer({ lang, dictionary }: FooterProps) {
         </Link>
         <Link href="_blank" className="Policy">
           {dictionary.footer.policies}
+        </Link>
+        <Link href={`/${lang}/profile`} className="nav-link">
+          {dictionary.footer.profile}
         </Link>
       </div>
       <div className="rights"> {dictionary.footer.rights}</div>

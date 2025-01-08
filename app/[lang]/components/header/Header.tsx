@@ -14,12 +14,12 @@ interface HeaderProps {
       home: string;
       services: string;
       tasks: string;
-      aboutLink: string;
       logout: string;
       pricing: string;
       products: string;
       profile: string;
       createProduct: string;
+      orders: string;
     };
   };
 }
@@ -40,17 +40,18 @@ const Header: FC<HeaderProps> = ({ lang, dictionary }) => {
         <Link href={`/${lang}/products`} className="nav-link">
           {dictionary.header.products}
         </Link>
-        <Link href={`/${lang}/about`} className="nav-link">
-          {dictionary.header.aboutLink}
-        </Link>
-        <Link href={`/${lang}/profile`} className="nav-link">
+
+        {/* <Link href={`/${lang}/profile`} className="nav-link">
           {dictionary.header.profile}
-        </Link>
+        </Link> */}
         <Link href={`/${lang}/pricing`} className="nav-link">
           {dictionary.header.pricing}
         </Link>
         <Link href={`/${lang}/createProduct`} className="nav-link">
           {dictionary.header.createProduct}
+        </Link>
+        <Link href={`/${lang}/purchases`} className="nav-link">
+          {dictionary.header.orders}
         </Link>
       </nav>
       <div className="registration-cont">

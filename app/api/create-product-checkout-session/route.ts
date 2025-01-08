@@ -9,7 +9,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { product } = body;
+    const { product, locale } = body;
     const supabase = await createClient();
 
     // Get user id from Supabase with error handling
@@ -38,8 +38,8 @@ export async function POST(req: Request) {
         },
       ],
       // Your original code, updated with the correct success_url
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/payment/success?session_id={CHECKOUT_SESSION_ID}&product_id=${product.id}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/products/${product.id}`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/payment/success?session_id={CHECKOUT_SESSION_ID}&product_id=${product.id}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/products/${product.id}`,
       metadata: {
         product_id: product.id,
         title: product.title,
@@ -47,6 +47,7 @@ export async function POST(req: Request) {
         thumbnail: product.thumbnail,
         Date: new Date().toISOString(),
         user_id,
+        locale,
       },
     });
 

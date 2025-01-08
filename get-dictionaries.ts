@@ -9,11 +9,15 @@ interface Dictionary {
     title: string;
     desc: string;
   };
+  order: {
+    title: string;
+  };
   footer: {
     aboutLink: string;
     contactLink: string;
     policies: string;
     rights: string;
+    profile: string;
   };
   header: {
     aboutLink: string;
@@ -25,6 +29,7 @@ interface Dictionary {
     products: string;
     profile: string;
     createProduct: string;
+    orders: string;
   };
   sorter: {
     options: string;

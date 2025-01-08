@@ -115,10 +115,22 @@ a {
 }
 .home .homeBtn {
   background-color: var(--primary-color);
-  color: var(--active-color);
+  /* color: var(--active-color); */
+  color: var(--text-color);
   padding: 1.2rem 4.8rem;
   border-radius: 12px;
   font-size: 1.6rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  border: 1px solid transparent;
+  outline: none;
+}
+.home .homeBtn:hover {
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+}
+.home .homeBtn:active {
+  background-color: var(--secondary-accent);
+  color: #fff;
 }
