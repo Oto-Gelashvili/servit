@@ -49,9 +49,6 @@ export async function processPayment(sessionId: string) {
       {
         session_id: sessionId,
         product_id: metadata.product_id,
-        title: metadata.title,
-        price: metadata.price,
-        thumbnail: metadata.thumbnail,
         Date: metadata.Date,
         user_id: metadata.user_id,
         locale: metadata.locale,

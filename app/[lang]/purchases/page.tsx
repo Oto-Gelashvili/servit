@@ -5,24 +5,29 @@ import { getDictionary } from '../../../get-dictionaries';
 import { Locale } from '../../../get-dictionaries';
 import Image from 'next/image';
 import { XCircle } from 'lucide-react';
+
 interface ProductsProps {
   params: {
     lang: Locale;
   };
 }
 
-interface Product {
-  id: string;
-  user_id: string;
+interface ProductDetails {
   title: string;
-  description: string;
   price: number;
   thumbnail: string;
   category: string;
-  Date: string;
-  locale: string;
-  product_id: string;
+  description: string;
 }
+interface Order {
+  id: string;
+  user_id: string;
+  product_id: string;
+  locale: string;
+  Date: string;
+}
+
+interface Product extends Order, ProductDetails {}
 
 export default async function PurchasedProducts({ params }: ProductsProps) {
   const dictionary = await getDictionary(params.lang as Locale);
@@ -33,19 +38,17 @@ export default async function PurchasedProducts({ params }: ProductsProps) {
 
   const userId = user?.id;
 
-  const { data, error } = await supabase
+  const { data: orders, error: ordersError } = (await supabase
     .from('orders')
     .select('*')
-    .eq('user_id', userId);
+    .eq('user_id', userId)) as { data: Order[]; error: Error | null };
 
-  const products: Product[] = data || [];
-
-  if (error) {
-    console.error('Error fetching products:', error);
+  if (ordersError) {
+    console.error('Error fetching orders:', ordersError);
     return null;
   }
 
-  if (products.length === 0) {
+  if (orders.length === 0) {
     return (
       <main className="purchases-main flex">
         <div
@@ -66,11 +69,40 @@ export default async function PurchasedProducts({ params }: ProductsProps) {
     );
   }
 
+  // Fetch product details for each order
+  const products: (Product | null)[] = await Promise.all(
+    orders.map(async (order) => {
+      const { data: productDetails, error: productDetailsError } =
+        (await supabase
+          .from(`products_${order.locale}`)
+          .select('title, price, thumbnail,category, description')
+          .eq('id', order.product_id)
+          .single()) as {
+          data: ProductDetails;
+          error: Error | null;
+        };
+
+      if (productDetailsError) {
+        console.error('Error fetching product details:', productDetailsError);
+        return null;
+      }
+
+      // Combine order and product details into a single object
+      const combinedProduct: Product = {
+        ...order,
+        ...productDetails,
+      };
+
+      return combinedProduct;
+    })
+  );
+
   return (
     <main className="purchases-main">
-      <h1 className="purchases-title"> {dictionary.order.title}</h1>
+      <h1 className="purchases-title">{dictionary.order.title}</h1>
       <div className="purchases-list">
         {products
+          .filter((product) => product !== null)
           .sort(
             (a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime()
           )
@@ -105,7 +137,7 @@ export default async function PurchasedProducts({ params }: ProductsProps) {
                         month: 'long',
                         day: 'numeric',
                       })}
-                    </h3>{' '}
+                    </h3>
                     <h4 className="pricing">{product.price}$</h4>
                   </div>
                 </div>

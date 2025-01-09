@@ -51,7 +51,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) {
     return (
       <main className="flex flex-1 justify-center items-center text-4xl">
-        No product found.
+        {dictionary.products.noProducts}
       </main>
     );
   }
