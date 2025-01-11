@@ -1,3 +1,4 @@
+'use server';
 import './productPage.css';
 import ImageSlider from '../../utils/imageSlider';
 import Link from 'next/link';
@@ -7,6 +8,29 @@ import QuantitySelector from '../../utils/quantitySelector';
 import { getItemById } from '../../utils/supabaseUtils'; // Import the function to fetch data from Supabase
 import { getDictionary, Locale } from '../../../../get-dictionaries';
 import BuyButton from '../../components/Products/BuyButton'; // Import the BuyButton component
+import { createClient } from '../../../../utils/supabase/server';
+import DeleteButton from '../../components/Products/DeleteButton';
+import { revalidatePath } from 'next/cache';
+
+export async function deleteProduct(productId: number, lang: string) {
+  const supabase = await createClient();
+
+  try {
+    const { error } = await supabase
+      .from(`products_${lang}`)
+      .delete()
+      .eq('id', productId);
+
+    if (error) throw error;
+
+    revalidatePath(`/${lang}/products`);
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error deleting product:', error);
+    return { success: false, error };
+  }
+}
 
 const renderStars = (rating: number) => {
   const roundedRating = Math.round(rating * 2) / 2; // Round to nearest 0.5
@@ -40,8 +64,17 @@ const formatDate = (dateString: string) => {
 interface ProductPageProps {
   params: { id: string; lang: Locale }; // Product ID from URL params
 }
-
 export default async function ProductPage({ params }: ProductPageProps) {
+  const supabase = await createClient();
+
+  const userResponse = await supabase.auth.getUser();
+  const user_id = userResponse.data?.user?.id;
+
+  if (!user_id) {
+    console.error('User not authenticated');
+    throw new Error('Authentication required');
+  }
+
   const { id } = params; // Get the ID from URL parameters
   const dictionary = await getDictionary(params.lang as 'en');
 
@@ -62,17 +95,26 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <h1 className="productTitle">{product.title}</h1>
         <div className="stars">{renderStars(product.rating || 0)}</div>
       </div>
-      <div className="grouping">
-        <Link href={`/categories/${product.category}`} className="category">
-          {product.category}
-        </Link>
-        <div className="tags">
-          {product.tags?.map((tag, index) => (
-            <Link key={index} href={`/tags/${tag}`} className="tag">
-              {tag}
-            </Link>
-          ))}
+      <div className="metaBtns">
+        <div className="grouping">
+          <Link href={`/categories/${product.category}`} className="category">
+            {product.category}
+          </Link>
+          <div className="tags">
+            {product.tags?.map((tag, index) => (
+              <Link key={index} href={`/tags/${tag}`} className="tag">
+                {tag}
+              </Link>
+            ))}
+          </div>
         </div>
+        {product.user_id === user_id && (
+          <DeleteButton
+            productId={product.id}
+            lang={params.lang}
+            dictionary={dictionary}
+          />
+        )}
       </div>
       <div className="gridCont">
         <ImageSlider images={product.thumbnail ? [product.thumbnail] : []} />

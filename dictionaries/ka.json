@@ -58,7 +58,8 @@
     "dimensions": "ზომები",
     "width": "სიგანე",
     "height": "სიმაღლე",
-    "depth": "სიღრმე"
+    "depth": "სიღრმე",
+    "delete": "წაშალეთ პროდუქტი"
   },
   "language": {
     "lang": "ENG"

@@ -145,6 +145,9 @@ export interface Database {
           returnPolicy: string | null;
           minimumOrderQuantity: number | null;
           thumbnail: string | null;
+          stripe_product_id: string | null;
+          stripe_price_id: string | null;
+          user_id: string | null;
         };
         Insert: {
           id?: number;
@@ -173,6 +176,9 @@ export interface Database {
           returnPolicy?: string | null;
           minimumOrderQuantity?: number | null;
           thumbnail?: string | null;
+          stripe_product_id?: string | null;
+          stripe_price_id?: string | null;
+          user_id?: string | null;
         };
         Update: {
           id?: number;
@@ -201,6 +207,9 @@ export interface Database {
           returnPolicy?: string | null;
           minimumOrderQuantity?: number | null;
           thumbnail?: string | null;
+          stripe_product_id?: string | null;
+          stripe_price_id?: string | null;
+          user_id?: string | null;
         };
       };
       products_ka: {
@@ -231,6 +240,9 @@ export interface Database {
           returnPolicy: string | null;
           minimumOrderQuantity: number | null;
           thumbnail: string | null;
+          stripe_product_id: string | null;
+          stripe_price_id: string | null;
+          user_id: string | null;
         };
         Insert: {
           id?: number;
@@ -259,6 +271,9 @@ export interface Database {
           returnPolicy?: string | null;
           minimumOrderQuantity?: number | null;
           thumbnail?: string | null;
+          stripe_product_id?: string | null;
+          stripe_price_id?: string | null;
+          user_id?: string | null;
         };
         Update: {
           id?: number;
@@ -287,6 +302,9 @@ export interface Database {
           returnPolicy?: string | null;
           minimumOrderQuantity?: number | null;
           thumbnail?: string | null;
+          stripe_product_id?: string | null;
+          stripe_price_id?: string | null;
+          user_id?: string | null;
         };
       };
     };

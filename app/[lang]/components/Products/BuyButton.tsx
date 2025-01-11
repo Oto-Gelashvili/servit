@@ -2,10 +2,10 @@
 
 // import { useRouter } from 'next/router';
 import { getStripe } from '../../../../lib/stripe-client';
-import { Locale } from '../../../../get-dictionaries';
+import { Dictionary, Locale } from '../../../../get-dictionaries';
 interface BuyButtonProps {
   product: any;
-  dictionary: any;
+  dictionary: Dictionary;
   locale: Locale;
 }
 

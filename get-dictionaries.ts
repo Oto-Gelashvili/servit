@@ -1,4 +1,4 @@
-interface Dictionary {
+export interface Dictionary {
   home: {
     title: string;
     desc: string;
@@ -62,6 +62,7 @@ interface Dictionary {
     width: string;
     height: string;
     depth: string;
+    delete: string;
   };
   language: {
     lang: string;

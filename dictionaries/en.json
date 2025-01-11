@@ -58,7 +58,8 @@
     "dimensions": "Dimensions",
     "width": "Width",
     "height": "Height",
-    "depth": "Depth"
+    "depth": "Depth",
+    "delete": "Delete Product"
   },
   "language": {
     "lang": "ქარ"
