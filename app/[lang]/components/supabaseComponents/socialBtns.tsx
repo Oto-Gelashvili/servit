@@ -6,9 +6,9 @@ import { signInWithProviderAction } from '../../actions';
 
 export const SocialLoginButtons = () => {
   return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className=" flex flex-col gap-4 w-full">
       <Button
-        className="w-full flex items-center justify-center gap-2"
+        className=" flex items-center justify-center gap-2"
         variant="outline"
         onClick={() => signInWithProviderAction('github')}
       >
