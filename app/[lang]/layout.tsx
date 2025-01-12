@@ -2,11 +2,11 @@ import { ReactNode } from 'react';
 import { ThemeProvider } from 'next-themes';
 import { i18n } from '../../i18n.config';
 import './globals.css';
-import Header from './components/header/Header';
-import Footer from './components/Footer/Footer';
+// import Header from './components/header/Header';
+// import Footer from './components/Footer/Footer';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
-import { getDictionary, Locale } from '../../get-dictionaries';
+import { Locale } from '../../get-dictionaries';
 
 config.autoAddCss = false; // Prevents duplicate styles
 const defaultUrl = process.env.VERCEL_URL
@@ -34,7 +34,7 @@ export default async function RootLayout({
   children,
   params,
 }: RootLayoutProps) {
-  const dictionary = await getDictionary(params.lang);
+  // const dictionary = await getDictionary(params.lang);
   return (
     <html lang={params.lang} suppressHydrationWarning>
       <body>
@@ -44,10 +44,10 @@ export default async function RootLayout({
           defaultTheme="system"
           disableTransitionOnChange
         >
-          <Header lang={params.lang} dictionary={dictionary} />
+          {/* <Header lang={params.lang} dictionary={dictionary} /> */}
           {children}
 
-          <Footer lang={params.lang} dictionary={dictionary} />
+          {/* <Footer lang={params.lang} dictionary={dictionary} /> */}
         </ThemeProvider>
       </body>
     </html>

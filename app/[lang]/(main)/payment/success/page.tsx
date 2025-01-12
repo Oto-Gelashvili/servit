@@ -1,5 +1,5 @@
-import { PaymentSuccess } from '../../components/payment-result-pages/results';
-import { getDictionary, Locale } from '../../../../get-dictionaries';
+import { PaymentSuccess } from '../../../components/payment-result-pages/results';
+import { getDictionary, Locale } from '../../../../../get-dictionaries';
 
 export default async function SuccessPage({
   params,

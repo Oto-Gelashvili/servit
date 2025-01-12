@@ -1,6 +1,6 @@
 import { getSession } from '@auth0/nextjs-auth0';
 import Image from 'next/image';
-import { getDictionary, Locale } from '../../../get-dictionaries';
+import { getDictionary, Locale } from '../../../../get-dictionaries';
 import './profile.css';
 
 interface Auth0User {

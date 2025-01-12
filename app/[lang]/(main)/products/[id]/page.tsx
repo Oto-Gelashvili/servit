@@ -1,15 +1,15 @@
 'use server';
 import './productPage.css';
-import ImageSlider from '../../utils/imageSlider';
+import ImageSlider from '../../../utils/imageSlider';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
-import QuantitySelector from '../../utils/quantitySelector';
-import { getItemById } from '../../utils/supabaseUtils'; // Import the function to fetch data from Supabase
-import { getDictionary, Locale } from '../../../../get-dictionaries';
-import BuyButton from '../../components/Products/BuyButton'; // Import the BuyButton component
-import { createClient } from '../../../../utils/supabase/server';
-import DeleteButton from '../../components/Products/DeleteButton';
+import QuantitySelector from '../../../utils/quantitySelector';
+import { getItemById } from '../../../utils/supabaseUtils'; // Import the function to fetch data from Supabase
+import { getDictionary, Locale } from '../../../../../get-dictionaries';
+import BuyButton from '../../../components/Products/BuyButton'; // Import the BuyButton component
+import { createClient } from '../../../../../utils/supabase/server';
+import DeleteButton from '../../../components/Products/DeleteButton';
 import { revalidatePath } from 'next/cache';
 
 export async function deleteProduct(productId: number, lang: string) {

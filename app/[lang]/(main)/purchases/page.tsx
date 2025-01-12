@@ -1,8 +1,8 @@
 import './purchases.css';
 import Link from 'next/link';
-import { createClient } from '../../../utils/supabase/server';
-import { getDictionary } from '../../../get-dictionaries';
-import { Locale } from '../../../get-dictionaries';
+import { createClient } from '../../../../utils/supabase/server';
+import { getDictionary } from '../../../../get-dictionaries';
+import { Locale } from '../../../../get-dictionaries';
 import Image from 'next/image';
 import { XCircle } from 'lucide-react';
 

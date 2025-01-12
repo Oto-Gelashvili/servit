@@ -1,5 +1,5 @@
-import { getDictionary } from '../../get-dictionaries';
-import { Locale } from '../../get-dictionaries';
+import { getDictionary } from '../../../get-dictionaries';
+import { Locale } from '../../../get-dictionaries';
 import Link from 'next/link';
 
 export default async function Home({ params }: { params: { lang: Locale } }) {

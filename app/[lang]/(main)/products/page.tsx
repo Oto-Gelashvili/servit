@@ -1,5 +1,5 @@
-import { Locale } from '../../../get-dictionaries';
-import Products from '../components/Products/Products';
+import { Locale } from '../../../../get-dictionaries';
+import Products from '../../components/Products/Products';
 
 interface ProductsPageProps {
   params: {

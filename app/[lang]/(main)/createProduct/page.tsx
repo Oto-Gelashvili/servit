@@ -1,5 +1,5 @@
-import { CreateProductForm } from '../components/createProductForm/CreateProductForm';
-import { Locale } from '../../../get-dictionaries';
+import { CreateProductForm } from '../../components/createProductForm/CreateProductForm';
+import { Locale } from '../../../../get-dictionaries';
 
 export default function createProduct({
   params,

@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getItemById } from '../../utils/supabaseUtils';
+import { getItemById } from '../../../utils/supabaseUtils';
 import './ServicePage.css';
-import { getDictionary, Locale } from '../../../../get-dictionaries';
-import type { Database } from '../../utils/database.types';
+import { getDictionary, Locale } from '../../../../../get-dictionaries';
+import type { Database } from '../../../utils/database.types';
 
 interface ParamsType {
   params: {

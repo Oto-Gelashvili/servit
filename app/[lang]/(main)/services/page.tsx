@@ -1,8 +1,8 @@
 import './Services.css';
-import ServicesPage from '../components/ServicesStuff/ServicesPage';
-import Sorter from '../components/ServicesStuff/sorter';
-import SearchBar from '../components/ServicesStuff/searchBar';
-import { getDictionary, Locale } from '../../../get-dictionaries';
+import ServicesPage from '../../components/ServicesStuff/ServicesPage';
+import Sorter from '../../components/ServicesStuff/sorter';
+import SearchBar from '../../components/ServicesStuff/searchBar';
+import { getDictionary, Locale } from '../../../../get-dictionaries';
 
 interface ServicesProps {
   params: {
