@@ -20,7 +20,7 @@ export const signUpAction = async (formData: FormData) => {
     );
   }
 
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -31,15 +31,45 @@ export const signUpAction = async (formData: FormData) => {
   if (error) {
     console.error(error.code + ' ' + error.message);
     return encodedRedirect('error', '/sign-up', error.message);
-  } else {
+  }
+
+  // Check if the user was actually created or if they already existed
+  if (data?.user?.identities?.length === 0) {
     return encodedRedirect(
-      'success',
+      'error',
       '/sign-up',
-      'Thanks for signing up! Please check your email for a verification link.'
+      'This email is already registered. Please sign in instead.'
     );
   }
-};
 
+  return encodedRedirect(
+    'success',
+    `/sign-up/verify?email=${encodeURIComponent(email)}`,
+    'Please check your email for a verification code.'
+  );
+};
+export const verifyOTP = async (formData: FormData) => {
+  const email = formData.get('email')?.toString();
+  const OTP = formData.get('OTP')?.toString();
+  const supabase = await createClient();
+
+  if (!email || !OTP) {
+    return encodedRedirect('error', '/sign-up', 'Email and OTP required');
+  }
+
+  const { error } = await supabase.auth.verifyOtp({
+    email: email,
+    token: OTP,
+    type: 'email',
+  });
+
+  if (error) {
+    console.error(error.code + ' ' + error.message);
+    return encodedRedirect('error', '/sign-up', error.message);
+  } else {
+    return encodedRedirect('success', '/', 'welcome!');
+  }
+};
 export const signInAction = async (formData: FormData) => {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
