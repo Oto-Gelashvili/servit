@@ -19,8 +19,12 @@ export const SocialLoginButtons = () => {
 
   return (
     <button
-      className={`flex items-center justify-center gap-2 border border-black rounded-lg p-4 
-        ${isLoading ? 'bg-gray-100 cursor-not-allowed' : 'hover:bg-gray-100'} 
+      className={`flex items-center justify-center gap-2 border border-black dark:border-white rounded-lg p-4 
+        ${
+          isLoading
+            ? 'bg-gray-100 cursor-not-allowed dark:bg-purple-500'
+            : 'hover:bg-gray-100 dark:hover:bg-purple-500'
+        } 
         duration-300 relative`}
       onClick={handleGithubSignIn}
       disabled={isLoading}

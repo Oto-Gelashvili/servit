@@ -14,7 +14,7 @@
 }
 
 .dark {
-  --background-color: #14011f;
+  --background-color: #000000;
   --primary-color: #c491ff;
   --accent: #8b5fbf;
   --secondary-accent: #61398f;
@@ -36,6 +36,13 @@
 }
 .auth-layout header .logo-mid {
   fill: #a2a2a2;
+}
+.dark .auth-layout header .logo-right,
+.dark .auth-layout header .logo-left {
+  fill: #fff;
+}
+.dark .auth-layout header .logo-mid {
+  fill: #44bba4;
 }
 /* .auth-layout header .looka-1j8o68f {
   width: 130px;
