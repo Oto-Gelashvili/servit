@@ -17,10 +17,10 @@ export default async function MainLayout({
   const dictionary = await getDictionary(params.lang);
 
   return (
-    <>
+    <div className="main-layout">
       <Header lang={params.lang} dictionary={dictionary} />
       {children}
       <Footer lang={params.lang} dictionary={dictionary} />
-    </>
+    </div>
   );
 }

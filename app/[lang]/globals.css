@@ -23,13 +23,23 @@
   --active-color: #000;
 }
 
-.logo-right,
-.logo-left {
+.main-layout header .logo-right,
+.main-layout header .logo-left {
   fill: var(--primary-color);
 }
-.logo-mid {
+.main-layout header .logo-mid {
   fill: #44bba4;
 }
+.auth-layout header .logo-right,
+.auth-layout header .logo-left {
+  fill: #000;
+}
+.auth-layout header .logo-mid {
+  fill: #a2a2a2;
+}
+/* .auth-layout header .looka-1j8o68f {
+  width: 130px;
+} */
 
 * {
   box-sizing: border-box;
@@ -73,6 +83,8 @@ body {
   flex-direction: column;
   flex: 1;
   height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 * {

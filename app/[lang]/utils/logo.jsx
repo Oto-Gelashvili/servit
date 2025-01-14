@@ -2,7 +2,7 @@ export default function Logo() {
   return (
     <div>
       <svg
-        width="150"
+        width="140"
         height="100%"
         viewBox="0 0 175.14285714285714 36"
         className="looka-1j8o68f"

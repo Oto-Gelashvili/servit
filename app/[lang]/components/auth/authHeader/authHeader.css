@@ -1,0 +1,15 @@
+.auth-logo-sm {
+  display: none;
+}
+@media (max-width: 475px) {
+  .auth-logo-sm {
+    display: block;
+    width: 45px;
+  }
+  .logo-cont {
+    display: none;
+  }
+  .auth-header {
+    padding: 1.6rem;
+  }
+}
