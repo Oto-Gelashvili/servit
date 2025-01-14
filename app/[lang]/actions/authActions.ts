@@ -75,13 +75,43 @@ export const signInAction = async (formData: FormData) => {
   const password = formData.get('password') as string;
   const supabase = await createClient();
 
+  if (!email || !password) {
+    return redirect('/sign-in?error=All fields are required');
+  }
+  if (password.length < 6) {
+    return redirect('/sign-in?error=Password must be at least 6 characters');
+  }
+
   const { error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
 
   if (error) {
-    return encodedRedirect('error', '/sign-in', error.message);
+    let errorMessage;
+
+    switch (error.message) {
+      case 'Invalid login credentials':
+        errorMessage = 'Invalid email or password';
+        break;
+      case 'Email not confirmed':
+        errorMessage = 'Please verify your email address';
+        break;
+      case 'User not found':
+        errorMessage = 'No account found with this email';
+        break;
+      case 'Too many requests':
+        errorMessage = 'Too many attempts. Please try again later';
+        break;
+      default:
+        errorMessage = 'An error occurred during sign in';
+    }
+
+    const searchParams = new URLSearchParams({
+      error: errorMessage,
+    });
+
+    return redirect(`/sign-in?${searchParams.toString()}`);
   }
 
   return redirect('/');

@@ -1,4 +1,4 @@
-header {
+.main header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7,72 +7,72 @@ header {
   gap: 3.2rem;
   color: var(--text-color);
 }
-header .title-cont {
+.main header .title-cont {
   display: flex;
   align-items: center;
   gap: 2px;
 }
-header nav,
-header .registration-cont {
+.main header nav,
+.main header .registration-cont {
   display: flex;
   align-items: center;
   gap: 1.6rem;
   font-size: 1.8rem;
 }
-header a,
-header .btn {
+.main header a,
+.main header .btn {
   text-decoration: none;
   color: var(--text-color);
 }
-header a:hover,
-header .btn:hover {
+.main header a:hover,
+.main header .btn:hover {
   color: var(--hover-color);
   transition: 0.4s;
 }
-header a:active,
-header .btn:active {
+.main header a:active,
+.main header .btn:active {
   color: var(--active-color);
 }
-header .hamburger {
+.main header .hamburger {
   display: none;
   flex-direction: column;
   align-items: center;
   gap: 4px;
 }
-header .stick {
+.main header .stick {
   width: 2.8rem;
   height: 4px;
   background-color: var(--primary-color);
   border-radius: 2rem;
 }
-header .hamburger:hover {
+.main header .hamburger:hover {
   cursor: pointer;
 }
 
-header .nav-link.active {
+.main header .nav-link.active {
   color: var(--primary-color); /* Active link color */
 }
 [aria-current='page'] {
   color: var(--primary-color); /* Active link color */
 }
-header .toggle:hover {
+.main header .toggle:hover {
   color: var(--hover-color);
   transition: 0.4s;
 }
-header .toggle:active {
+.main header .toggle:active {
   color: var(--active-color);
 }
 @media only screen and (max-width: 1400px) {
-  header .hamburger {
+  .main header .hamburger {
     display: flex;
   }
-  header nav,
-  header .registration-cont {
+  .main header nav,
+  .main header .registration-cont {
     display: none;
   }
 }
 @media only screen and (max-width: 375px) {
-  header {
+  .main header {
     padding: 2.4rem 3.2rem;
   }
 }

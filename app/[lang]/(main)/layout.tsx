@@ -17,7 +17,7 @@ export default async function MainLayout({
   const dictionary = await getDictionary(params.lang);
 
   return (
-    <div className="main-layout">
+    <div className="main-layout main flex-col  flex-1 flex">
       <Header lang={params.lang} dictionary={dictionary} />
       {children}
       <Footer lang={params.lang} dictionary={dictionary} />

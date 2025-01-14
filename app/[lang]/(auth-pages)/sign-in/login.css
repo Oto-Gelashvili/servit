@@ -1,0 +1,64 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 3.6rem;
+  background-color: white;
+  padding: 6.4rem 12.8rem;
+  border-radius: 24px;
+  min-width: 550px;
+  max-width: 550px;
+  border: 1px solid #e2e1e1;
+}
+.login-form h1 {
+  font-size: 2.4rem;
+  text-align: center;
+}
+.login-form .inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  font-size: 1.6rem;
+}
+.login-form .inputs .password-cont {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.4rem;
+}
+.login-form .inputs input {
+  border: 1px solid #e2e1e1;
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+.login-form .forgot {
+  font-size: 1.4rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: 0.4s;
+  text-align: end;
+}
+.login-form .forgot:hover {
+  text-decoration: none;
+}
+.login-form .submit-btn {
+  background-color: black;
+  color: white;
+  padding: 1.2rem;
+  border-radius: 8px;
+  transition: 0.4s;
+  border: 1px solid transparent;
+}
+.login-form .submit-btn:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+.login-form .submit-btn:active {
+  background-color: #e2e1e1;
+}
+.login-form .error-message {
+  color: #dc2626;
+  background-color: #fee2e2;
+  padding: 1.2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
