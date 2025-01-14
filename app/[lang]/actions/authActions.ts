@@ -5,6 +5,7 @@ import { createClient } from '../../../utils/supabase/server';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { Provider } from '@supabase/supabase-js';
+import { getDictionary, Locale } from '../../../get-dictionaries';
 
 export const signUpAction = async (formData: FormData) => {
   const email = formData.get('email')?.toString();
@@ -70,16 +71,29 @@ export const verifyOTP = async (formData: FormData) => {
     return encodedRedirect('success', '/', 'welcome!');
   }
 };
+
 export const signInAction = async (formData: FormData) => {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
+  const locale = formData.get('locale') as Locale;
   const supabase = await createClient();
+  const dictionary = await getDictionary(locale);
+  const signInTexts = dictionary.signIn;
 
   if (!email || !password) {
-    return redirect('/sign-in?error=All fields are required');
+    return redirect(
+      `/${locale}/sign-in?error=${encodeURIComponent(
+        signInTexts.requiredFields
+      )}`
+    );
   }
+
   if (password.length < 6) {
-    return redirect('/sign-in?error=Password must be at least 6 characters');
+    return redirect(
+      `/${locale}/sign-in?error=${encodeURIComponent(
+        signInTexts.shortPassword
+      )}`
+    );
   }
 
   const { error } = await supabase.auth.signInWithPassword({
@@ -88,33 +102,31 @@ export const signInAction = async (formData: FormData) => {
   });
 
   if (error) {
-    let errorMessage;
+    let errorMessage: string;
 
     switch (error.message) {
       case 'Invalid login credentials':
-        errorMessage = 'Invalid email or password';
+        errorMessage = signInTexts.invalidCredentials;
         break;
       case 'Email not confirmed':
-        errorMessage = 'Please verify your email address';
+        errorMessage = signInTexts.emailNotConfirmed;
         break;
       case 'User not found':
-        errorMessage = 'No account found with this email';
+        errorMessage = signInTexts.userNotFound;
         break;
       case 'Too many requests':
-        errorMessage = 'Too many attempts. Please try again later';
+        errorMessage = signInTexts.tooManyRequests;
         break;
       default:
-        errorMessage = 'An error occurred during sign in';
+        errorMessage = signInTexts.defaultError;
     }
 
-    const searchParams = new URLSearchParams({
-      error: errorMessage,
-    });
-
-    return redirect(`/sign-in?${searchParams.toString()}`);
+    return redirect(
+      `/${locale}/sign-in?error=${encodeURIComponent(errorMessage)}`
+    );
   }
 
-  return redirect('/');
+  return redirect(`/${locale}/`);
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {

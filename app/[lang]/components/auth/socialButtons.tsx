@@ -2,8 +2,13 @@
 import React, { useState } from 'react';
 import { signInWithProviderAction } from '../../actions/authActions';
 import { LoaderCircle } from 'lucide-react';
+import { Dictionary } from '../../../../get-dictionaries';
 
-export const SocialLoginButtons = () => {
+interface SocialLoginButtonsProps {
+  dictionary: Dictionary;
+}
+
+export const SocialLoginButtons = ({ dictionary }: SocialLoginButtonsProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleGithubSignIn = async () => {
@@ -40,7 +45,7 @@ export const SocialLoginButtons = () => {
         </svg>
       )}
       <p className="text-2xl">
-        {isLoading ? 'Connecting to GitHub...' : 'Continue with GitHub'}
+        {isLoading ? dictionary.signIn.loadingGithub : dictionary.signIn.github}
       </p>
     </button>
   );

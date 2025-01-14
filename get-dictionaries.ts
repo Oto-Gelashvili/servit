@@ -122,6 +122,23 @@ export interface Dictionary {
     description: string;
     submit: string;
   };
+  signIn: {
+    header: string;
+    forgot: string;
+    email: string;
+    password: string;
+    loading: string;
+    loadingGithub: string;
+    github: string;
+    login: string;
+    requiredFields: string;
+    shortPassword: string;
+    invalidCredentials: string;
+    emailNotConfirmed: string;
+    userNotFound: string;
+    tooManyRequests: string;
+    defaultError: string;
+  };
 }
 
 // Enumerate supported locales
