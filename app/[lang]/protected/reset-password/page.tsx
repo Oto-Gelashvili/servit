@@ -1,4 +1,4 @@
-import { resetPasswordAction } from '../../actions';
+import { resetPasswordAction } from '../../authActions';
 import {
   FormMessage,
   Message,

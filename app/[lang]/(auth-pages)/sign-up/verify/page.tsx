@@ -1,7 +1,7 @@
 import { Input } from '../../../components/supabaseComponents/ui/input';
 import { Label } from '../../../components/supabaseComponents/ui/label';
 import { SubmitButton } from '../../../components/supabaseComponents/submit-button';
-import { verifyOTP } from '../../../actions';
+import { verifyOTP } from '../../../actions/authActions';
 export default function SignupVerify({
   searchParams,
 }: {

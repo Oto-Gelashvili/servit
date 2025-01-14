@@ -1,4 +1,4 @@
-import { signUpAction } from '../../actions';
+import { signUpAction } from '../../actions/authActions';
 import {
   FormMessage,
   Message,

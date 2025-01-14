@@ -1,4 +1,4 @@
-import { signInAction } from '../../actions';
+import { signInAction } from '../../actions/authActions';
 import {
   FormMessage,
   Message,

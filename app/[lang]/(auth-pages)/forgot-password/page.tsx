@@ -1,4 +1,4 @@
-import { forgotPasswordAction } from '../../actions';
+import { forgotPasswordAction } from '../../actions/authActions';
 import {
   FormMessage,
   Message,

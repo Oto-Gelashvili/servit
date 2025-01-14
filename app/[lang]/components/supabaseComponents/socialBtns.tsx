@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Button } from './ui/button';
-import { signInWithProviderAction } from '../../actions';
+import { signInWithProviderAction } from '../../authActions';
 
 export const SocialLoginButtons = () => {
   return (

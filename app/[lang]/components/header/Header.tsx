@@ -5,7 +5,7 @@ import Logo from '../../utils/logo';
 import Hamburger from '../../utils/hamburger';
 import ThemeToggle from './themeToggle';
 import LocaleSwitcher from './languageSwitcher';
-import { signOutAction } from '../../actions';
+import { signOutAction } from '../../authActions';
 
 interface HeaderProps {
   lang: string;
