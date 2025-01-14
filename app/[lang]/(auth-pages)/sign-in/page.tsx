@@ -10,7 +10,7 @@ export default async function Login({
   searchParams: { error?: string };
 }) {
   return (
-    <div>
+    <div className="p-6">
       <form className="login-form">
         <h1 className="">Sign in</h1>
         {searchParams?.error && (

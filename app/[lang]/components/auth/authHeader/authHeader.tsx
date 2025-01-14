@@ -18,15 +18,15 @@ export default function AuthHeader() {
       <div className="buttons flex gap-4 items-center">
         <Link
           href="sign-in"
-          className="bg-transparent dark:bg-black text-black dark:text-white px-6 py-4 rounded-lg shadow-md border border-gray-300 hover:border-gray-400 dark:hover:bg-gray-200 transition-colors duration-300 text-2xl"
+          className="bg-transparent dark:bg-black text-black dark:text-white px-6 py-4 rounded-lg shadow-md border border-gray-300 hover:border-gray-400 dark:hover:bg-purple-500 transition-colors duration-300 text-2xl"
         >
           Log in
         </Link>
         <Link
           href="sign-up"
-          className="bg-black dark:bg-white text-white dark:text-black px-6 py-4 rounded-lg shadow-md hover:bg-slate-800  dark:hover:bg-gray-200 transition-colors text-2xl"
+          className="bg-black dark:bg-white text-white dark:text-black px-6 py-4 rounded-lg shadow-md hover:bg-slate-800  dark:hover:bg-gray-300 transition-colors text-2xl"
         >
-          Sign in
+          Sign up
         </Link>
       </div>
     </header>
