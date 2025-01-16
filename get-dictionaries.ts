@@ -122,15 +122,18 @@ export interface Dictionary {
     description: string;
     submit: string;
   };
-  signIn: {
+  auth: {
     header: string;
+    headerRegister: string;
     forgot: string;
     email: string;
     password: string;
     loading: string;
+    loadingRegister: string;
     loadingGithub: string;
     github: string;
     login: string;
+    signUp: string;
     requiredFields: string;
     shortPassword: string;
     invalidCredentials: string;
@@ -138,6 +141,18 @@ export interface Dictionary {
     userNotFound: string;
     tooManyRequests: string;
     defaultError: string;
+    duplicate: string;
+    defaultErrorRegister: string;
+    invalidEmail: string;
+    emailRateLimit: string;
+    signupDisabled: string;
+    weakPassword: string;
+    sentCode: string;
+    emailReq: string;
+    verificationError: string;
+  };
+  protected: {
+    loggedIn: string;
   };
 }
 

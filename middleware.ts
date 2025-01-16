@@ -12,6 +12,7 @@ const publicRoutes = [
   '/sign-up',
   '/forgot-password',
   '/auth/callback',
+  '/verify',
 ];
 
 function getLocale(request: NextRequest): string | undefined {

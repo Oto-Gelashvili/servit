@@ -137,21 +137,36 @@
   "order": {
     "title": "Your Orders"
   },
-  "signIn": {
-    "header": "Sign-in",
+  "auth": {
+    "header": "Sign in",
+    "headerRegister": "Sign up",
     "forgot": "Forgot Password?",
     "email": "Email",
     "password": "Password",
     "loading": "Signing In...",
+    "loadingRegister": "Signing Up...",
     "loadingGithub": "Connecting to GitHub...",
     "github": "Continue with GitHub",
     "login": "Log in",
+    "signUp": "sign up",
     "requiredFields": "All fields are required",
     "shortPassword": "Password must be at least 6 characters",
     "invalidCredentials": "Invalid email or password",
     "emailNotConfirmed": " Please verify your email address",
     "userNotFound": "No account found with this email",
     "tooManyRequests": "Too many attempts. Please try again later",
-    "defaultError": " An error occurred during sign in"
+    "defaultError": " An error occurred during sign in",
+    "defaultErrorRegister": " An error occurred during sign up",
+    "invalidEmail": "Email is not valid",
+    "signupDisabled": "Sign ups (new account creation) are disabled on the server.",
+    "emailRateLimit": "Too many emails have been sent to this email address. Ask the user to wait a while before trying again.",
+    "weakPassword": "Password is weak, make sure length at least 6 characters",
+    "sentCode": "We sent a code to: ",
+    "emailReq": "Email and OTP required",
+    "verificationError": "Expired or Invalid OTP",
+    "duplicate": "This email is already registered. Please sign in instead"
+  },
+  "protected": {
+    "loggedIn": "You are already logged in"
   }
 }

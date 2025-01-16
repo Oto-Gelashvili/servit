@@ -16,9 +16,11 @@
   font-size: 2.4rem;
   text-align: center;
 }
+
 .login-form .inputs {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2.4rem;
   font-size: 1.6rem;
 }
@@ -46,6 +48,7 @@
   background-color: black;
   color: white;
   padding: 1.2rem;
+  width: 100%;
   border-radius: 8px;
   transition: 0.4s;
   border: 1px solid transparent;

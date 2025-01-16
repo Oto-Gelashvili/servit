@@ -12,12 +12,14 @@ export const signUpAction = async (formData: FormData) => {
   const password = formData.get('password')?.toString();
   const supabase = await createClient();
   const origin = (await headers()).get('origin');
+  const locale = formData.get('locale') as Locale;
+  const dictionary = await getDictionary(locale);
 
   if (!email || !password) {
-    return encodedRedirect(
-      'error',
-      '/sign-up',
-      'Email and password are required'
+    return redirect(
+      `/${locale}/sign-up?error=${encodeURIComponent(
+        dictionary.auth.requiredFields
+      )}`
     );
   }
 
@@ -30,22 +32,46 @@ export const signUpAction = async (formData: FormData) => {
   });
 
   if (error) {
-    console.error(error.code + ' ' + error.message);
-    return encodedRedirect('error', '/sign-up', error.message);
+    let errorMessage: string;
+
+    switch (error.code) {
+      case 'email_address_invalid':
+        errorMessage = dictionary.auth.invalidEmail;
+        break;
+      case 'weak_password':
+        errorMessage = dictionary.auth.weakPassword;
+        break;
+      case 'over_request_rate_limit':
+        errorMessage = dictionary.auth.tooManyRequests;
+        break;
+      case 'signup_disabled':
+        errorMessage = dictionary.auth.signupDisabled;
+        break;
+      case 'over_email_send_rate_limit':
+        errorMessage = dictionary.auth.emailRateLimit;
+        break;
+      default:
+        console.error('Unhandled auth error:', error.code, error.message);
+        errorMessage = dictionary.auth.defaultErrorRegister;
+    }
+
+    return redirect(
+      `/${locale}/sign-up?error=${encodeURIComponent(errorMessage)}`
+    );
   }
 
   // Check if the user was actually created or if they already existed
   if (data?.user?.identities?.length === 0) {
     return encodedRedirect(
       'error',
-      '/sign-up',
-      'This email is already registered. Please sign in instead.'
+      `/${locale}/sign-up`,
+      `${dictionary.auth.duplicate}`
     );
   }
 
   return encodedRedirect(
     'success',
-    `/sign-up/verify?email=${encodeURIComponent(email)}`,
+    `/${locale}/verify?email=${encodeURIComponent(email)}`,
     'Please check your email for a verification code.'
   );
 };
@@ -53,9 +79,14 @@ export const verifyOTP = async (formData: FormData) => {
   const email = formData.get('email')?.toString();
   const OTP = formData.get('OTP')?.toString();
   const supabase = await createClient();
-
+  const locale = formData.get('locale') as Locale;
+  const dictionary = await getDictionary(locale);
   if (!email || !OTP) {
-    return encodedRedirect('error', '/sign-up', 'Email and OTP required');
+    return encodedRedirect(
+      'error',
+      `/${locale}/verify`,
+      `${dictionary.auth.emailReq}`
+    );
   }
 
   const { error } = await supabase.auth.verifyOtp({
@@ -65,10 +96,13 @@ export const verifyOTP = async (formData: FormData) => {
   });
 
   if (error) {
-    console.error(error.code + ' ' + error.message);
-    return encodedRedirect('error', '/sign-up', error.message);
+    redirect(
+      `/${locale}/verify?email=${encodeURIComponent(
+        email
+      )}&error=${encodeURIComponent(dictionary.auth.verificationError)}`
+    );
   } else {
-    return encodedRedirect('success', '/', 'welcome!');
+    return encodedRedirect('success', `/${locale}/`, 'welcome!');
   }
 };
 
@@ -78,7 +112,7 @@ export const signInAction = async (formData: FormData) => {
   const locale = formData.get('locale') as Locale;
   const supabase = await createClient();
   const dictionary = await getDictionary(locale);
-  const signInTexts = dictionary.signIn;
+  const signInTexts = dictionary.auth;
 
   if (!email || !password) {
     return redirect(

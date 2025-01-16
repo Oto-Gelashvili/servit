@@ -45,7 +45,7 @@ export const SocialLoginButtons = ({ dictionary }: SocialLoginButtonsProps) => {
         </svg>
       )}
       <p className="text-2xl">
-        {isLoading ? dictionary.signIn.loadingGithub : dictionary.signIn.github}
+        {isLoading ? dictionary.auth.loadingGithub : dictionary.auth.github}
       </p>
     </button>
   );

@@ -1,7 +1,7 @@
 import { signInAction } from '../../actions/authActions';
 import Link from 'next/link';
 import { SocialLoginButtons } from '../../components/auth/socialButtons';
-import './login.css';
+import '../auth.css';
 import { SubmitButton } from '../../components/auth/submitButton';
 import { Locale } from '../../../../get-dictionaries';
 import { getDictionary } from '../../../../get-dictionaries';
@@ -17,14 +17,14 @@ export default async function Login({
   return (
     <div className="p-6">
       <form className="login-form">
-        <h1 className="">{dictionary.signIn.header}</h1>
+        <h1 className="">{dictionary.auth.header}</h1>
         {searchParams?.error && (
           <div className="error-message">{searchParams.error}</div>
         )}
         <div className="inputs">
           <input
             name="email"
-            placeholder={dictionary.signIn.email}
+            placeholder={dictionary.auth.email}
             autoComplete="email"
             required
           />
@@ -36,12 +36,12 @@ export default async function Login({
           />
           <div className="password-cont">
             <Link className="forgot" href="/forgot-password">
-              {dictionary.signIn.forgot}
+              {dictionary.auth.forgot}
             </Link>
             <input
               type="password"
               name="password"
-              placeholder={dictionary.signIn.password}
+              placeholder={dictionary.auth.password}
               autoComplete="current-password"
               required
             />
@@ -49,10 +49,10 @@ export default async function Login({
 
           <SubmitButton
             className="submit-btn"
-            pendingText={dictionary.signIn.loading}
+            pendingText={dictionary.auth.loading}
             formAction={signInAction}
           >
-            {dictionary.signIn.login}
+            {dictionary.auth.login}
           </SubmitButton>
         </div>
         <SocialLoginButtons dictionary={dictionary} />
