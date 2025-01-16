@@ -27,10 +27,12 @@
 .login-form .inputs .password-cont {
   display: flex;
   flex-direction: column-reverse;
+  width: 100%;
   gap: 0.4rem;
 }
 .login-form .inputs input {
   border: 1px solid #e2e1e1;
+  width: 100%;
   border-radius: 8px;
   padding: 1.2rem;
 }
