@@ -140,9 +140,19 @@
   "auth": {
     "header": "Sign in",
     "headerRegister": "Sign up",
+    "headerForgot": "Forgot password?",
+    "recover": "Recover",
+    "sending": "Sending",
     "forgot": "Forgot Password?",
     "email": "Email",
     "password": "Password",
+    "reset": "Reset Password",
+    "newPass": "New Password",
+    "confirmPass": "Confirm Password",
+    "passReq": "Password and confirm password are required",
+    "passNotEqual": "Passwords do not match",
+    "passResetFail": "Password update failed",
+    "passResetSuccess": "Password updated",
     "loading": "Signing In...",
     "loadingRegister": "Signing Up...",
     "loadingGithub": "Connecting to GitHub...",
@@ -164,7 +174,8 @@
     "sentCode": "We sent a code to: ",
     "emailReq": "Email and OTP required",
     "verificationError": "Expired or Invalid OTP",
-    "duplicate": "This email is already registered. Please sign in instead"
+    "duplicate": "This email is already registered. Please sign in instead",
+    "checkMailForReset": "Check your email for a link to reset your password."
   },
   "protected": {
     "loggedIn": "You are already logged in"

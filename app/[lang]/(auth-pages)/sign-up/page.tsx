@@ -24,7 +24,6 @@ export default async function SignUp({
             name="email"
             placeholder={dictionary.auth.email}
             autoComplete="email"
-            required
           />
           <input
             name="locale"
@@ -38,7 +37,6 @@ export default async function SignUp({
               name="password"
               placeholder={dictionary.auth.password}
               autoComplete="current-password"
-              required
             />
           </div>
 

@@ -1,8 +1,8 @@
-import { forgotPasswordAction } from '../../actions/authActions';
-import { Locale, getDictionary } from '../../../../get-dictionaries';
-import { SubmitButton } from '../../components/auth/submitButton';
-import '../auth.css';
-export default async function ForgotPassword({
+import { resetPasswordAction } from '../../../actions/authActions';
+import { Locale, getDictionary } from '../../../../../get-dictionaries';
+import { SubmitButton } from '../../../components/auth/submitButton';
+import '../../auth.css';
+export default async function ResetPassword({
   searchParams,
   params,
 }: {
@@ -13,7 +13,7 @@ export default async function ForgotPassword({
   return (
     <div className="p-6">
       <form className="login-form">
-        <h1 className="">{dictionary.auth.headerForgot}</h1>
+        <h1 className="">{dictionary.auth.reset}</h1>
         {searchParams?.error && (
           <div className="error-message">{searchParams.error}</div>
         )}
@@ -22,9 +22,16 @@ export default async function ForgotPassword({
         )}
         <div className="inputs">
           <input
-            name="email"
-            placeholder={dictionary.auth.email}
-            autoComplete="email"
+            type="password"
+            name="password"
+            placeholder={dictionary.auth.newPass}
+            autoComplete="New password"
+          />
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder={dictionary.auth.confirmPass}
+            autoComplete="Confirm password"
           />
           <input
             name="locale"
@@ -35,9 +42,9 @@ export default async function ForgotPassword({
           <SubmitButton
             className="submit-btn"
             pendingText={dictionary.auth.sending}
-            formAction={forgotPasswordAction}
+            formAction={resetPasswordAction}
           >
-            {dictionary.auth.recover}
+            {dictionary.auth.reset}
           </SubmitButton>
         </div>
       </form>

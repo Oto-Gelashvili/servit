@@ -168,21 +168,26 @@ export const forgotPasswordAction = async (formData: FormData) => {
   const supabase = await createClient();
   const origin = (await headers()).get('origin');
   const callbackUrl = formData.get('callbackUrl')?.toString();
-
+  const locale = formData.get('locale') as Locale;
+  const dictionary = await getDictionary(locale);
   if (!email) {
-    return encodedRedirect('error', '/forgot-password', 'Email is required');
+    return encodedRedirect(
+      'error',
+      `/${locale}/forgot-password`,
+      'Email is required'
+    );
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${origin}/auth/callback?redirect_to=/protected/reset-password`,
+    redirectTo: `${origin}/auth/callback?redirect_to=/${locale}/protected/reset-password`,
   });
 
   if (error) {
     console.error(error.message);
     return encodedRedirect(
       'error',
-      '/forgot-password',
-      'Could not reset password'
+      `/${locale}/forgot-password`,
+      `${dictionary.auth.invalidEmail}`
     );
   }
 
@@ -192,8 +197,8 @@ export const forgotPasswordAction = async (formData: FormData) => {
 
   return encodedRedirect(
     'success',
-    '/forgot-password',
-    'Check your email for a link to reset your password.'
+    `/${locale}/forgot-password`,
+    `${dictionary.auth.checkMailForReset}`
   );
 };
 
@@ -202,20 +207,22 @@ export const resetPasswordAction = async (formData: FormData) => {
 
   const password = formData.get('password') as string;
   const confirmPassword = formData.get('confirmPassword') as string;
+  const locale = formData.get('locale') as Locale;
+  const dictionary = await getDictionary(locale);
 
   if (!password || !confirmPassword) {
     encodedRedirect(
       'error',
-      '/protected/reset-password',
-      'Password and confirm password are required'
+      `/${locale}/protected/reset-password`,
+      `${dictionary.auth.passReq}`
     );
   }
 
   if (password !== confirmPassword) {
     encodedRedirect(
       'error',
-      '/protected/reset-password',
-      'Passwords do not match'
+      `/${locale}/protected/reset-password`,
+      `${dictionary.auth.passNotEqual}`
     );
   }
 
@@ -226,12 +233,16 @@ export const resetPasswordAction = async (formData: FormData) => {
   if (error) {
     encodedRedirect(
       'error',
-      '/protected/reset-password',
-      'Password update failed'
+      `/${locale}/protected/reset-password`,
+      `${dictionary.auth.passResetFail}`
     );
   }
 
-  encodedRedirect('success', '/protected/reset-password', 'Password updated');
+  encodedRedirect(
+    'success',
+    `/${locale}/protected/reset-password`,
+    `${dictionary.auth.passResetSuccess}`
+  );
 };
 
 export const signOutAction = async () => {

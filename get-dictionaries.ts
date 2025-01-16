@@ -125,7 +125,10 @@ export interface Dictionary {
   auth: {
     header: string;
     headerRegister: string;
+    headerForgot: string;
     forgot: string;
+    recover: string;
+    sending: string;
     email: string;
     password: string;
     loading: string;
@@ -150,6 +153,14 @@ export interface Dictionary {
     sentCode: string;
     emailReq: string;
     verificationError: string;
+    checkMailForReset: string;
+    reset: string;
+    confirmPass: string;
+    newPass: string;
+    passReq: string;
+    passNotEqual: string;
+    passResetFail: string;
+    passResetSuccess: string;
   };
   protected: {
     loggedIn: string;

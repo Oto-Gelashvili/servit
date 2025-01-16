@@ -82,6 +82,13 @@
   border-radius: 8px;
   font-size: 1.2rem;
 }
+.login-form .success-message {
+  color: #44bba4;
+  border: 1px solid #44bba4;
+  padding: 1.2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
 @media (max-width: 700px) {
   .login-form {
     padding: 6.4rem;

@@ -36,13 +36,7 @@ export default async function SignupVerify({
             minLength={6}
             required
           /> */}
-          <InputOTP
-            maxLength={6}
-            required
-            type="OTP"
-            name="OTP"
-            autoComplete="OTP"
-          >
+          <InputOTP maxLength={6} type="OTP" name="OTP" autoComplete="OTP">
             <InputOTPGroup>
               <InputOTPSlot index={0} />
               <InputOTPSlot index={1} />
