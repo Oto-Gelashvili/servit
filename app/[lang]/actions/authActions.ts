@@ -179,11 +179,8 @@ export const forgotPasswordAction = async (formData: FormData) => {
       'Email is required'
     );
   }
-  const redirectUrl = `https://servit.vercel.app/auth/callback?next=/${locale}/protected/reset-password`;
-
-  console.log('Redirect URL:', redirectUrl); // Add this log
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: redirectUrl,
+    redirectTo: 'https://servit.vercel.app/auth/callback',
   });
 
   if (error) {
