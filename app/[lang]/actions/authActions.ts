@@ -168,10 +168,10 @@ export const signInAction = async (formData: FormData) => {
 export const forgotPasswordAction = async (formData: FormData) => {
   const email = formData.get('email')?.toString();
   const supabase = await createClient();
-  // const origin = headers().get('origin') || process.env.NEXT_PUBLIC_SITE_URL;
+  const origin = (await headers()).get('origin');
+  const callbackUrl = formData.get('callbackUrl')?.toString();
   const locale = formData.get('locale') as Locale;
   const dictionary = await getDictionary(locale);
-
   if (!email) {
     return encodedRedirect(
       'error',
@@ -179,25 +179,31 @@ export const forgotPasswordAction = async (formData: FormData) => {
       'Email is required'
     );
   }
+
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: 'https://servit.vercel.app/protected/reset-password',
+    redirectTo: `${origin}/auth/callback?redirect_to=/${locale}/protected/reset-password`,
   });
 
   if (error) {
-    console.error('Password reset error:', error.message);
+    console.error(error.message);
     return encodedRedirect(
       'error',
       `/${locale}/forgot-password`,
-      dictionary.auth.invalidEmail
+      `${dictionary.auth.invalidEmail}`
     );
+  }
+
+  if (callbackUrl) {
+    return redirect(callbackUrl);
   }
 
   return encodedRedirect(
     'success',
     `/${locale}/forgot-password`,
-    dictionary.auth.checkMailForReset
+    `${dictionary.auth.checkMailForReset}`
   );
 };
+
 export const resetPasswordAction = async (formData: FormData) => {
   const supabase = await createClient();
 
