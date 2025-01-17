@@ -168,10 +168,10 @@ export const signInAction = async (formData: FormData) => {
 export const forgotPasswordAction = async (formData: FormData) => {
   const email = formData.get('email')?.toString();
   const supabase = await createClient();
-  const origin = (await headers()).get('origin');
-  const callbackUrl = formData.get('callbackUrl')?.toString();
+  const origin = headers().get('origin') || process.env.NEXT_PUBLIC_SITE_URL;
   const locale = formData.get('locale') as Locale;
   const dictionary = await getDictionary(locale);
+
   if (!email) {
     return encodedRedirect(
       'error',
@@ -181,29 +181,24 @@ export const forgotPasswordAction = async (formData: FormData) => {
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${origin}/auth/callback?redirect_to=/${locale}/protected/reset-password`,
+    redirectTo: `${origin}/auth/callback?next=/${locale}/protected/reset-password`,
   });
 
   if (error) {
-    console.error(error.message);
+    console.error('Password reset error:', error.message);
     return encodedRedirect(
       'error',
       `/${locale}/forgot-password`,
-      `${dictionary.auth.invalidEmail}`
+      dictionary.auth.invalidEmail
     );
-  }
-
-  if (callbackUrl) {
-    return redirect(callbackUrl);
   }
 
   return encodedRedirect(
     'success',
     `/${locale}/forgot-password`,
-    `${dictionary.auth.checkMailForReset}`
+    dictionary.auth.checkMailForReset
   );
 };
-
 export const resetPasswordAction = async (formData: FormData) => {
   const supabase = await createClient();
 
