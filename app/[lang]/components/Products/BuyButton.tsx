@@ -34,7 +34,7 @@ export default function BuyButton({
   };
 
   return (
-    <button className="buyBtn" onClick={handleBuyNow}>
+    <button data-cy="buy-product-btn" className="buyBtn" onClick={handleBuyNow}>
       {dictionary.productsID.buy}
     </button>
   );

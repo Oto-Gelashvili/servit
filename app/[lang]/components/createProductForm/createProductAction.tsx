@@ -61,7 +61,7 @@ export default async function createProduct(formData: FormData) {
   }
 
   if (isNaN(price) || price <= 0) {
-    throw new Error('Invalid price');
+    redirect(`/${lang}/products/`);
   }
 
   try {

@@ -47,6 +47,7 @@ export default async function Login({
 
           <SubmitButton
             className="submit-btn"
+            data-cy="submit-btn"
             pendingText={dictionary.auth.loading}
             formAction={signInAction}
           >

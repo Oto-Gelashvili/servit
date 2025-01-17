@@ -57,7 +57,7 @@ const Header: FC<HeaderProps> = ({ lang, dictionary }) => {
       <div className="registration-cont">
         <LocaleSwitcher lang={lang} />
         <form action={signOutAction}>
-          <button className="btn" type="submit">
+          <button data-cy="logout-btn" className="btn" type="submit">
             {dictionary.header.logout}
           </button>
         </form>

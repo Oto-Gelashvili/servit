@@ -68,12 +68,14 @@ export const signUpAction = async (formData: FormData) => {
       `${dictionary.auth.duplicate}`
     );
   }
-
-  return encodedRedirect(
-    'success',
-    `/${locale}/verify?email=${encodeURIComponent(email)}`,
-    'Please check your email for a verification code.'
-  );
+  // when OTP is on
+  // return encodedRedirect(
+  //   'success',
+  //   `/${locale}/verify?email=${encodeURIComponent(email)}`,
+  //   'Please check your email for a verification code.'
+  // );
+  //when otp is off
+  return encodedRedirect('success', `/${locale}`, 'welcome');
 };
 export const verifyOTP = async (formData: FormData) => {
   const email = formData.get('email')?.toString();

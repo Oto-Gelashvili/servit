@@ -197,6 +197,7 @@ export async function CreateProductForm({ lang }: CreateProductFormProps) {
 
         <button
           type="submit"
+          data-cy="add-product-btn"
           className="mt-4 w-full text-2xl py-4 bg-purple-700 text-white font-medium  rounded hover:bg-purple-700 transition duration-300 focus:outline-none dark:bg-purple-700 dark:hover:bg-purple-800 md:col-span-2"
         >
           {dictionary.addPage.submit}

@@ -36,6 +36,7 @@ export default function DeleteButton({
 
   return (
     <button
+      data-cy="delete-product-btn"
       onClick={handleDelete}
       className="flex justify-center items-center gap-2 deleteBtn"
     >

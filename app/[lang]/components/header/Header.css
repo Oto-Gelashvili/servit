@@ -66,8 +66,7 @@
   .main header .hamburger {
     display: flex;
   }
-  .main header nav,
-  .main header .registration-cont {
+  .main header nav {
     display: none;
   }
 }
