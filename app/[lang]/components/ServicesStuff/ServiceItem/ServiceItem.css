@@ -6,7 +6,9 @@
   /* border: 1px solid var(--accent); */
   color: var(--text-color);
   overflow: hidden;
-  box-shadow: var(--accent) 0px 2px 3px, var(--accent) 0px 2px 2px;
+  box-shadow:
+    var(--accent) 0px 2px 3px,
+    var(--accent) 0px 2px 2px;
 }
 .service-item a {
   color: inherit;

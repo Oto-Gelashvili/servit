@@ -8,7 +8,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { priceId, frequency } = body;
+    const { priceId } = body;
 
     // Create Checkout Session
     const session = await stripe.checkout.sessions.create({

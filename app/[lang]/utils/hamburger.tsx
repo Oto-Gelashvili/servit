@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Hamburger(): JSX.Element {
+const Hamburger: React.FC = () => {
   return (
     <div className="hamburger">
       <div className="stick"></div>
@@ -8,4 +8,6 @@ export default function Hamburger(): JSX.Element {
       <div className="stick"></div>
     </div>
   );
-}
+};
+
+export default Hamburger;

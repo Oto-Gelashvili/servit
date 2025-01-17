@@ -1,3 +1,4 @@
+import React from 'react';
 import AuthHeader from '../components/auth/authHeader/authHeader';
 export default async function Layout({
   children,

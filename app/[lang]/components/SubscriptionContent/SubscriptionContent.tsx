@@ -1,12 +1,15 @@
 'use client';
+import React from 'react';
 import { useState } from 'react';
 import { getStripe } from '../../../../lib/stripe-client';
 import { Locale } from '../../../../get-dictionaries';
-export enum TierType {
-  JUNIOR = 'junior',
-  MIDDLE = 'middle',
-  SENIOR = 'senior',
-}
+export const TierType = {
+  JUNIOR: 'junior',
+  MIDDLE: 'middle',
+  SENIOR: 'senior',
+} as const;
+
+// export type TierType = (typeof TierType)[keyof typeof TierType];
 
 export interface SubTierFrequency {
   id: string;
@@ -26,7 +29,7 @@ export interface SubTier {
   highlighted?: boolean;
   soldOut?: boolean;
   cta: string;
-  tierType: TierType;
+  tierType: string;
 }
 
 interface PriceIds {
@@ -307,8 +310,8 @@ export default function SubscriptionContent({
               {loading === tier.id
                 ? 'Loading...'
                 : tier.soldOut
-                ? 'Sold out'
-                : tier.cta}
+                  ? 'Sold out'
+                  : tier.cta}
             </button>
 
             <ul>

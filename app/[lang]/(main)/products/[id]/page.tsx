@@ -10,7 +10,7 @@ import { getDictionary, Locale } from '../../../../../get-dictionaries';
 import BuyButton from '../../../components/Products/BuyButton'; // Import the BuyButton component
 import { createClient } from '../../../../../utils/supabase/server';
 import DeleteButton from '../../../components/Products/DeleteButton';
-import { deleteProduct } from '../../../actions/productsActions';
+// import { deleteProduct } from '../../../actions/productsActions';
 
 const renderStars = (rating: number) => {
   const roundedRating = Math.round(rating * 2) / 2; // Round to nearest 0.5
@@ -26,19 +26,6 @@ const renderStars = (rating: number) => {
     stars.push(<FontAwesomeIcon key={fullStars} icon={faStarHalfAlt} />);
   }
   return stars;
-};
-
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: true,
-  });
 };
 
 interface ProductPageProps {
