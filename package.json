@@ -9,6 +9,7 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "test:e2e": "cypress open",
+    "test:e2e:ci": "cypress run",
     "prepare": "husky"
   },
   "dependencies": {
