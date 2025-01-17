@@ -179,7 +179,6 @@ export const forgotPasswordAction = async (formData: FormData) => {
       'Email is required'
     );
   }
-  console.log('Origin:', origin);
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${origin}/auth/callback?redirect_to=/${locale}/protected/reset-password`,
