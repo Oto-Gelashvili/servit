@@ -11,7 +11,7 @@ import { Locale } from '../../get-dictionaries';
 config.autoAddCss = false; // Prevents duplicate styles
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : 'http://localhost:3000';
+  : 'https://servit.vercel.app';
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));

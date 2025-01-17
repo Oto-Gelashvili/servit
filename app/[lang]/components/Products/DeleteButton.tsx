@@ -1,6 +1,6 @@
 'use client';
 import { Trash2 } from 'lucide-react';
-import { deleteProduct } from '../../(main)/products/[id]/page';
+import { deleteProduct } from '../../actions/productsActions';
 import { Locale } from '../../../../get-dictionaries';
 import { useRouter } from 'next/navigation';
 import { Dictionary } from '../../../../get-dictionaries';

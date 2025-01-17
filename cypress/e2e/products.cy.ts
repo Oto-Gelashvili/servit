@@ -30,7 +30,7 @@ describe('Products', () => {
     cy.visit('/en/createProduct');
     cy.wait(1000);
 
-    cy.intercept('POST', 'http://localhost:3000/en/createProduct', {
+    cy.intercept('POST', 'https://servit.vercel.app/en/createProduct', {
       statusCode: 201,
       body: { success: true, productId: '12345' },
     }).as('addProduct');
