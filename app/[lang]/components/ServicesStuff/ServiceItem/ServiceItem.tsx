@@ -23,7 +23,6 @@ export default function ServiceItem({
   img,
   category,
   subCategory,
-  hyperlink,
   title,
   desc,
   avatar,

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "test:e2e": "cypress open"
+    "test:e2e": "cypress open",
+    "prepare": "husky"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
@@ -50,6 +51,7 @@
     "cypress": "^14.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
+    "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.2",
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",

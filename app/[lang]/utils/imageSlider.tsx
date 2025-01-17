@@ -1,11 +1,12 @@
 'use client';
 import { useState } from 'react';
+import React from 'react';
 
 type ImageSliderProps = {
   images: string[];
 };
 
-export default function ImageSlider({ images }: ImageSliderProps): JSX.Element {
+const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
   const [imageIndex, setImageIndex] = useState<number>(0);
 
   function ShowNextImg(): void {
@@ -43,4 +44,6 @@ export default function ImageSlider({ images }: ImageSliderProps): JSX.Element {
       )}
     </div>
   );
-}
+};
+
+export default ImageSlider;
