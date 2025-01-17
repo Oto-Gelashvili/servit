@@ -168,7 +168,6 @@ export const signInAction = async (formData: FormData) => {
 export const forgotPasswordAction = async (formData: FormData) => {
   const email = formData.get('email')?.toString();
   const supabase = await createClient();
-  const origin = process.env.NEXT_PUBLIC_APP_URL;
 
   const callbackUrl = formData.get('callbackUrl')?.toString();
   const locale = formData.get('locale') as Locale;
@@ -182,7 +181,7 @@ export const forgotPasswordAction = async (formData: FormData) => {
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${origin}/auth/callback?redirect_to=/${locale}/protected/reset-password`,
+    redirectTo: `https://servit.vercel.app/auth/callback?redirect_to=/${locale}/protected/reset-password`,
   });
 
   if (error) {
