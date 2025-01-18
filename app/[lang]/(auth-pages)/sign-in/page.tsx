@@ -34,7 +34,7 @@ export default async function Login({
             hidden
           />
           <div className="password-cont">
-            <Link className="forgot" href="/forgot-password">
+            <Link className="forgot" href={`/${params.lang}/forgot-password`}>
               {dictionary.auth.forgot}
             </Link>
             <input
