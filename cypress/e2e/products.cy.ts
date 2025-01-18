@@ -7,35 +7,10 @@ describe('Products', () => {
     cy.get('[data-cy="submit-btn"]').click();
     cy.url().should('not.include', '/sign-in');
   });
-  // without mocking so it actaully creates item
-  //   it('adds product successfully', () => {
-  //     cy.visit('/en/createProduct');
-  //     cy.wait(1000);
-  //     cy.get('input[name="name"]').type('testItem');
-  //     cy.get('input[name="price"]').type('123');
-  //     cy.get('input[name="brand"]').type('testBrand');
-  //     cy.get('input[name="image"]').type(
-  //       'https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png'
-  //     );
-  //     cy.get('input[name="category"]').type('testCategory');
-  //     cy.get('input[name="tags"]').type('testTags');
-  //     cy.get('textarea[name="description"]').type('testDesc');
-  //     cy.get('[data-cy="add-product-btn"]').click();
-  //     cy.url().should('include', '/products/');
-  //   });
-
-  //   with mocking
   it('adds product successfully', () => {
-    // Visit the page to create a product
     cy.visit('/en/createProduct');
     cy.wait(1000);
-
-    cy.intercept('POST', 'https://servit.vercel.app/en/createProduct', {
-      statusCode: 201,
-      body: { success: true, productId: '12345' },
-    }).as('addProduct');
-
-    cy.get('input[name="name"]').type('testItem');
+    cy.get('input[name="name"]').type('testItemCY');
     cy.get('input[name="price"]').type('123');
     cy.get('input[name="brand"]').type('testBrand');
     cy.get('input[name="image"]').type(
@@ -44,18 +19,18 @@ describe('Products', () => {
     cy.get('input[name="category"]').type('testCategory');
     cy.get('input[name="tags"]').type('testTags');
     cy.get('textarea[name="description"]').type('testDesc');
-
     cy.get('[data-cy="add-product-btn"]').click();
-
-    cy.wait('@addProduct').then((interception) => {
-      expect(interception.response?.statusCode).to.eq(201);
+    cy.url().should('include', '/products/');
+    cy.url().then((url) => {
+      const productId = url.split('/').pop();
+      Cypress.env('productId', productId);
     });
   });
 
   it('adds product unsuccessfully', () => {
     cy.visit('/en/createProduct');
     cy.wait(1000);
-    cy.get('input[name="name"]').type('testItem');
+    cy.get('input[name="name"]').type('testItemCY');
     cy.get('input[name="price"]').type('-123');
     cy.get('input[name="brand"]').type('testBrand');
     cy.get('input[name="image"]').type(
@@ -67,26 +42,18 @@ describe('Products', () => {
     cy.get('[data-cy="add-product-btn"]').click();
     cy.url().should('not.include', '/products/');
   });
-
-  it('should mock the deletion of the product', () => {
-    cy.visit('/en/products/50');
-
-    cy.intercept('POST', '/en/products/50', {
-      statusCode: 200,
-      body: { success: true },
-    }).as('deleteProduct');
-
+  it('deletes product', () => {
+    const productId = Cypress.env('productId');
+    cy.visit(`/en/products/${productId}`);
     cy.get('[data-cy="delete-product-btn"]').click();
     cy.on('window:confirm', (str) => {
       expect(str).to.equal('Are you sure you want to delete this product?');
       return true;
     });
-    cy.wait('@deleteProduct').then((interception) => {
-      expect(interception.response?.statusCode).to.eq(200);
-    });
+    cy.url().should('not.include', '/products/');
   });
 
-  it('handles product deletion failure', () => {
+  it('deletion of the product fails', () => {
     cy.visit('/en/products/50');
 
     cy.intercept('POST', '/en/products/50', {
@@ -106,45 +73,105 @@ describe('Products', () => {
     });
   });
 
-  it('should mock purchasing of the product', () => {
-    cy.visit('/en/products/50');
+  it('purchasing of the product', () => {
+    let sessionId;
+    cy.visit('/en/products/1');
 
-    cy.intercept('POST', '/api/create-product-checkout-session', {
+    cy.intercept('POST', '**/api/create-product-checkout-session', {
       statusCode: 200,
-      body: { sessionId: 'mockSessionId' },
-    }).as('buyProduct');
+      body: {
+        session_id:
+          'cs_test_a12AgJz89SGLZbYHZoqMKpmqXKbMDmiJzd5xkCadE6YygJKvL0CvS9xXrR',
+      },
+    }).as('stripeCheckout');
 
     cy.get('[data-cy="buy-product-btn"]').click();
 
-    cy.wait('@buyProduct').then((interception) => {
-      expect(interception.response?.statusCode).to.eq(200);
-      expect(interception.response?.body.sessionId).to.eq('mockSessionId');
+    cy.wait('@stripeCheckout').then((interception) => {
+      sessionId = interception.response?.body.session_id;
+      cy.wrap(sessionId).as('sessionId');
+    });
+
+    cy.url().should('include', '/en/products/1');
+    cy.get('@sessionId').then((sessionId) => {
+      cy.visit(`/en/payment/success?session_id=${sessionId}`);
+      cy.contains('Payment Successful').should('be.visible');
     });
   });
-  it('should handle failure when purchasing the product', () => {
-    cy.visit('/en/products/50');
+  it('invalid purchasing of the product', () => {
+    let sessionId;
+    cy.visit('/en/products/1');
 
-    cy.intercept('POST', '/api/create-product-checkout-session', {
-      statusCode: 500,
-      body: { error: 'Internal Server Error' },
-    }).as('buyProductFailure');
+    cy.intercept('POST', '**/api/create-product-checkout-session', {
+      statusCode: 400,
+      body: {
+        error: 'Payment failed',
+      },
+    }).as('stripeCheckoutFailure');
 
     cy.get('[data-cy="buy-product-btn"]').click();
 
-    cy.wait('@buyProductFailure').then((interception) => {
-      expect(interception.response?.statusCode).to.eq(500);
-      expect(interception.response?.body.error).to.eq('Internal Server Error');
+    cy.wait('@stripeCheckoutFailure').then((interception) => {
+      sessionId = interception.response?.body.session_id;
+      cy.wrap(sessionId).as('sessionId');
+    });
+
+    cy.url().should('include', '/en/products/1');
+    cy.get('@sessionId').then((sessionId) => {
+      cy.visit(`/en/payment/success?session_id=${sessionId}`);
+      cy.contains('Failed to process payment').should('be.visible');
     });
   });
+
+  //after purchasing session id is validated and if its says payment successful it adds to orders so its same logic as purchising
   it('added product to orders', () => {
-    cy.visit(
-      '/en/payment/success?session_id=cs_test_a1IAdiMJdZRuZnLfIeMdfe1y7cVYZ1SInWx0cDVGJNHk2P6AfrPk3EvYNX'
-    );
-    cy.get('h1').should('contain', 'Payment Success');
+    let sessionId;
+    cy.visit('/en/products/1');
+
+    cy.intercept('POST', '**/api/create-product-checkout-session', {
+      statusCode: 200,
+      body: {
+        session_id:
+          'cs_test_a12AgJz89SGLZbYHZoqMKpmqXKbMDmiJzd5xkCadE6YygJKvL0CvS9xXrR',
+      },
+    }).as('stripeCheckout');
+
+    cy.get('[data-cy="buy-product-btn"]').click();
+
+    cy.wait('@stripeCheckout').then((interception) => {
+      sessionId = interception.response?.body.session_id;
+      cy.wrap(sessionId).as('sessionId');
+    });
+
+    cy.url().should('include', '/en/products/1');
+    cy.get('@sessionId').then((sessionId) => {
+      cy.visit(`/en/payment/success?session_id=${sessionId}`);
+      cy.contains('Payment Successful').should('be.visible');
+    });
   });
 
   it('didnt add product to orders', () => {
-    cy.visit('/en/payment/success?session_id=wrong');
-    cy.get('p').should('contain', 'Failed to process payment');
+    let sessionId;
+    cy.visit('/en/products/1');
+
+    cy.intercept('POST', '**/api/create-product-checkout-session', {
+      statusCode: 400,
+      body: {
+        error: 'Payment failed',
+      },
+    }).as('stripeCheckoutFailure');
+
+    cy.get('[data-cy="buy-product-btn"]').click();
+
+    cy.wait('@stripeCheckoutFailure').then((interception) => {
+      sessionId = interception.response?.body.session_id;
+      cy.wrap(sessionId).as('sessionId');
+    });
+
+    cy.url().should('include', '/en/products/1');
+    cy.get('@sessionId').then((sessionId) => {
+      cy.visit(`/en/payment/success?session_id=${sessionId}`);
+      cy.contains('Failed to process payment').should('be.visible');
+    });
   });
 });
