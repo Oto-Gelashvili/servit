@@ -14,7 +14,7 @@ const ThemeToggle: React.FC = () => {
   }, []);
 
   if (!mounted) {
-    return null;
+    return <Sun className=" text-gray-600 dark:text-white" />;
   }
 
   return (

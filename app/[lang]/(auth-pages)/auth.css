@@ -93,15 +93,19 @@
   .login-form {
     padding: 6.4rem;
     border-radius: 24px;
-    min-width: unset;
-    max-width: unset;
+    min-width: 400px;
+    max-width: 400px;
   }
 }
-@media (max-width: 375px) {
+@media (max-width: 475px) {
+  .auth-form-cont {
+    width: 100%;
+    padding: 3.2rem 1.6rem;
+  }
   .login-form {
     padding: 3.6rem;
     border-radius: 24px;
-    min-width: unset;
-    max-width: unset;
+    min-width: 100%;
+    max-width: 100%;
   }
 }

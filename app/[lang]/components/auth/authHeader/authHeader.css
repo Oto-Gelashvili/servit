@@ -1,15 +1,22 @@
-.auth-logo-sm {
+/* .auth-logo-sm {
   display: none;
-}
+} */
+
 @media (max-width: 475px) {
-  .auth-logo-sm {
+  /* .auth-logo-sm {
     display: block;
     width: 45px;
     background: #8b5fbf;
     border-radius: 8px;
-  }
-  .logo-cont {
+  } */
+  /* .logo-cont {
     display: none;
+  } */
+  .auth-header .authBtn {
+    padding-inline: 1rem;
+  }
+  .auth-header .looka-1j8o68f {
+    width: 110px;
   }
   .auth-header {
     padding: 1.6rem;

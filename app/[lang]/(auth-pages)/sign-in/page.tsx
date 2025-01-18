@@ -15,7 +15,7 @@ export default async function Login({
   const dictionary = await getDictionary(params.lang);
 
   return (
-    <div className="p-6">
+    <div className="p-6 auth-form-cont">
       <form className="login-form">
         <h1 className="">{dictionary.auth.header}</h1>
         {searchParams?.error && (

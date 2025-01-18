@@ -6,22 +6,10 @@ import Hamburger from '../../utils/hamburger';
 import ThemeToggle from './themeToggle';
 import LocaleSwitcher from './languageSwitcher';
 import { signOutAction } from '../../actions/authActions';
-
+import { Locale, Dictionary } from '../../../../get-dictionaries';
 interface HeaderProps {
-  lang: string;
-  dictionary: {
-    header: {
-      home: string;
-      services: string;
-      tasks: string;
-      logout: string;
-      pricing: string;
-      products: string;
-      profile: string;
-      createProduct: string;
-      orders: string;
-    };
-  };
+  lang: Locale;
+  dictionary: Dictionary['header'];
 }
 
 const Header: FC<HeaderProps> = ({ lang, dictionary }) => {
@@ -32,35 +20,36 @@ const Header: FC<HeaderProps> = ({ lang, dictionary }) => {
       </div>
       <nav>
         <Link href={`/${lang}`} className="nav-link">
-          {dictionary.header.home}
+          {dictionary.home}
         </Link>
         <Link href={`/${lang}/services`} className="nav-link">
-          {dictionary.header.services}
+          {dictionary.services}
         </Link>
         <Link href={`/${lang}/products`} className="nav-link">
-          {dictionary.header.products}
+          {dictionary.products}
+        </Link>
+        <Link href={`/${lang}/pricing`} className="nav-link">
+          {dictionary.pricing}
+        </Link>
+        <Link href={`/${lang}/profile`} className="nav-link">
+          {dictionary.profile}
         </Link>
 
-        {/* <Link href={`/${lang}/profile`} className="nav-link">
-          {dictionary.header.profile}
-        </Link> */}
-        <Link href={`/${lang}/pricing`} className="nav-link">
-          {dictionary.header.pricing}
-        </Link>
-        <Link href={`/${lang}/createProduct`} className="nav-link">
+        {/* <Link href={`/${lang}/createProduct`} className="nav-link">
           {dictionary.header.createProduct}
-        </Link>
-        <Link href={`/${lang}/purchases`} className="nav-link">
+        </Link> */}
+        {/* <Link href={`/${lang}/purchases`} className="nav-link">
           {dictionary.header.orders}
-        </Link>
+        </Link> */}
       </nav>
       <div className="registration-cont">
-        <LocaleSwitcher lang={lang} />
         <form action={signOutAction}>
           <button data-cy="logout-btn" className="btn" type="submit">
-            {dictionary.header.logout}
+            {dictionary.logout}
           </button>
         </form>
+        <LocaleSwitcher lang={lang} />
+
         <ThemeToggle />
       </div>
       <Hamburger />

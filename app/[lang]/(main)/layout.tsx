@@ -19,7 +19,7 @@ export default async function MainLayout({
 
   return (
     <div className="main-layout main flex-col  flex-1 flex">
-      <Header lang={params.lang} dictionary={dictionary} />
+      <Header lang={params.lang} dictionary={dictionary['header']} />
       {children}
       <Footer lang={params.lang} dictionary={dictionary} />
     </div>
