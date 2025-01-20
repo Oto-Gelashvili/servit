@@ -9,7 +9,6 @@ import { signOutAction } from '../../actions/authActions';
 import { Locale, Dictionary } from '../../../../get-dictionaries';
 import { User } from 'lucide-react';
 
-import Image from 'next/image';
 interface HeaderProps {
   lang: Locale;
   dictionary: Dictionary['header'];
@@ -55,12 +54,13 @@ const Header: FC<HeaderProps> = ({ lang, dictionary, avatar }) => {
         <LocaleSwitcher lang={lang} />
         <div className="profile-icon w-10 h-10 flex items-center justify-center rounded-full bg-gray-200">
           {avatar ? (
-            <Image
+            <img
               src={avatar}
               alt="User profile"
               width={40}
               height={40}
               className="rounded-full"
+              loading="lazy"
             />
           ) : (
             <User size={24} className="text-gray-600" />

@@ -3,7 +3,7 @@ import React from 'react';
 import Header from '../components/header/Header';
 import Footer from '../components/Footer/Footer';
 import { getDictionary, Locale } from '../../../get-dictionaries';
-import supabase from '../utils/supabase';
+import { createClient } from '../../../utils/supabase/server';
 interface MainLayoutProps {
   children: React.ReactNode;
   params: {
@@ -15,6 +15,8 @@ export default async function MainLayout({
   children,
   params,
 }: MainLayoutProps) {
+  const supabase = await createClient();
+
   const {
     data: { user },
   } = await supabase.auth.getUser();
