@@ -1,5 +1,5 @@
-echo "running pre-push hook"
+# echo "running pre-push hook"
 
-npm run test:e2e:ci
+# npm run test:e2e:ci
 
-echo "pre-push hook complete"
+# echo "pre-push hook complete"

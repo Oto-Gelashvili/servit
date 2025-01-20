@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .light {
-  --background-color: #f5f3f7;
+  --background-color: #fafafa;
   --primary-color: #8b5fbf;
   --accent: #c7aed8;
   --secondary-accent: #61398f;

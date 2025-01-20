@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 2.4rem 4.8rem;
-  background-color: var(--accent);
   gap: 3.2rem;
   color: var(--text-color);
 }
