@@ -7,7 +7,7 @@ import './globals.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { Locale } from '../../get-dictionaries';
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 config.autoAddCss = false; // Prevents duplicate styles
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -52,6 +52,7 @@ export default async function RootLayout({
 
           {/* <Footer lang={params.lang} dictionary={dictionary} /> */}
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
