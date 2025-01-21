@@ -29,9 +29,7 @@ export default function Footer({ lang, dictionary }: FooterProps) {
         <Link href="_blank" className="Policy">
           {dictionary.footer.policies}
         </Link>
-        <Link href={`/${lang}/profile`} className="nav-link">
-          {dictionary.footer.profile}
-        </Link>
+        <Link href={`/${lang}/profile`}>{dictionary.footer.profile}</Link>
       </div>
       <div className="rights"> {dictionary.footer.rights}</div>
     </footer>

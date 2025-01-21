@@ -1,15 +1,15 @@
 import { FC } from 'react';
-import Link from 'next/link';
 import './Header.css';
 import Logo from '../../utils/logo';
 import Hamburger from '../../utils/hamburger';
 // import ThemeToggle from './themeToggle';
 import LocaleSwitcher from './languageSwitcher';
-import { signOutAction } from '../../actions/authActions';
+// import { signOutAction } from '../../actions/authActions';
 import { Locale, Dictionary } from '../../../../get-dictionaries';
 import { User } from 'lucide-react';
+import Nav from './nav';
 
-interface HeaderProps {
+export interface HeaderProps {
   lang: Locale;
   dictionary: Dictionary['header'];
   avatar: string;
@@ -21,36 +21,14 @@ const Header: FC<HeaderProps> = ({ lang, dictionary, avatar }) => {
       <div className="title-cont">
         <Logo />
       </div>
-      <nav>
-        <Link href={`/${lang}`} className="nav-link">
-          {dictionary.home}
-        </Link>
-        <Link href={`/${lang}/services`} className="nav-link">
-          {dictionary.services}
-        </Link>
-        <Link href={`/${lang}/products`} className="nav-link">
-          {dictionary.products}
-        </Link>
-        <Link href={`/${lang}/pricing`} className="nav-link">
-          {dictionary.pricing}
-        </Link>
-        {/* <Link href={`/${lang}/profile`} className="nav-link">
-          {dictionary.profile}
-        </Link> */}
+      <Nav lang={lang} dictionary={dictionary} avatar={avatar} />
 
-        {/* <Link href={`/${lang}/createProduct`} className="nav-link">
-          {dictionary.header.createProduct}
-        </Link> */}
-        {/* <Link href={`/${lang}/purchases`} className="nav-link">
-          {dictionary.header.orders}
-        </Link> */}
-      </nav>
       <div className="registration-cont">
-        <form action={signOutAction}>
+        {/* <form action={signOutAction}>
           <button data-cy="logout-btn" className="btn" type="submit">
             {dictionary.logout}
           </button>
-        </form>
+        </form> */}
         <LocaleSwitcher lang={lang} />
         <div className="profile-icon w-10 h-10 flex items-center justify-center rounded-full bg-gray-200">
           {avatar ? (

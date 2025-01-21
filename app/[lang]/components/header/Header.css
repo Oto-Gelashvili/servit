@@ -1,10 +1,22 @@
+.bg {
+  background-color: #ebebeb;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  border-radius: 50rem;
+  transition:
+    left 0.4s ease,
+    width 0.4s;
+}
 .main header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 2.4rem 4.8rem;
   gap: 3.2rem;
-  color: var(--text-color);
+  color: #000;
 }
 .main header .title-cont {
   display: flex;
@@ -13,20 +25,24 @@
 }
 .main header nav,
 .main header .registration-cont {
-  display: flex;
-  align-items: center;
-  gap: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
   font-size: 1.8rem;
+  position: relative;
+  /* overflow: hidden; */
 }
-.main header a,
-.main header .btn {
+.main header a {
   text-decoration: none;
-  color: var(--text-color);
+  color: rgb(102, 102, 102);
+  padding: 0.2rem 1.2rem;
+  overflow: hidden;
+  z-index: 1;
 }
-.main header a:hover,
-.main header .btn:hover {
-  color: var(--hover-color);
+.main header a:hover {
+  color: #000;
+  cursor: pointer;
   transition: 0.4s;
+  /* z-index: 2; */
 }
 .main header a:active,
 .main header .btn:active {
@@ -48,9 +64,9 @@
   cursor: pointer;
 }
 
-.main header .nav-link.active {
-  color: var(--primary-color); /* Active link color */
-}
+/* .main header .nav-link.active {
+  color: #000;
+} */
 [aria-current='page'] {
   color: var(--primary-color); /* Active link color */
 }
@@ -61,14 +77,14 @@
 .main header .toggle:active {
   color: var(--active-color);
 }
-@media only screen and (max-width: 1400px) {
+/* @media only screen and (max-width: 1400px) {
   .main header .hamburger {
     display: flex;
   }
   .main header nav {
     display: none;
   }
-}
+} */
 @media only screen and (max-width: 375px) {
   .main header {
     padding: 2.4rem 3.2rem;
