@@ -13,7 +13,8 @@ export default function Logo() {
           id="SvgjsG16782"
           featurekey="nameLeftFeature-0"
           transform="matrix(2.4861879239010025,0,0,2.4861879239010025,-4.972375847802005,-13.07734904876253)"
-          fill="#000"
+          className="left"
+          // fill="#000"
           //  #666666
           //  #000
           //  #a855f7
@@ -36,7 +37,8 @@ export default function Logo() {
           // className="logo-right"
           featurekey="nameRightFeature-0"
           transform="matrix(2.5714285714285716,0,0,2.5714285714285716,127.57142857142857,-14.142857142857144)"
-          fill="#000"
+          className="right "
+          // fill="#000"
         >
           <path d="M2.5 5.5 l1 0 l0 14 l-1 0 l0 -14 z M4 5.5 l1 0 l0 14 l-1 0 l0 -14 z M18.5 6.5 l-5 0 l0 13 l-1 0 l0 -13 l-3.5 0 l0 -1 l9.5 0 l0 1 z M12 8 l-3 0 l0 -1 l3 0 l0 1 z M18.5 8 l-3.16 0 l-0.98 -1 l4.14 0 l0 1 z M15 19.5 l-1 0 l0 -12.14 l1 1.04 l0 11.1 z"></path>
         </g>

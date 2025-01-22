@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { signOutAction } from '../../actions/authActions';
 import ThemeToggle from './themeToggle';
-import { User } from 'lucide-react';
+import { CircleUser } from 'lucide-react';
 import { HeaderProps } from './Header';
 
 export default function ProfileDropdown({
@@ -65,7 +65,7 @@ export default function ProfileDropdown({
             loading="lazy"
           />
         ) : (
-          <User size={36} className="text-gray-600" />
+          <CircleUser size={32} className="circleUser" />
         )}
       </div>
 

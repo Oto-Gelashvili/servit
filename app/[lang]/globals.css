@@ -7,31 +7,36 @@
 
 .light {
   --background-color: #fafafa;
-  --primary-color: #8b5fbf;
+  --primary-color: #a855f7;
+  --secondary-color: #000;
+  --text-color: #666666;
+  --hover-color: #ebebeb;
+  --border-color: #e1e1e1;
+  --accent-color: #fff;
   --accent: #c7aed8;
   --secondary-accent: #61398f;
-  --text-color: #4a4a4a;
-  --hover-color: #e5e4e4;
   --active-color: #fff;
 }
 
 .dark {
   --background-color: #000000;
-  --primary-color: #c491ff;
+  --primary-color: #a855f7;
+  --secondary-color: #fff;
+  --text-color: #a1a1a1;
+  --hover-color: #1f1f1f;
+  --border-color: #2d2d2d;
+  --accent-color: #0a0a0a;
+
   --accent: #8b5fbf;
   --secondary-accent: #61398f;
-  --text-color: #f5f3f7;
-  --hover-color: #3d085d;
   --active-color: #000;
 }
 
-.main-layout header .logo-right,
-.main-layout header .logo-left {
-  fill: var(--primary-color);
+.main-layout header .right,
+.main-layout header .left {
+  fill: var(--secondary-color);
 }
-.main-layout header .logo-mid {
-  fill: #44bba4;
-}
+
 .auth-layout header .logo-right,
 .auth-layout header .logo-left {
   fill: #000;

@@ -20,12 +20,12 @@ const ThemeToggle: React.FC = () => {
     <div className="themeToggle">
       <button onClick={() => setTheme('light')}>
         <Sun
-          className={`text-black sun ${theme === 'light' ? 'active' : ''}`}
+          className={`text-black dark:text-white sun ${theme === 'light' ? 'active' : ''}`}
         />
       </button>
       <button onClick={() => setTheme('dark')}>
         <Moon
-          className={`text-black moon ${theme === 'dark' ? 'active' : ''}`}
+          className={`text-black dark:text-white moon ${theme === 'dark' ? 'active' : ''}`}
         />
       </button>
     </div>
