@@ -57,7 +57,7 @@ describe('Auth', () => {
     cy.get('[data-cy="submit-btn"]').click();
 
     cy.url().should('not.include', '/sign-in');
-
+    cy.get('[data-cy="avatar"]').click();
     cy.get('[data-cy="logout-btn"]').click();
     cy.url().should('include', '/sign-in');
   });

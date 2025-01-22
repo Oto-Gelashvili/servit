@@ -50,6 +50,7 @@ export default function ProfileDropdown({
   return (
     <>
       <div
+        data-cy="avatar"
         ref={avatarRef}
         onClick={toggleDropdown}
         className="profile-icon cursor-pointer rounded-full"
