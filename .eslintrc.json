@@ -5,6 +5,11 @@
     "plugin:prettier/recommended",
     "prettier"
   ],
+  "globals": {
+    "cy": "readonly",
+    "it": "readonly",
+    "describe": "readonly"
+  },
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": [
