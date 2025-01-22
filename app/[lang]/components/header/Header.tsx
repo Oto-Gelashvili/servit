@@ -1,53 +1,66 @@
 import { FC } from 'react';
 import './Header.css';
 import Logo from '../../utils/logo';
-import Hamburger from '../../utils/hamburger';
 // import ThemeToggle from './themeToggle';
 import LocaleSwitcher from './languageSwitcher';
 // import { signOutAction } from '../../actions/authActions';
 import { Locale, Dictionary } from '../../../../get-dictionaries';
-import { User } from 'lucide-react';
+// import { User } from 'lucide-react';
+import Avatar from './avatar';
 import Nav from './nav';
+import Link from 'next/link';
 
-export interface HeaderProps {
+export interface HeaderLangProps {
   lang: Locale;
   dictionary: Dictionary['header'];
+}
+export interface avatarProps {
   avatar: string;
+  mail: string;
 }
 
-const Header: FC<HeaderProps> = ({ lang, dictionary, avatar }) => {
+export interface HeaderProps extends HeaderLangProps, avatarProps {}
+const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, mail }) => {
   return (
     <header>
-      <div className="title-cont">
-        <Logo />
+      <div className="navCont">
+        <div className="title-cont">
+          <Logo />
+        </div>
+        <Nav lang={lang} dictionary={dictionary} />
       </div>
-      <Nav lang={lang} dictionary={dictionary} avatar={avatar} />
 
-      <div className="registration-cont">
+      <div className="profile-cont">
         {/* <form action={signOutAction}>
           <button data-cy="logout-btn" className="btn" type="submit">
             {dictionary.logout}
           </button>
         </form> */}
+        <Link href={`/${lang}/createProduct`} className={`contactLink`}>
+          {dictionary.createProduct}
+        </Link>
+        {/* <div className="profile-dropdown">
+          <p className="mail">{mail}</p>
+          <Link href={`/${lang}/profile`}>{dictionary.profile}</Link>
+          <Link href={`/${lang}/bookmarks`}>{dictionary.bookmarks}</Link>
+          <div className="themeCont flex justify-between items-center">
+            <p>{dictionary.theme}</p>
+            <ThemeToggle />
+          </div>
+          <form action={signOutAction}>
+            <button data-cy="logout-btn" className="signBtn" type="submit">
+              {dictionary.logout}
+            </button>
+          </form>
+        </div> */}
         <LocaleSwitcher lang={lang} />
-        <div className="profile-icon w-10 h-10 flex items-center justify-center rounded-full bg-gray-200">
-          {avatar ? (
-            <img
-              src={avatar}
-              alt="User profile"
-              width={40}
-              height={40}
-              className="rounded-full"
-              loading="lazy"
-            />
-          ) : (
-            <User size={24} className="text-gray-600" />
-          )}
-        </div>
-
-        {/* <ThemeToggle /> */}
+        <Avatar
+          avatar={avatar}
+          mail={mail}
+          dictionary={dictionary}
+          lang={lang}
+        />
       </div>
-      <Hamburger />
     </header>
   );
 };

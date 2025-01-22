@@ -3,9 +3,10 @@ import { FC } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { i18n } from '../../../../i18n.config';
+import { Locale } from '../../../../get-dictionaries';
 
 interface LocaleSwitcherProps {
-  lang: string; // Explicitly define lang prop
+  lang: Locale;
 }
 
 const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ lang }) => {
@@ -30,13 +31,13 @@ const LocaleSwitcher: FC<LocaleSwitcherProps> = ({ lang }) => {
   const switchToLocale = i18n.locales.find((locale) => locale !== lang);
 
   return (
-    <div>
+    <>
       {switchToLocale && (
-        <Link href={redirectedPathname(switchToLocale)}>
+        <Link className="localeCont " href={redirectedPathname(switchToLocale)}>
           {switchToLocale === 'en' ? 'ქარ' : 'EN'}
         </Link>
       )}
-    </div>
+    </>
   );
 };
 

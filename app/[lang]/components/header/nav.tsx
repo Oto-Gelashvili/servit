@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
-import { HeaderProps } from './Header';
+import { HeaderLangProps } from './Header';
 import { usePathname } from 'next/navigation'; // Import useRouter
 import { useEffect } from 'react';
-export default function Nav({ lang, dictionary }: HeaderProps) {
+export default function Nav({ lang, dictionary }: HeaderLangProps) {
   const pathname = usePathname();
 
   function bgTransition(x0: number) {

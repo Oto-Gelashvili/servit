@@ -30,6 +30,8 @@ export interface Dictionary {
     profile: string;
     createProduct: string;
     orders: string;
+    bookmarks: string;
+    theme: string;
   };
   sorter: {
     options: string;

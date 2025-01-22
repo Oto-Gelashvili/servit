@@ -25,6 +25,8 @@
     "pricing": "Pricing",
     "home": "Home",
     "logout": "Log out",
+    "theme": "Theme",
+    "bookmarks": "Bookmarks",
     "orders": "Orders",
     "createProduct": "Add Product"
   },

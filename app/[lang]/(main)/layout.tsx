@@ -29,6 +29,7 @@ export default async function MainLayout({
         lang={params.lang}
         dictionary={dictionary['header']}
         avatar={metadata?.avatar_url}
+        mail={metadata?.email}
       />
       {children}
       <Footer lang={params.lang} dictionary={dictionary} />
