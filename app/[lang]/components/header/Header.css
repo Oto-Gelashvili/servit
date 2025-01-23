@@ -49,7 +49,13 @@ header .navCont {
   overflow: hidden;
   z-index: 1;
 }
+.main header .hamburger-dropdown a {
+  color: var(--secondary-color);
+}
 .main header .localeCont {
+  display: flex;
+  font-size: 1.6rem;
+  align-items: center;
   font-weight: 400;
   padding: 0.4rem 1.2rem;
   border-radius: 4px;
@@ -58,16 +64,10 @@ header .navCont {
   transition: 0.4s;
   cursor: pointer;
   /* color: #000; */
-  color: var(--primary-color);
-  background-color: var(--hover-color);
-}
-.dark .main header .localeCont {
-  background-color: var(--accent-color);
   color: var(--secondary-color);
+  background-color: var(--accent-color);
 }
-.dark .main header .localeCont:hover {
-  background-color: var(--hover-color);
-}
+
 .main header .contactLink {
   border-radius: 6px;
   padding: 0.4rem 1.2rem;
@@ -79,8 +79,19 @@ header .navCont {
 .dark .main header .contactLink {
   background-color: var(--accent-color);
 }
-.main header .contactLink:hover {
+.main header .contactLink:hover,
+.main header .hiddenNav .dropdown-link:hover,
+.main header .localeCont:hover,
+.main header .profile-dropdown > a:hover,
+.main header .hamburger-dropdown .nav-link:hover {
   background-color: var(--hover-color);
+}
+.main header .dropdown-link {
+  transition: 0.4s;
+  color: var(--secondary-color);
+}
+.main header .dropdown-link:active {
+  color: var(--primary-color);
 }
 .main header .contactLink:active {
   color: var(--primary-color);
@@ -94,10 +105,23 @@ header .navCont {
 .main header a:active {
   color: var(--primary-color);
 }
-.nav-link.active {
-  color: var(--primary-color);
+.main header .hamburger-dropdown .pricingBtn {
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  padding: 0.8rem;
+  text-align: center;
+  color: var(--accent-color);
+  margin: 1.4rem;
+  transform: 0.4s;
 }
-
+.main header .hamburger-dropdown .pricingBtn:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.main header .hamburger-dropdown .pricingBtn:active {
+  color: var(--primary-color);
+  background-color: var(--hover-color);
+}
 .main header .profile-dropdown {
   /* display: flex; */
   flex-direction: column;
@@ -121,9 +145,7 @@ header .navCont {
   border-radius: 4px;
   transition: 0.4s;
 }
-.main header .profile-dropdown > a:hover {
-  background-color: var(--hover-color);
-}
+
 .main header .profile-cont .themeCont {
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
@@ -135,7 +157,7 @@ header .navCont {
   color: var(--text-color);
   font-weight: 300;
 }
-.main header .profile-dropdown .themeToggle {
+.main header .themeToggle {
   display: flex;
   gap: 1.2rem;
   border: 1px solid var(--text-color);
@@ -143,28 +165,28 @@ header .navCont {
   font-weight: 400;
   overflow: hidden;
 }
-.main header .profile-dropdown .themeToggle .sun {
+.main header .themeToggle .sun {
   border-radius: 50%;
   margin-left: -1px;
   padding: 4px;
   border: 1px solid transparent;
 }
-.main header .profile-dropdown .themeToggle .sun:hover,
-.main header .profile-dropdown .themeToggle .moon:hover {
+.main header .themeToggle .sun:hover,
+.main header .themeToggle .moon:hover {
   fill: var(--secondary-color);
 }
-.main header .profile-dropdown .themeToggle .moon {
+.main header .themeToggle .moon {
   border-radius: 50%;
   padding: 4px;
   border: 1px solid transparent;
   margin-right: -1px;
 }
-.main header .profile-dropdown .themeToggle .active {
+.main header .themeToggle .active {
   color: #fff;
   background-color: var(--secondary-color);
   /* background-color: #a855f7; */
 }
-.dark .main header .profile-dropdown .themeToggle .active {
+.dark .main header .themeToggle .active {
   color: #fff;
   background-color: var(--primary-color);
   /* background-color: #a855f7; */
@@ -190,19 +212,120 @@ header .navCont {
   border-color: var(--primary-color);
   color: var(--primary-color);
 }
-.circleUser {
+.main header .circleUser {
   color: var(--primary-color);
   fill: var(--hover-color);
 }
-/* @media only screen and (max-width: 1400px) {
-  .main header .hamburger {
+.main header .hamburger-dropdown .circleUser {
+  color: var(--secondary-color);
+  font-size: var(--primary-color);
+}
+.main header .hamburger {
+  display: none;
+}
+.main header .hamburger svg {
+  /* The size of the SVG defines the overall size */
+  height: 3em;
+  /* Define the transition for transforming the SVG */
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.main header .hamburger .line {
+  fill: none;
+  stroke: var(--secondary-color);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  /* Define the transition for transforming the Stroke */
+  transition:
+    stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main header .hamburger .line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+.main header .hamburger input {
+  display: none;
+}
+.main header .hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+.main header .hamburger {
+  cursor: pointer;
+  display: flex;
+}
+.main header .hamburger-container {
+  display: none;
+}
+.main header .hamburger input:checked + svg .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+.main header .hamburger-dropdown {
+  top: 7rem;
+  right: 0;
+  text-align: right;
+  width: 100%;
+  height: calc(100vh - 7rem);
+  position: absolute;
+  /* padding: 1.8rem 1rem; */
+  z-index: 10;
+  background: var(--accent-color);
+  flex-direction: column;
+  display: flex;
+  transition: 0.4s ease-in-out;
+  transform-origin: right top;
+  justify-content: space-evenly;
+}
+.main header .hamburger-dropdown.isOpen {
+  transform: scale(1);
+  padding: 1.8rem 1rem;
+}
+.main header .hamburger-dropdown.isClosed {
+  transform: scale(0);
+}
+.main header .hamburger-dropdown > * {
+  font-size: 1.6rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 8px;
+}
+
+.main header .hamburger-dropdown .border-Cont {
+  margin-block: 0.8rem;
+}
+.main header .hamburger-dropdown .border-line {
+  height: 1px;
+  width: 100%;
+  background-color: var(--primary-color);
+}
+.main header .hiddenNav {
+  display: none;
+}
+.main header .hiddenNav .dropdown-link > * {
+  padding: 0;
+}
+.nav-link.active {
+  color: var(--primary-color);
+}
+.main header .hamburger-dropdown a.active {
+  color: var(--primary-color);
+}
+@media only screen and (max-width: 1000px) {
+  .main header {
+    padding: 1.8rem 2.4rem;
+    height: 7rem;
+  }
+
+  .main header .hamburger-container,
+  .main header .hiddenNav {
     display: flex;
   }
-  .main header nav {
+  .main header nav,
+  .main header .profile-cont {
     display: none;
   }
-} */
-/* @media only screen and (max-width: 375px) {
+}
+/* @media only screen and (max-width: 475px) {
   .main header {
     padding: 2.4rem 3.2rem;
   }

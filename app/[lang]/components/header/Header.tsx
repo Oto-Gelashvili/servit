@@ -9,6 +9,7 @@ import { Locale, Dictionary } from '../../../../get-dictionaries';
 import Avatar from './avatar';
 import Nav from './nav';
 import Link from 'next/link';
+import Hamburger from '../../utils/hamburger';
 
 export interface HeaderLangProps {
   lang: Locale;
@@ -31,28 +32,9 @@ const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, mail }) => {
       </div>
 
       <div className="profile-cont">
-        {/* <form action={signOutAction}>
-          <button data-cy="logout-btn" className="btn" type="submit">
-            {dictionary.logout}
-          </button>
-        </form> */}
         <Link href={`/${lang}/createProduct`} className={`contactLink`}>
           {dictionary.createProduct}
         </Link>
-        {/* <div className="profile-dropdown">
-          <p className="mail">{mail}</p>
-          <Link href={`/${lang}/profile`}>{dictionary.profile}</Link>
-          <Link href={`/${lang}/bookmarks`}>{dictionary.bookmarks}</Link>
-          <div className="themeCont flex justify-between items-center">
-            <p>{dictionary.theme}</p>
-            <ThemeToggle />
-          </div>
-          <form action={signOutAction}>
-            <button data-cy="logout-btn" className="signBtn" type="submit">
-              {dictionary.logout}
-            </button>
-          </form>
-        </div> */}
         <LocaleSwitcher lang={lang} />
         <Avatar
           avatar={avatar}
@@ -61,6 +43,12 @@ const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, mail }) => {
           lang={lang}
         />
       </div>
+      <Hamburger
+        lang={lang}
+        dictionary={dictionary}
+        avatar={avatar}
+        mail={mail}
+      />
     </header>
   );
 };

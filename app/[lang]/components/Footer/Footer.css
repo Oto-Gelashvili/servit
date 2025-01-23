@@ -8,6 +8,7 @@ footer {
   gap: 1.2rem;
   color: var(--text-color);
   font-size: 1.6rem;
+  height: 7rem;
 }
 footer a {
   text-decoration: none;
