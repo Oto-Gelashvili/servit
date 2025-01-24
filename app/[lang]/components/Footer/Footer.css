@@ -1,37 +1,201 @@
 footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1.8rem 4.8rem;
-  background-color: var(--accent);
-  gap: 1.2rem;
+  padding: 4.8rem 6.4rem;
+  background-color: var(--background-color);
   color: var(--text-color);
   font-size: 1.6rem;
-  height: 7rem;
+
+  /* width: 100%; */
+  /* height: 100%; */
 }
-footer a {
-  text-decoration: none;
-  color: var(--text-color);
+footer .footer-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.4rem;
+  padding-block: 2.4rem;
+  max-width: 1000px;
+  margin-inline: auto;
 }
-footer a:hover {
-  color: var(--hover-color);
+footer .ending {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.4rem;
+  flex-direction: column;
+  align-items: center;
+}
+footer .social-icons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+footer .social-icons svg {
+  width: 22px;
+}
+footer .social-icons svg:hover path {
+  fill: var(--primary-color);
+  cursor: pointer;
   transition: 0.4s;
 }
-footer a:active {
-  color: var(--active-color);
+footer .social-icons svg:hover {
+  cursor: pointer;
+  transition: 0.4s;
 }
-.footer-cont {
+footer .copyright {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+footer .copyright p {
+  font-size: 1.2rem;
+}
+footer .footer-header .footer-nav-cont {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.8rem;
+  flex-direction: column;
+  align-items: center;
+}
+footer .footer-header .footer-nav {
   display: flex;
   gap: 1.2rem;
 }
-
-.rights {
-  font-size: 1.2rem;
+footer .footer-nav .nav-link:hover {
+  color: var(--secondary-color);
+  transition: 0.4s;
+}
+footer .footer-nav .nav-link:active {
+  color: var(--priamry-color);
+  transition: 0.4s;
+}
+footer .grid-cont {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1000px;
+  margin-inline: auto;
+  gap: 1.8rem;
+}
+footer .grid-cont .add {
+  justify-self: center;
+}
+footer .grid-cont .contact-form {
+  justify-self: right;
+}
+footer .grid-cont a,
+footer .grid-cont .submitBtn {
+  text-decoration: none;
+  padding-block: 0.8rem;
+  width: 100%;
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  border-radius: 8px;
+  border: 1px solid transparent;
+}
+footer .grid-cont a:hover,
+footer .grid-cont .submitBtn:hover {
+  color: var(--secondary-color);
+  background-color: var(--background-color);
+  border-color: var(--secondary-color);
+  transition: 0.4s;
+}
+footer .grid-cont a:active,
+footer .grid-cont .submitBtn:active {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
-@media only screen and (max-width: 375px) {
+footer .grid-cont .add,
+footer .grid-cont .personal,
+footer .grid-cont .contact-form,
+footer .grid-cont .register {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  border-radius: 8px;
+  padding: 2.4rem;
+  text-align: center;
+  width: 280px;
+  width: clamp(280px, 100%, 300px);
+  border: 1px solid var(--border-color);
+  font-weight: 400;
+}
+footer .grid-cont .register {
+  display: none;
+}
+footer .grid-cont p {
+  margin-bottom: 1rem;
+}
+
+footer .grid-cont form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+footer .grid-cont form #message {
+  border: 1px solid var(--border-color);
+  width: 100%;
+
+  border-radius: 8px;
+  padding: 0.8rem;
+}
+footer .grid-cont .errorMsg {
+  color: #dc2626;
+  font-size: 1.2rem;
+  position: absolute;
+  bottom: -2.8rem;
+}
+footer .submitStatus {
+  font-size: 1.2rem;
+  position: absolute;
+  bottom: -2.8rem;
+}
+footer .right,
+footer .left {
+  fill: var(--secondary-color);
+}
+
+@media only screen and (max-width: 1024px) {
   footer {
-    padding: 1.2rem 2.4rem;
+    padding: 4.8rem 2.4rem;
+  }
+
+  footer .grid-cont {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+  }
+  footer .grid-cont .add {
+    justify-self: unset;
+  }
+  footer .grid-cont .contact-form {
+    justify-self: unset;
+  }
+  footer .grid-cont .add,
+  footer .grid-cont .personal,
+  footer .grid-cont .contact-form,
+  footer .grid-cont .register {
+    width: clamp(280px, 100%, 340px);
+  }
+  footer .grid-cont .register {
+    display: flex;
+  }
+}
+@media only screen and (max-width: 600px) {
+  footer .grid-cont {
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+  }
+}
+@media only screen and (max-width: 375px) {
+  footer .grid-cont .add,
+  footer .grid-cont .personal,
+  footer .grid-cont .contact-form,
+  footer .grid-cont .register {
+    width: 100%;
+  }
+  footer .footer-header .footer-nav {
+    font-size: 1.4rem;
   }
 }

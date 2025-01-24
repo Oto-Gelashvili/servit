@@ -32,7 +32,11 @@ export default async function MainLayout({
         mail={metadata?.email}
       />
       {children}
-      <Footer lang={params.lang} dictionary={dictionary} />
+      <Footer
+        lang={params.lang}
+        dictionary={dictionary['footer']}
+        mail={metadata?.email}
+      />
     </div>
   );
 }

@@ -13,14 +13,31 @@ export interface Dictionary {
     title: string;
   };
   footer: {
-    aboutLink: string;
-    contactLink: string;
-    policies: string;
-    rights: string;
+    tasks: string;
+    contactUs: string;
+    services: string;
+    create: string;
+    bookmarks: string;
+    MessageReq: string;
+    placeholderMsg: string;
+    sending: string;
+    successMsg: string;
+    failMsg: string;
+    errorMsg: string;
+    logInMsg: string;
     profile: string;
+    send: string;
+    home: string;
+    pricing: string;
+    products: string;
+    copy: string;
+    rights: string;
+    login: string;
+    signUp: string;
+    register: string;
+    MessageMinLength: string;
   };
   header: {
-    aboutLink: string;
     tasks: string;
     services: string;
     home: string;
