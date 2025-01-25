@@ -37,8 +37,8 @@
   fill: var(--secondary-color);
 }
 
-.auth-layout header .logo-right,
-.auth-layout header .logo-left {
+.auth-layout header .right,
+.auth-layout header .left {
   fill: var(--secondary-color);
 }
 .auth-layout header .logo-mid {
@@ -79,6 +79,7 @@ body {
 
 main {
   background-color: var(--background-color);
+  min-height: 100vh;
 }
 
 body {
