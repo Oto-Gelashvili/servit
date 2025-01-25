@@ -29,7 +29,7 @@ export default async function ForgotPassword({
           <input
             name="locale"
             placeholder={params.lang}
-            value={params.lang}
+            defaultValue={params.lang}
             hidden
           />
           <SubmitButton

@@ -10,7 +10,8 @@
     left 0.4s ease,
     width 0.4s;
 }
-.main header {
+
+header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,54 +24,57 @@
   top: 0;
   z-index: 1000;
 }
+
 header .navCont {
   display: flex;
   gap: 4.8rem;
 }
-.main header .title-cont {
+
+.title-cont {
   display: flex;
   align-items: center;
   gap: 2px;
 }
-.main header nav,
-.main header .profile-cont {
-  /* display: grid;
-  grid-template-columns: repeat(4, auto); */
+
+nav,
+.profile-cont {
   display: flex;
   align-items: center;
   font-size: 1.6rem;
   position: relative;
 }
-.main header .profile-cont {
+
+.profile-cont {
   gap: 1.6rem;
 }
-.main header a {
+
+header a {
   text-decoration: none;
   color: var(--text-color);
   padding: 0.2rem 1.2rem;
   overflow: hidden;
   z-index: 1;
 }
-.main header .hamburger-dropdown a {
+
+.hamburger-dropdown a {
   color: var(--secondary-color);
 }
-.main header .localeCont {
+
+.localeCont {
   display: flex;
   font-size: 1.6rem;
   align-items: center;
   font-weight: 400;
   padding: 0.4rem 1.2rem;
   border-radius: 4px;
-  /* background-color: #fff; */
   border: 1px solid var(--border-color);
   transition: 0.4s;
   cursor: pointer;
-  /* color: #000; */
   color: var(--secondary-color);
   background-color: var(--accent-color);
 }
 
-.main header .contactLink {
+.contactLink {
   border-radius: 6px;
   padding: 0.4rem 1.2rem;
   border: 1px solid var(--border-color);
@@ -78,54 +82,63 @@ header .navCont {
   font-weight: 400;
   transition: 0.4s;
 }
-.dark .main header .contactLink {
+
+.dark .contactLink {
   background-color: var(--accent-color);
 }
-.main header .contactLink:hover,
-.main header .hiddenNav .dropdown-link:hover,
-.main header .localeCont:hover,
-.main header .profile-dropdown > a:hover,
-.main header .hamburger-dropdown .nav-link:hover {
+
+.contactLink:hover,
+.dropdown-link:hover,
+.localeCont:hover,
+.profile-dropdown > a:hover,
+.hamburger-dropdown .nav-link:hover {
   background-color: var(--hover-color);
 }
-.main header .dropdown-link {
+
+.dropdown-link {
   transition: 0.4s;
   color: var(--secondary-color);
 }
-.main header .dropdown-link:active {
+
+.dropdown-link:active {
   color: var(--primary-color);
 }
-.main header .contactLink:active {
+
+.contactLink:active {
   color: var(--primary-color);
 }
-.main header a:hover {
+
+header a:hover {
   color: var(--secondary-color);
   cursor: pointer;
   transition: 0.4s;
-  /* z-index: 2; */
 }
-.main header a:active {
+
+header a:active {
   color: var(--primary-color);
 }
-.main header .hamburger-dropdown .pricingBtn {
+
+.hamburger-dropdown .pricingBtn {
   background-color: var(--secondary-color);
   border-radius: 8px;
   padding: 0.8rem;
   text-align: center;
   color: var(--accent-color);
   margin: 1.4rem;
-  transform: 0.4s;
+  transition: 0.4s;
 }
-.main header .hamburger-dropdown .pricingBtn:hover {
+
+.hamburger-dropdown .pricingBtn:hover {
   background-color: var(--primary-color);
   color: #fff;
 }
-.main header .hamburger-dropdown .pricingBtn:active {
+
+.hamburger-dropdown .pricingBtn:active {
   color: var(--primary-color);
   background-color: var(--hover-color);
 }
-.main header .profile-dropdown {
-  /* display: flex; */
+
+.profile-dropdown {
   flex-direction: column;
   position: absolute;
   right: 0;
@@ -138,28 +151,31 @@ header .navCont {
   border: 1px solid var(--border-color);
   border-radius: 12px;
 }
-.main header .profile-dropdown P {
+
+.profile-dropdown p {
   font-weight: 400;
   color: var(--secondary-color);
 }
-.main header .profile-dropdown > * {
+
+.profile-dropdown > * {
   padding: 0.8rem 1.6rem;
   border-radius: 4px;
   transition: 0.4s;
 }
 
-.main header .profile-cont .themeCont {
+.profile-cont .themeCont {
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   cursor: pointer;
   border-radius: unset;
 }
 
-.main header .profile-dropdown .themeCont p {
+.profile-dropdown .themeCont p {
   color: var(--text-color);
   font-weight: 300;
 }
-.main header .themeToggle {
+
+.themeToggle {
   display: flex;
   gap: 1.2rem;
   border: 1px solid var(--text-color);
@@ -167,33 +183,37 @@ header .navCont {
   font-weight: 400;
   overflow: hidden;
 }
-.main header .themeToggle .sun {
+
+.themeToggle .sun {
   border-radius: 50%;
   margin-left: -1px;
   padding: 4px;
   border: 1px solid transparent;
 }
-.main header .themeToggle .sun:hover,
-.main header .themeToggle .moon:hover {
+
+.themeToggle .sun:hover,
+.themeToggle .moon:hover {
   fill: var(--secondary-color);
 }
-.main header .themeToggle .moon {
+
+.themeToggle .moon {
   border-radius: 50%;
   padding: 4px;
   border: 1px solid transparent;
   margin-right: -1px;
 }
-.main header .themeToggle .active {
+
+.themeToggle .active {
   color: #fff;
   background-color: var(--secondary-color);
-  /* background-color: #a855f7; */
 }
-.dark .main header .themeToggle .active {
+
+.dark .themeToggle .active {
   color: #fff;
   background-color: var(--primary-color);
-  /* background-color: #a855f7; */
 }
-.main header .profile-cont .signBtn {
+
+.profile-cont .signBtn {
   font-size: 1.4rem;
   font-weight: 500;
   padding: 0.8rem 1.6rem;
@@ -204,66 +224,76 @@ header .navCont {
   border: 1px solid transparent;
   transition: 0.4s;
 }
-.main header .profile-cont .signBtn:hover {
+
+.profile-cont .signBtn:hover {
   background-color: var(--accent-color);
   border-color: var(--secondary-color);
   color: var(--secondary-color);
 }
-.main header .profile-cont .signBtn:active {
+
+.profile-cont .signBtn:active {
   background-color: var(--accent-color);
   border-color: var(--primary-color);
   color: var(--primary-color);
 }
-.main header .circleUser {
+
+.circleUser {
   color: var(--primary-color);
   fill: var(--hover-color);
 }
-.main header .hamburger-dropdown .circleUser {
+
+.hamburger-dropdown .circleUser {
   color: var(--secondary-color);
   font-size: var(--primary-color);
 }
-.main header .hamburger {
+
+.hamburger {
   display: none;
 }
-.main header .hamburger svg {
-  /* The size of the SVG defines the overall size */
+
+.hamburger svg {
   height: 3em;
-  /* Define the transition for transforming the SVG */
   transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.main header .hamburger .line {
+
+.hamburger .line {
   fill: none;
   stroke: var(--secondary-color);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3;
-  /* Define the transition for transforming the Stroke */
   transition:
     stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1),
     stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.main header .hamburger .line-top-bottom {
+.hamburger .line-top-bottom {
   stroke-dasharray: 12 63;
 }
-.main header .hamburger input {
+
+.hamburger input {
   display: none;
 }
-.main header .hamburger input:checked + svg {
+
+.hamburger input:checked + svg {
   transform: rotate(-45deg);
 }
-.main header .hamburger {
+
+.hamburger {
   cursor: pointer;
   display: flex;
 }
-.main header .hamburger-container {
+
+.hamburger-container {
   display: none;
 }
-.main header .hamburger input:checked + svg .line-top-bottom {
+
+.hamburger input:checked + svg .line-top-bottom {
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;
 }
-.main header .hamburger-dropdown {
+
+.hamburger-dropdown {
   top: 7rem;
   right: 0;
   text-align: right;
@@ -271,7 +301,6 @@ header .navCont {
   min-height: 450px;
   height: calc(100vh - 7rem);
   position: absolute;
-  /* padding: 1.8rem 1rem; */
   z-index: 10;
   background: var(--accent-color);
   flex-direction: column;
@@ -280,56 +309,64 @@ header .navCont {
   transform-origin: right top;
   justify-content: space-evenly;
 }
-.main header .hamburger-dropdown.isOpen {
+
+.hamburger-dropdown.isOpen {
   transform: scale(1);
   padding: 1.8rem 1rem;
 }
-.main header .hamburger-dropdown.isClosed {
+
+.hamburger-dropdown.isClosed {
   transform: scale(0);
 }
-.main header .hamburger-dropdown > * {
+
+.hamburger-dropdown > * {
   font-size: 1.6rem;
   padding: 0.8rem 1.4rem;
   border-radius: 8px;
 }
 
-.main header .hamburger-dropdown .border-Cont {
+.hamburger-dropdown .border-Cont {
   margin-block: 0.8rem;
 }
-.main header .hamburger-dropdown .border-line {
+
+.hamburger-dropdown .border-line {
   height: 1px;
   width: 100%;
   background-color: var(--primary-color);
 }
-.main header .hiddenNav {
+
+.hiddenNav {
   display: none;
 }
-.main header .hiddenNav .dropdown-link > * {
+
+.hiddenNav .dropdown-link > * {
   padding: 0;
 }
+
 .nav-link.active {
   color: var(--primary-color);
 }
-.main header .hamburger-dropdown a.active {
+
+.hamburger-dropdown a.active {
   color: var(--primary-color);
 }
+.profile-icon {
+  width: 24px;
+}
+
 @media only screen and (max-width: 1024px) {
-  .main header {
+  header {
     padding: 1.8rem 2.4rem;
     height: 7rem;
   }
 
-  .main header .hamburger-container,
-  .main header .hiddenNav {
+  .hamburger-container,
+  .hiddenNav {
     display: flex;
   }
-  .main header nav,
-  .main header .profile-cont {
+
+  nav,
+  .profile-cont {
     display: none;
   }
 }
-/* @media only screen and (max-width: 475px) {
-  .main header {
-    padding: 2.4rem 3.2rem;
-  }
-} */

@@ -9,7 +9,7 @@ import { Locale, Dictionary } from '../../../../get-dictionaries';
 import Avatar from './avatar';
 import Nav from './nav';
 import Link from 'next/link';
-import Hamburger from '../../utils/hamburger';
+import { Hamburger } from '../../utils/hamburger';
 
 export interface HeaderLangProps {
   lang: Locale;

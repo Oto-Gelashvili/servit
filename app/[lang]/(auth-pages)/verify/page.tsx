@@ -49,7 +49,7 @@ export default async function SignupVerify({
           <input
             name="locale"
             placeholder={params.lang}
-            value={params.lang}
+            defaultValue={params.lang}
             hidden
           />
           <SubmitButton
