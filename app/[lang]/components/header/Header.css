@@ -18,7 +18,7 @@
   gap: 3.2rem;
   color: var(--secondary-color);
   background-color: var(--background-color);
-  position: absolute;
+  position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
