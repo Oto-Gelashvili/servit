@@ -184,6 +184,27 @@ export interface Dictionary {
   protected: {
     loggedIn: string;
   };
+  addCourse: {
+    heading: string;
+    title: string;
+    title_in: string;
+    price: string;
+    category: string;
+    image: string;
+    next: string;
+    description: string;
+    description_in: string;
+    submit: string;
+    selectCategory: string;
+    category1: string;
+    category2: string;
+    category3: string;
+    category4: string;
+    category5: string;
+    category6: string;
+    category7: string;
+    category8: string;
+  };
 }
 
 // Enumerate supported locales

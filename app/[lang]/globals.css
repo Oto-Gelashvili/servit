@@ -64,12 +64,6 @@ html {
 ul {
   list-style: none;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 html,
 body {
@@ -80,11 +74,14 @@ body {
 main {
   background-color: var(--background-color);
   min-height: 100vh;
-  /* margin-top: 7rem; */
+  padding-top: 7rem;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-bottom: 2.4rem;
+  padding-inline: 2.4rem;
 }
 
 body {
-  color: var(--foreground);
   background: var(--background-color);
   font-family: 'lexend', serif;
   -webkit-font-smoothing: antialiased;
@@ -156,4 +153,9 @@ a {
 .home .homeBtn:active {
   background-color: var(--secondary-accent);
   color: #fff;
+}
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
 }

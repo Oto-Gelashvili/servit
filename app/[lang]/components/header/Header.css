@@ -189,8 +189,11 @@ header a:active {
   margin-left: -1px;
   padding: 4px;
   border: 1px solid transparent;
+  color: var(--secondary-color);
 }
-
+.hamburger-dropdown svg {
+  color: var(--secondary-color);
+}
 .themeToggle .sun:hover,
 .themeToggle .moon:hover {
   fill: var(--secondary-color);

@@ -1,0 +1,167 @@
+.createCourse {
+  color: var(--text-color);
+  font-size: 1.6rem;
+  max-width: 700px;
+  padding-top: 10rem;
+}
+.createCourse form {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  padding: 8rem;
+}
+.dark .createCourse form {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+.createCourse input::placeholder,
+.createCourse textarea::placeholder {
+  color: var(--text-color);
+}
+.createCourse h1 {
+  font-size: 3.2rem;
+  font-weight: 400;
+  /* color: var(--primary-color); */
+  color: var(--secondary-color);
+}
+.createCourse form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.4fr;
+}
+
+/* .createCourse .title-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.4rem;
+} */
+.createCourse input,
+.createCourse select,
+.createCourse textarea,
+.createCourse label {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--accent-color);
+}
+.createCourse textarea {
+  height: 100px;
+  grid-area: span 1 / span 3;
+}
+.createCourse label {
+  height: 101px;
+  display: flex;
+  padding: unset;
+  color: var(--text-color);
+  cursor: pointer;
+}
+.createCourse label,
+.createCourse .submitBtn {
+  grid-area: span 1 / span 3;
+}
+.createCourse .submitBtn {
+  background-color: var(--secondary-color);
+  color: var(--accent-color);
+
+  padding: 1.2rem;
+  width: 100%;
+  border-radius: 8px;
+  transition: 0.4s;
+  border: 1px solid transparent;
+  font-weight: 400;
+}
+.createCourse .submitBtn:hover {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+.createCourse .submitBtn:active {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.createCourse .category-selector {
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--accent-color);
+}
+.createCourse .selector-title {
+  padding: 0.8rem;
+}
+.createCourse .category-list {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--accent-color);
+  /* border: 1px solid var(--border-color); */
+  border-radius: 8px;
+  width: 100%;
+  z-index: 11;
+  margin-top: 1px;
+  overflow-y: scroll;
+  /* height: 150px; */
+  transition: 0.4s;
+  /* transform-origin: top; */
+}
+.createCourse .category-list li {
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.8rem;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+.createCourse .category-list li:hover {
+  background-color: var(--hover-color);
+  color: var(--secondary-color);
+}
+.createCourse .img-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  width: 100%;
+  border-left: 1px solid var(--border-color);
+  position: relative;
+}
+
+.createCourse .img-container .addIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 700px) {
+  .createCourse {
+    max-width: unset;
+  }
+  .createCourse form {
+    padding: 3.6rem;
+    grid-template-columns: 1fr;
+    width: 475px;
+  }
+  .createCourse label,
+  .createCourse .submitBtn,
+  .createCourse textarea {
+    grid-area: unset;
+  }
+}
+@media (max-width: 575px) {
+  .createCourse form {
+    padding: 2.4rem;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .createCourse label {
+    flex-direction: column;
+    height: 151px;
+  }
+  .createCourse .img-container {
+    border-left: none;
+    border-top: 1px solid var(--border-color);
+    height: 100%;
+  }
+}

@@ -198,5 +198,26 @@
   },
   "protected": {
     "loggedIn": "You are already logged in"
+  },
+  "addCourse": {
+    "heading": "Create Course",
+    "title": "Title",
+    "title_in": "Title in Georgian",
+    "price": "Price",
+    "category": "Category",
+    "image": "Upload Images",
+    "description": "Description",
+    "description_in": "Description in Georgian",
+    "submit": "Submit",
+    "next": "Next",
+    "selectCategory": "Select Category",
+    "category1": "Math",
+    "category2": "English",
+    "category3": "Georgian",
+    "category4": "Chemistry",
+    "category5": "Physics",
+    "category6": "Biology",
+    "category7": "History",
+    "category8": "Geography"
   }
 }
