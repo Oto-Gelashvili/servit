@@ -23,6 +23,7 @@ export async function CreateServiceForm({ lang }: { lang: Locale }) {
           pattern="[A-Za-z\s]+"
           title="English letters only"
         />
+
         <CategorySelector dictionary={dictionary} categories={categories} />
         <input
           type="number"
@@ -32,6 +33,7 @@ export async function CreateServiceForm({ lang }: { lang: Locale }) {
           min="0"
           step="1.0"
         />
+
         <textarea
           id="desc"
           name="desc"
@@ -44,8 +46,28 @@ export async function CreateServiceForm({ lang }: { lang: Locale }) {
           </p>
           <ImageUploader />
         </label>
+        <div className="otherVersion">
+          <h2>{dictionary.inOther}</h2>
+          <p className="optional">({dictionary.optional})</p>
+
+          <p>{dictionary.descOther}</p>
+          <input
+            type="text"
+            id="title_in"
+            name="title_in"
+            placeholder={dictionary.title_in}
+            pattern="[A-Za-z\s]+"
+            title="English letters only"
+          />
+          <textarea
+            id="desc_in"
+            name="desc_in"
+            placeholder={dictionary.description_in}
+            title="English letters only"
+          />
+        </div>
         <button className="submitBtn" type="submit">
-          {dictionary.next}
+          {dictionary.submit}
         </button>
       </form>
     </>

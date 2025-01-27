@@ -209,7 +209,9 @@
     "description": "Description",
     "description_in": "Description in Georgian",
     "submit": "Submit",
-    "next": "Next",
-    "selectCategory": "Select Category"
+    "selectCategory": "Select Category",
+    "inOther": "Georgian Version",
+    "descOther": "For listing service also on Georgian feed also",
+    "optional": "Optional"
   }
 }

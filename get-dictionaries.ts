@@ -191,11 +191,13 @@ export interface Dictionary {
     price: string;
     category: string;
     image: string;
-    next: string;
     description: string;
     description_in: string;
     submit: string;
     selectCategory: string;
+    inOther: string;
+    descOther: string;
+    optional: string;
   };
 }
 
