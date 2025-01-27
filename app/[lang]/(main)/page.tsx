@@ -12,7 +12,7 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
         {dictionary.home.desc}
       </h1>
       <h2>{dictionary.home.omw}</h2>
-      <Link href={`/${params.lang}/createProduct`} className="homeBtn">
+      <Link href={`/${params.lang}/createService`} className="homeBtn">
         {dictionary.home.btn}
       </Link>
     </main>

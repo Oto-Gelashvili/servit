@@ -105,11 +105,11 @@ export const HamburgerDropdown: React.FC<HeaderProps> = ({
       </Link>
 
       <Link
-        href={`/${lang}/createProduct`}
-        className={`nav-link ${pathname === `/${lang}/createProduct` ? 'active' : ''} flex justify-between`}
+        href={`/${lang}/createService`}
+        className={`nav-link ${pathname === `/${lang}/createService` ? 'active' : ''} flex justify-between`}
       >
         <CirclePlus className="text-black dark:text-white" />
-        <p>{dictionary.createProduct}</p>
+        <p>{dictionary.createService}</p>
       </Link>
       <div className="border-Cont">
         <div className="border-line"></div>
