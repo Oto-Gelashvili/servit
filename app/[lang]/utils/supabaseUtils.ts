@@ -8,12 +8,12 @@ type TableName = keyof Database['public']['Tables'];
 export async function getAllItems<T extends TableName>(
   tableName: T
   // lang: string
-): Promise<Database['public']['Tables'][T]['Row'][] | null> {
+): Promise<Database['public']['Tables'][T]['Row'][]> {
   const { data, error } = await supabase.from(tableName).select('*');
   // .eq('language', lang);
   if (error) {
     console.error(`Error fetching items from ${tableName}:`, error);
-    return null;
+    return [];
   }
 
   return data as Database['public']['Tables'][T]['Row'][];

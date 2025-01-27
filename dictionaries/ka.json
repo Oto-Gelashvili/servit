@@ -212,14 +212,6 @@
     "submit": "დამატება",
     "next": "გაგრძელება",
 
-    "selectCategory": "აირჩიეთ კატეგორია",
-    "category1": "მათემატიკა",
-    "category2": "ინგლისური",
-    "category3": "ქართული",
-    "category4": "ქიმია",
-    "category5": "ფიზიკა",
-    "category6": "ბიოლოგია",
-    "category7": "ისტორია",
-    "category8": "გეოგრაფია"
+    "selectCategory": "აირჩიეთ კატეგორია"
   }
 }

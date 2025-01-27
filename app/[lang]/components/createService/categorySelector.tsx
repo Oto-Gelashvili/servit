@@ -5,22 +5,13 @@ import { ChevronDown } from 'lucide-react';
 
 export function CategorySelector({
   dictionary,
+  categories,
 }: {
   dictionary: Dictionary['addService'];
+  categories: string[];
 }) {
   const [category, setCategory] = useState(dictionary.selectCategory);
   const [open, setOpen] = useState(false);
-
-  const categories = [
-    dictionary.category1,
-    dictionary.category2,
-    dictionary.category3,
-    dictionary.category4,
-    dictionary.category5,
-    dictionary.category6,
-    dictionary.category7,
-    dictionary.category8,
-  ];
 
   return (
     <div className="category-selector">

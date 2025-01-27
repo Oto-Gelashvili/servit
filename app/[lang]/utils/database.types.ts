@@ -212,6 +212,23 @@ export interface Database {
           user_id?: string | null;
         };
       };
+      categories: {
+        Row: {
+          id: number;
+          category_en: string;
+          category_ka: string;
+        };
+        Insert: {
+          id?: number;
+          category_en?: string;
+          category_ka?: string;
+        };
+        Update: {
+          id?: number;
+          category_en?: string;
+          category_ka?: string;
+        };
+      };
       products_ka: {
         Row: {
           id: number;

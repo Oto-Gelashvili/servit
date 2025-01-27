@@ -1,9 +1,14 @@
 import { Locale, getDictionary } from '../../../../get-dictionaries';
 import { CategorySelector } from './categorySelector';
-
 import ImageUploader from './imgUploader';
+import { getAllItems } from '../../utils/supabaseUtils';
+
 export async function CreateServiceForm({ lang }: { lang: Locale }) {
   const dictionary = (await getDictionary(lang))['addService'];
+  const categoriesData = await getAllItems(`categories`);
+  const categories = categoriesData.map(
+    (category) => category[`category_${lang}`]
+  );
 
   return (
     <>
@@ -18,7 +23,7 @@ export async function CreateServiceForm({ lang }: { lang: Locale }) {
           pattern="[A-Za-z\s]+"
           title="English letters only"
         />
-        <CategorySelector dictionary={dictionary} />
+        <CategorySelector dictionary={dictionary} categories={categories} />
         <input
           type="number"
           id="price"
