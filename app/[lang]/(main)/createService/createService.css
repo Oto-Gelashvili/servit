@@ -144,6 +144,9 @@
   }
 }
 @media (max-width: 575px) {
+  .createService {
+    width: 100%;
+  }
   .createService form {
     padding: 2.4rem;
     grid-template-columns: 1fr;
