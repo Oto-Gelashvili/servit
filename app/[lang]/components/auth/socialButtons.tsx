@@ -24,11 +24,11 @@ export const SocialLoginButtons = ({ dictionary }: SocialLoginButtonsProps) => {
 
   return (
     <button
-      className={`flex items-center justify-center gap-2 border border-black dark:border-white rounded-lg p-4 
+      className={`flex items-center justify-center gap-2 border border-[var(--secondary-color)] rounded-lg p-4  
         ${
           isLoading
-            ? 'bg-gray-100 cursor-not-allowed dark:bg-purple-500'
-            : 'hover:bg-gray-100 dark:hover:bg-purple-500'
+            ? 'bg-gray-100 cursor-not-allowed hover:bg-purple-500 hover:text-white active:bg-purple-600 active:text-white'
+            : ' hover:bg-purple-500 hover:text-white hover:border-purple-500 active:bg-purple-600 active:text-white'
         } 
         duration-300 relative`}
       onClick={handleGithubSignIn}
