@@ -46,7 +46,7 @@
     "theme": "თემა",
     "logout": "გასვლა",
     "orders": "შეკვეთები",
-    "createProduct": "პროდუქტის დამატება"
+    "createService": "სერვისის დამატება"
   },
   "sorter": {
     "options": "სორტირება",
@@ -200,8 +200,8 @@
   "protected": {
     "loggedIn": "თქვენ უკვე აუთენტირებული ხართ"
   },
-  "addCourse": {
-    "heading": "შექმენი კურსი",
+  "addService": {
+    "heading": "შექმენი სერვისი",
     "title": "სათაური",
     "title_in": "სათაური ინგლისურ ენაზე",
     "price": "ფასი",

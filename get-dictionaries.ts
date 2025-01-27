@@ -45,7 +45,7 @@ export interface Dictionary {
     logout: string;
     products: string;
     profile: string;
-    createProduct: string;
+    createService: string;
     orders: string;
     bookmarks: string;
     theme: string;
@@ -184,7 +184,7 @@ export interface Dictionary {
   protected: {
     loggedIn: string;
   };
-  addCourse: {
+  addService: {
     heading: string;
     title: string;
     title_in: string;

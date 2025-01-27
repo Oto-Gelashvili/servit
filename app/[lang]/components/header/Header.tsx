@@ -32,8 +32,8 @@ const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, mail }) => {
       </div>
 
       <div className="profile-cont">
-        <Link href={`/${lang}/createProduct`} className={`contactLink`}>
-          {dictionary.createProduct}
+        <Link href={`/${lang}/createService`} className={`contactLink`}>
+          {dictionary.createService}
         </Link>
         <LocaleSwitcher lang={lang} />
         <Avatar

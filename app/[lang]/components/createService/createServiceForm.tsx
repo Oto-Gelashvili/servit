@@ -2,8 +2,8 @@ import { Locale, getDictionary } from '../../../../get-dictionaries';
 import { CategorySelector } from './categorySelector';
 
 import ImageUploader from './imgUploader';
-export async function CreateCourseForm({ lang }: { lang: Locale }) {
-  const dictionary = (await getDictionary(lang))['addCourse'];
+export async function CreateServiceForm({ lang }: { lang: Locale }) {
+  const dictionary = (await getDictionary(lang))['addService'];
 
   return (
     <>
@@ -33,7 +33,7 @@ export async function CreateCourseForm({ lang }: { lang: Locale }) {
           placeholder={dictionary.description}
           title="English letters only"
         />
-        <label htmlFor="course_images" className="custom-file-upload">
+        <label htmlFor="service_images" className="custom-file-upload">
           <p className="w-full p-2 text-center flex items-center justify-center">
             {dictionary.image}
           </p>

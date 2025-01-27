@@ -13,8 +13,8 @@ export default function ImageUploader() {
     <>
       <input
         type="file"
-        id="course_images"
-        name="course_images"
+        id="service_images"
+        name="service_images"
         accept="image/*"
         multiple
         onChange={handleImageChange}

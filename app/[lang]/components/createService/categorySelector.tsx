@@ -6,7 +6,7 @@ import { ChevronDown } from 'lucide-react';
 export function CategorySelector({
   dictionary,
 }: {
-  dictionary: Dictionary['addCourse'];
+  dictionary: Dictionary['addService'];
 }) {
   const [category, setCategory] = useState(dictionary.selectCategory);
   const [open, setOpen] = useState(false);

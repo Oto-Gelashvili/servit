@@ -45,7 +45,7 @@
     "theme": "Theme",
     "bookmarks": "Bookmarks",
     "orders": "Orders",
-    "createProduct": "Add Product"
+    "createService": "Add Service"
   },
   "sorter": {
     "options": "Sort Options",
@@ -199,8 +199,8 @@
   "protected": {
     "loggedIn": "You are already logged in"
   },
-  "addCourse": {
-    "heading": "Create Course",
+  "addService": {
+    "heading": "Create Service",
     "title": "Title",
     "title_in": "Title in Georgian",
     "price": "Price",

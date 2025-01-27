@@ -1,28 +1,28 @@
-.createCourse {
+.createService {
   color: var(--text-color);
   font-size: 1.6rem;
   max-width: 700px;
   padding-top: 10rem;
 }
-.createCourse form {
+.createService form {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
   padding: 8rem;
 }
-.dark .createCourse form {
+.dark .createService form {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
-.createCourse input::placeholder,
-.createCourse textarea::placeholder {
+.createService input::placeholder,
+.createService textarea::placeholder {
   color: var(--text-color);
 }
-.createCourse h1 {
+.createService h1 {
   font-size: 3.2rem;
   font-weight: 400;
   /* color: var(--primary-color); */
   color: var(--secondary-color);
 }
-.createCourse form {
+.createService form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -30,38 +30,32 @@
   grid-template-columns: 1fr 1fr 0.4fr;
 }
 
-/* .createCourse .title-inputs {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2.4rem;
-} */
-.createCourse input,
-.createCourse select,
-.createCourse textarea,
-.createCourse label {
+.createService input,
+.createService select,
+.createService textarea,
+.createService label {
   width: 100%;
   padding: 0.8rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background-color: var(--accent-color);
 }
-.createCourse textarea {
+.createService textarea {
   height: 100px;
   grid-area: span 1 / span 3;
 }
-.createCourse label {
+.createService label {
   height: 101px;
   display: flex;
   padding: unset;
   color: var(--text-color);
   cursor: pointer;
 }
-.createCourse label,
-.createCourse .submitBtn {
+.createService label,
+.createService .submitBtn {
   grid-area: span 1 / span 3;
 }
-.createCourse .submitBtn {
+.createService .submitBtn {
   background-color: var(--secondary-color);
   color: var(--accent-color);
 
@@ -72,16 +66,16 @@
   border: 1px solid transparent;
   font-weight: 400;
 }
-.createCourse .submitBtn:hover {
+.createService .submitBtn:hover {
   background-color: var(--accent-color);
   color: var(--secondary-color);
   border-color: var(--secondary-color);
 }
-.createCourse .submitBtn:active {
+.createService .submitBtn:active {
   color: var(--primary-color);
   border-color: var(--primary-color);
 }
-.createCourse .category-selector {
+.createService .category-selector {
   cursor: pointer;
   position: relative;
   width: 100%;
@@ -89,10 +83,10 @@
   border-radius: 8px;
   background-color: var(--accent-color);
 }
-.createCourse .selector-title {
+.createService .selector-title {
   padding: 0.8rem;
 }
-.createCourse .category-list {
+.createService .category-list {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -109,17 +103,17 @@
   transition: 0.4s;
   /* transform-origin: top; */
 }
-.createCourse .category-list li {
+.createService .category-list li {
   border-bottom: 1px solid var(--border-color);
   padding: 0.8rem;
   transition: 0.4s;
   border-radius: 4px;
 }
-.createCourse .category-list li:hover {
+.createService .category-list li:hover {
   background-color: var(--hover-color);
   color: var(--secondary-color);
 }
-.createCourse .img-container {
+.createService .img-container {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -128,38 +122,38 @@
   position: relative;
 }
 
-.createCourse .img-container .addIcon {
+.createService .img-container .addIcon {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 @media (max-width: 700px) {
-  .createCourse {
+  .createService {
     max-width: unset;
   }
-  .createCourse form {
+  .createService form {
     padding: 3.6rem;
     grid-template-columns: 1fr;
     width: 475px;
   }
-  .createCourse label,
-  .createCourse .submitBtn,
-  .createCourse textarea {
+  .createService label,
+  .createService .submitBtn,
+  .createService textarea {
     grid-area: unset;
   }
 }
 @media (max-width: 575px) {
-  .createCourse form {
+  .createService form {
     padding: 2.4rem;
     grid-template-columns: 1fr;
     width: 100%;
   }
-  .createCourse label {
+  .createService label {
     flex-direction: column;
     height: 151px;
   }
-  .createCourse .img-container {
+  .createService .img-container {
     border-left: none;
     border-top: 1px solid var(--border-color);
     height: 100%;
