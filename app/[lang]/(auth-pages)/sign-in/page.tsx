@@ -2,7 +2,7 @@ import { signInAction } from '../../actions/authActions';
 import Link from 'next/link';
 import { SocialLoginButtons } from '../../components/auth/socialButtons';
 import '../auth.css';
-import { SubmitButton } from '../../components/auth/submitButton';
+import { SubmitButton } from '../../utils/submitButton';
 import { Locale } from '../../../../get-dictionaries';
 import { getDictionary } from '../../../../get-dictionaries';
 export default async function Login({

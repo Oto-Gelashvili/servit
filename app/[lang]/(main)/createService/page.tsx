@@ -16,12 +16,14 @@ export async function generateMetadata({
 }
 export default function createProduct({
   params,
+  searchParams,
 }: {
   params: { lang: Locale };
+  searchParams: { error?: string };
 }) {
   return (
     <main className="flex flex-col items-center justify-center gap-10 createService">
-      <CreateServiceForm lang={params.lang} />
+      <CreateServiceForm lang={params.lang} searchParams={searchParams} />
     </main>
   );
 }

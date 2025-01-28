@@ -212,6 +212,12 @@
     "selectCategory": "Select Category",
     "inOther": "Georgian Version",
     "descOther": "For listing service also on Georgian feed also",
-    "optional": "Optional"
+    "optional": "Optional",
+    "loading": "Submitting...",
+    "titleReq": "Title Required ",
+    "priceReq": "Price Required",
+    "categoryReq": "Category Required",
+    "descriptionReq": "Description Required",
+    "globalError": "Error occured scroll up to view the problem"
   }
 }

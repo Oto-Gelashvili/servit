@@ -1,6 +1,6 @@
 import { verifyOTP } from '../../actions/authActions';
 import '../auth.css';
-import { SubmitButton } from '../../components/auth/submitButton';
+import { SubmitButton } from '../../utils/submitButton';
 import { Locale } from '../../../../get-dictionaries';
 import { getDictionary } from '../../../../get-dictionaries';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from './otp';

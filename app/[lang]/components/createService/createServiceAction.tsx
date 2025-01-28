@@ -2,7 +2,7 @@ import Stripe from 'stripe';
 import { createClient } from '../../../../utils/supabase/server';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { Locale } from '../../../../get-dictionaries';
+import { getDictionary, Locale } from '../../../../get-dictionaries';
 import { getCategoryIdByName } from '../../utils/supabaseUtils';
 
 export default async function createService(formData: FormData) {
@@ -38,15 +38,36 @@ export default async function createService(formData: FormData) {
     description_en = formData.get('desc_in') as string;
     description_ka = formData.get('desc') as string;
   }
+  const dictionary = (await getDictionary(lang)).addService;
+  const title = formData.get('title') as string;
+  const description = formData.get('desc') as string;
   const price = Number(formData.get('price'));
   const category = formData.get('category') as string;
-  const categoryId = await getCategoryIdByName(category, lang);
   const images = formData.getAll('service_images') as File[];
 
   // Track uploaded file paths for cleanup if error occurs and it should get cleared
   const uploadedFilePaths: string[] = [];
   let stripeProduct: Stripe.Product | null = null;
   let stripePrice: Stripe.Price | null = null;
+
+  if (!title) {
+    return redirect(
+      `/${lang}/createService?error=${encodeURIComponent(dictionary.titleReq)}`
+    );
+  } else if (!description) {
+    return redirect(
+      `/${lang}/createService?error=${encodeURIComponent(dictionary.descriptionReq)}`
+    );
+  } else if (!price) {
+    return redirect(
+      `/${lang}/createService?error=${encodeURIComponent(dictionary.priceReq)}`
+    );
+  } else if (!category) {
+    return redirect(
+      `/${lang}/createService?error=${encodeURIComponent(dictionary.categoryReq)}`
+    );
+  }
+  const categoryId = await getCategoryIdByName(category, lang);
 
   try {
     // Upload images to Supabase Storage

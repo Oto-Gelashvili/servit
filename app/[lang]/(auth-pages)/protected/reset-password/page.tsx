@@ -1,6 +1,6 @@
 import { resetPasswordAction } from '../../../actions/authActions';
 import { Locale, getDictionary } from '../../../../../get-dictionaries';
-import { SubmitButton } from '../../../components/auth/submitButton';
+import { SubmitButton } from '../../../utils/submitButton';
 import '../../auth.css';
 export default async function ResetPassword({
   searchParams,

@@ -13,9 +13,8 @@
   --hover-color: #ebebeb;
   --border-color: #e1e1e1;
   --accent-color: #fff;
-  --accent: #c7aed8;
-  --secondary-accent: #61398f;
-  --active-color: #fff;
+  --error: #dc2626;
+  --success: #44bba4;
 }
 
 .dark {
@@ -26,10 +25,8 @@
   --hover-color: #1f1f1f;
   --border-color: #2d2d2d;
   --accent-color: #0a0a0a;
-
-  --accent: #8b5fbf;
-  --secondary-accent: #61398f;
-  --active-color: #000;
+  --error: #dc2626;
+  --success: #44bba4;
 }
 
 .main-layout header .right,
@@ -48,7 +45,20 @@
 /* .auth-layout header .looka-1j8o68f {
   width: 130px;
 } */
-
+.error-message {
+  color: var(--error);
+  background-color: #fee2e2;
+  padding: 1.2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
+.success-message {
+  color: var(--success);
+  border: 1px solid var(--success);
+  padding: 1.2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
 * {
   box-sizing: border-box;
   padding: 0;

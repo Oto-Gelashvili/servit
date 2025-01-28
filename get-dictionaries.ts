@@ -198,6 +198,13 @@ export interface Dictionary {
     inOther: string;
     descOther: string;
     optional: string;
+    loading: string;
+    titleReq: string;
+    descriptionReq: string;
+    priceReq: string;
+    categoryReq: string;
+
+    globalError: string;
   };
 }
 

@@ -4,11 +4,7 @@
   max-width: 700px;
   padding-top: 10rem;
 }
-.createService form {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
-  padding: 8rem;
-}
 .dark .createService form {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
@@ -28,17 +24,23 @@
   gap: 1.2rem;
   display: grid;
   grid-template-columns: 1fr 1fr 0.4fr;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  grid-row-gap: 2rem;
+  padding: 8rem;
 }
 
 .createService input,
 .createService select,
 .createService textarea,
-.createService label {
+.createService label,
+.createService {
   width: 100%;
   padding: 0.8rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background-color: var(--accent-color);
+
+  height: 100%;
 }
 .createService textarea {
   height: 100px;
@@ -82,9 +84,11 @@
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background-color: var(--accent-color);
+  height: 100%;
 }
 .createService .selector-title {
   padding: 0.8rem;
+  height: 100%;
 }
 .createService .category-list {
   display: flex;
@@ -158,6 +162,23 @@
   top: 10px;
   right: 15px;
 }
+.error-container {
+  height: 100%;
+}
+.createService .desc-error-container {
+  grid-area: span 1 / span 3;
+}
+.createService .error {
+  /* position: absolute; */
+  top: 100%;
+  color: var(--error);
+  font-size: 1.2rem;
+  left: 0.8rem;
+}
+.createService .global-error {
+  grid-area: span 1 / span 3;
+  text-align: center;
+}
 @media (max-width: 700px) {
   .createService {
     max-width: unset;
@@ -166,13 +187,32 @@
     padding: 3.6rem;
     grid-template-columns: 1fr;
     width: 475px;
+    grid-row-gap: 1.2rem;
   }
   .createService label,
   .createService .submitBtn,
   .createService textarea,
   .createService .title_in,
-  .createService .otherVersion {
+  .createService .otherVersion,
+  .createService .global-error,
+  .createService .desc-error-container {
     grid-area: unset;
+  }
+  .error-container {
+    height: unset;
+  }
+  .createService input,
+  .createService select,
+  .createService textarea,
+  .createService label,
+  .createService {
+    height: unset;
+  }
+  .createService .category-selector {
+    height: unset;
+  }
+  .createService .selector-title {
+    height: unset;
   }
 }
 
