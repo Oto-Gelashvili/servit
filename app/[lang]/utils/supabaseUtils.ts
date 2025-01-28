@@ -1,5 +1,6 @@
 import supabase from './supabase';
 import { Database } from './database.types';
+import { Locale } from '../../../get-dictionaries';
 
 // Generic type for table names
 type TableName = keyof Database['public']['Tables'];
@@ -53,4 +54,23 @@ export async function getItemIds<T extends TableName>(
   }
 
   return data.map((item) => item.id);
+}
+// Add this function to your supabaseUtils.ts
+export async function getCategoryIdByName(
+  categoryName: string,
+  lang: Locale
+): Promise<number> {
+  const { data, error } = await supabase
+    .from('categories')
+    .select('id')
+    .eq(`category_${lang}`, categoryName)
+    .single();
+
+  if (error) {
+    throw new Error(
+      `System error: Could not fetch category ID for ${categoryName}`
+    );
+  }
+
+  return data.id;
 }

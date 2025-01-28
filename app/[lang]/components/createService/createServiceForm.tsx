@@ -2,6 +2,7 @@ import { Locale, getDictionary } from '../../../../get-dictionaries';
 import { CategorySelector } from './categorySelector';
 import ImageUploader from './imgUploader';
 import { getAllItems } from '../../utils/supabaseUtils';
+import createService from './createServiceAction';
 
 export async function CreateServiceForm({ lang }: { lang: Locale }) {
   const dictionary = (await getDictionary(lang))['addService'];
@@ -13,7 +14,7 @@ export async function CreateServiceForm({ lang }: { lang: Locale }) {
   return (
     <>
       <h1>{dictionary.heading}</h1>
-      <form action="">
+      <form action={createService} encType="multipart/form-data">
         <input type="hidden" name="lang" defaultValue={lang} />
         <input
           type="text"
@@ -56,14 +57,15 @@ export async function CreateServiceForm({ lang }: { lang: Locale }) {
             id="title_in"
             name="title_in"
             placeholder={dictionary.title_in}
-            pattern="[A-Za-z\s]+"
-            title="English letters only"
+            pattern="[\u10A0-\u10FF\s]+"
+            title="მხოლოდ ქართული ასოები"
           />
+
           <textarea
             id="desc_in"
             name="desc_in"
             placeholder={dictionary.description_in}
-            title="English letters only"
+            title="მხოლოდ ქართული ასოები"
           />
         </div>
         <button className="submitBtn" type="submit">
