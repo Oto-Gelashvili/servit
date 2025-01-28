@@ -4,38 +4,38 @@ import Image from 'next/image';
 
 interface ServiceItemProps {
   lang: string;
-  id: number | string;
+  id: number;
   img: string;
-  category: string;
-  subCategory: string;
-  hyperlink: string;
+  categoryId: number;
+  // hyperlink: string;
   title: string;
   desc: string;
   avatar: string;
   name: string;
   tier: string;
-  price: string;
+  price: number;
+  user_id: number;
 }
 
 export default function ServiceItem({
   lang,
   id,
   img,
-  category,
-  subCategory,
+  categoryId,
   title,
   desc,
   avatar,
   name,
   tier,
   price,
+  // user_id,
 }: ServiceItemProps) {
   return (
     <div className="service-item">
       <Link href={`/${lang}/services/${id}`}>
         <div className="img-container">
           <Image
-            src={img}
+            src={img.includes('undefined') ? '/images/noImage.png' : img}
             alt={title}
             fill
             priority
@@ -45,9 +45,7 @@ export default function ServiceItem({
         </div>
         <div className="text-container">
           <h6>
-            <p>{category}</p>
-            <p>/</p>
-            <p>{subCategory}</p>
+            <p>{categoryId}</p>
           </h6>
           <h2>
             <div>{title}</div>
@@ -57,7 +55,11 @@ export default function ServiceItem({
             <div className="profile-info">
               <div>
                 <Image
-                  src={avatar}
+                  src={
+                    avatar.includes('undefined')
+                      ? '/images/anonProfile.jpg'
+                      : img
+                  }
                   alt={`${name}'s avatar`}
                   width={40}
                   height={40}

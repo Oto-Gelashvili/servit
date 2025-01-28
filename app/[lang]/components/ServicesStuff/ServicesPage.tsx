@@ -1,26 +1,6 @@
 import ServiceItem from './ServiceItem/ServiceItem';
 import { getAllItems } from '../../utils/supabaseUtils';
-import { Locale } from '../../../../get-dictionaries';
-
-type Service = {
-  id: number;
-  img: string;
-  avatar: string;
-  category: string;
-  subCategory: string;
-  hyperlink: string;
-  title: string;
-  desc: string;
-  tier: string;
-  price: string;
-  name: string;
-};
-
-type Dictionary = {
-  servicesPage: {
-    notFound: string;
-  };
-};
+import { Dictionary, Locale } from '../../../../get-dictionaries';
 
 type ServicesPageProps = {
   searchParams?: {
@@ -31,96 +11,114 @@ type ServicesPageProps = {
       | 'tier-low-to-high';
     search?: string;
   };
-  dictionary: Dictionary;
+  dictionary: Dictionary['services'];
   lang: Locale;
 };
 
-const convertTierToNumber = (tier: string): number => {
-  const match = tier.match(/\d+/);
-  return match ? parseInt(match[0], 10) : 0;
-};
+// const convertTierToNumber = (tier: string): number => {
+//   const match = tier.match(/\d+/);
+//   return match ? parseInt(match[0], 10) : 0;
+// };
 
-const convertPriceToNumber = (price: string): number => {
-  if (price === 'TBD') return 0;
-  const match = price.match(/\d+/);
-  return match ? parseInt(match[0], 10) : 0;
-};
+// const convertPriceToNumber = (price: string): number => {
+//   if (price === 'TBD') return 0;
+//   const match = price.match(/\d+/);
+//   return match ? parseInt(match[0], 10) : 0;
+// };
 
 export default async function ServicesPage({
-  searchParams = {},
+  // searchParams = {},
   dictionary,
   lang,
 }: ServicesPageProps) {
-  // Ensure the return type is of type `Service[]`
-  console.log(`Services_${lang}`);
-  const services: Service[] = (await getAllItems(
-    `Services_${lang}`
-  )) as Service[];
+  const services = await getAllItems(`services`);
 
-  const sortType = searchParams?.sort || '';
-  const searchTerm = searchParams?.search || '';
+  // const sortType = searchParams?.sort || '';
+  // const searchTerm = searchParams?.search || '';
 
   // Filtering by title and description
-  let filteredServices: Service[] = searchTerm
-    ? services.filter((service) => {
-        const searchWords = searchTerm.toLowerCase().split(' ');
-        const titleLower = service.title.toLowerCase();
-        const descLower = service.desc.toLowerCase();
-
-        return searchWords.every(
-          (word) => titleLower.includes(word) || descLower.includes(word)
-        );
-      })
-    : [...services];
+  // let filteredServices = searchTerm
+  //   ? services.filter((service) => {
+  //       const searchWords = searchTerm.toLowerCase().split(' ');
+  //       if (lang === 'en') {
+  //         const titleLower = service.title_en.toLowerCase();
+  //         const descLower = service.description_en.toLowerCase();
+  //         return searchWords.every(
+  //           (word) => titleLower.includes(word) || descLower.includes(word)
+  //         );
+  //       } else {
+  //         const titleLower = service.title_ka.toLowerCase();
+  //         const descLower = service.description_ka.toLowerCase();
+  //         return searchWords.every(
+  //           (word) => titleLower.includes(word) || descLower.includes(word)
+  //         );
+  //       }
+  //     })
+  //   : [...services];
 
   // Sorting logic
-  switch (sortType) {
-    case 'price-high-to-low':
-      filteredServices.sort(
-        (a, b) => convertPriceToNumber(b.price) - convertPriceToNumber(a.price)
-      );
-      break;
-    case 'price-low-to-high':
-      filteredServices.sort(
-        (a, b) => convertPriceToNumber(a.price) - convertPriceToNumber(b.price)
-      );
-      break;
-    case 'tier-high-to-low':
-      filteredServices.sort(
-        (a, b) => convertTierToNumber(b.tier) - convertTierToNumber(a.tier)
-      );
-      break;
-    case 'tier-low-to-high':
-      filteredServices.sort(
-        (a, b) => convertTierToNumber(a.tier) - convertTierToNumber(b.tier)
-      );
-      break;
-    default:
-      break;
-  }
-  console.log(filteredServices);
+  // switch (sortType) {
+  //   case 'price-high-to-low':
+  //     filteredServices.sort(
+  //       (a, b) =>
+  //         convertPriceToNumber(b.price.toString()) -
+  //         convertPriceToNumber(a.price.toString())
+  //     );
+  //     break;
+  //   case 'price-low-to-high':
+  //     filteredServices.sort(
+  //       (a, b) =>
+  //         convertPriceToNumber(a.price.toString()) -
+  //         convertPriceToNumber(b.price.toString())
+  //     );
+  //     break;
+  //   case 'tier-high-to-low':
+  //     filteredServices.sort(
+  //       (a, b) =>
+  //         convertTierToNumber(b.tier.toString()) -
+  //         convertTierToNumber(a.tier.toString())
+  //     );
+  //     break;
+  //   case 'tier-low-to-high':
+  //     filteredServices.sort(
+  //       (a, b) =>
+  //         convertTierToNumber(a.tier.toString()) -
+  //         convertTierToNumber(b.tier.toString())
+  //     );
+  //     break;
+  //   default:
+  //     break;
+  // }
+  // Filter services based on the language
+  const filteredServices = services.filter((service) => {
+    if (lang === 'en') {
+      return service.title_en && service.description_en;
+    } else if (lang === 'ka') {
+      return service.title_ka && service.description_ka;
+    }
+    return false;
+  });
   return (
     <div className="services-list">
       {filteredServices.length === 0 ? (
-        <div className="no-results">{dictionary.servicesPage.notFound}</div>
+        <div className="no-results">{dictionary.notFound}</div>
       ) : (
         filteredServices.map((service) => (
           <ServiceItem
             key={service.id}
             lang={lang}
-            img={service.img}
-            avatar={service.avatar}
-            category={service.category}
-            subCategory={service.subCategory}
-            hyperlink={service.hyperlink}
-            title={service.title}
-            desc={service.desc}
-            tier={service.tier}
+            img={service.image_urls[0]}
+            categoryId={service.categoryId}
+            desc={
+              lang === 'en' ? service.description_en : service.description_ka
+            }
             price={service.price}
-            name={service.name}
-            id={`${service.hyperlink
-              .replace(/[^a-zA-Z0-9]+/g, '-')
-              .toLowerCase()}-${service.id}`}
+            title={lang === 'en' ? service.title_en : service.title_ka}
+            id={service.id}
+            avatar={service.image_urls[0]}
+            name={'test'}
+            tier={'5'}
+            user_id={service.user_id}
           />
         ))
       )}

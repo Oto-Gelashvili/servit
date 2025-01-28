@@ -1,17 +1,10 @@
 'use client';
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Dictionary } from '../../../../get-dictionaries';
 
 interface SorterProps {
-  dictionary: {
-    sorter: {
-      prhigh: string;
-      prlow: string;
-      trhigh: string;
-      trlow: string;
-      options: string;
-    };
-  };
+  dictionary: Dictionary['sorter'];
 }
 
 const Sorter = ({ dictionary }: SorterProps) => {
@@ -24,10 +17,10 @@ const Sorter = ({ dictionary }: SorterProps) => {
   const currentSortOption = currentSort || 'Sort Options';
 
   const sortOptions: { [key: string]: string } = {
-    'price-high-to-low': dictionary.sorter.prhigh,
-    'price-low-to-high': dictionary.sorter.prlow,
-    'tier-high-to-low': dictionary.sorter.trhigh,
-    'tier-low-to-high': dictionary.sorter.trlow,
+    'price-high-to-low': dictionary.prhigh,
+    'price-low-to-high': dictionary.prlow,
+    'tier-high-to-low': dictionary.trhigh,
+    'tier-low-to-high': dictionary.trlow,
   };
 
   const handleSortChange = (option: string) => {
@@ -44,7 +37,7 @@ const Sorter = ({ dictionary }: SorterProps) => {
   return (
     <div className="sorter">
       <button onClick={() => setIsOpen(!isOpen)} className="SortButton">
-        {sortOptions[currentSortOption] || dictionary.sorter.options}
+        {sortOptions[currentSortOption] || dictionary.options}
         {isOpen && (
           <div className="sortMenu">
             {Object.keys(sortOptions).map((option) => (

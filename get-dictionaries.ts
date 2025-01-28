@@ -57,16 +57,13 @@ export interface Dictionary {
     trhigh: string;
     trlow: string;
   };
-  servicesPage: {
-    notFound: string;
-  };
-  serviceID: {
-    contacts: string;
-    msg: string;
-  };
+
   services: {
     span: string;
     nospan: string;
+    contacts: string;
+    msg: string;
+    notFound: string;
   };
   products: {
     products: string;

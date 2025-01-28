@@ -54,16 +54,13 @@
     "trhigh": "Tier High to Low",
     "trlow": "Tier Low to High"
   },
-  "servicesPage": {
-    "notFound": "No services found matching your search."
-  },
-  "serviceID": {
-    "contacts": "Contacts:",
-    "msg": "Send a Message"
-  },
+
   "services": {
     "span": "ServIt Up:",
-    "nospan": "Let Skills Meet Opportunities!"
+    "nospan": "Let Skills Meet Opportunities!",
+    "contacts": "Contacts:",
+    "msg": "Send a Message",
+    "notFound": "No services found matching your search."
   },
   "products": {
     "products": "Products",

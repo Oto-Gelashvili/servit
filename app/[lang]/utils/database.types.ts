@@ -9,112 +9,54 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      Services_en: {
+      services: {
         Row: {
           id: number;
-          img: string | null;
-          avatar: string | null;
-          category: string | null;
-          subCategory: string | null;
+          image_urls: string[];
+          title_en: string;
+          categoryId: number;
           hyperlink: string;
-          title: string | null;
-          desc: string | null;
-          tier: string | null;
-          price: string | null;
-          name: string | null;
-          number: string | null;
+          title_ka: string;
+          description_en: string;
+          description_ka: string;
+          price: number;
+          user_id: number;
+          stripe_product_id: string;
+          stripe_pride_id: string;
+          createdat: string;
+          updatedat: string;
         };
         Insert: {
-          id?: number;
-          img?: string | null;
-          avatar?: string | null;
-          category?: string | null;
-          subCategory?: string | null;
-          hyperlink: string;
-          title?: string | null;
-          desc?: string | null;
-          tier?: string | null;
-          price?: string | null;
-          name?: string | null;
-          number?: string | null;
-        };
-        Update: {
-          id?: number;
-          img?: string | null;
-          avatar?: string | null;
-          category?: string | null;
-          subCategory?: string | null;
-          hyperlink: string;
-          title?: string | null;
-          desc?: string | null;
-          tier?: string | null;
-          price?: string | null;
-          name?: string | null;
-          number?: string | null;
-        };
-      };
-      Services_ka: {
-        Row: {
           id: number;
-          img: string | null;
-          avatar: string | null;
-          category: string | null;
-          subCategory: string | null;
+          image_urls: string[];
+          title_en: string;
+          categoryId: number;
           hyperlink: string;
-          title: string | null;
-          desc: string | null;
-          tier: string | null;
-          price: string | null;
-          name: string | null;
-          number: string | null;
-        };
-        Insert: {
-          id?: number;
-          img?: string | null;
-          avatar?: string | null;
-          category?: string | null;
-          subCategory?: string | null;
-          hyperlink: string;
-          title?: string | null;
-          desc?: string | null;
-          tier?: string | null;
-          price?: string | null;
-          name?: string | null;
-          number?: string | null;
+          title_ka: string;
+          description_en: string;
+          description_ka: string;
+          price: number;
+          user_id: number;
+          stripe_product_id: string;
+          stripe_pride_id: string;
+          createdat: string;
+          updatedat: string;
         };
         Update: {
-          id?: number;
-          img?: string | null;
-          avatar?: string | null;
-          category?: string | null;
-          subCategory?: string | null;
+          id: number;
+          image_urls: string[];
+          title_en: string;
+          categoryId: number;
           hyperlink: string;
-          title?: string | null;
-          desc?: string | null;
-          tier?: string | null;
-          price?: string | null;
-          name?: string | null;
-          number?: string | null;
-        };
-      };
-      posts: {
-        Row: {
-          id: string;
-          created_at: string;
-          title: string | null;
-          content: string | null;
-        };
-        Insert: {
-          id?: string;
-          created_at?: string;
-          title?: string | null;
-          content?: string | null;
-        };
-        Update: {
-          id?: string;
-          created_at?: string;
-          title?: string | null;
-          content?: string | null;
+          title_ka: string;
+          description_en: string;
+          description_ka: string;
+          price: number;
+          user_id: number;
+          stripe_product_id: string;
+          stripe_pride_id: string;
+          createdat: string;
+          updatedat: string;
         };
       };
       products_en: {

@@ -24,17 +24,18 @@ export default async function Services({
   searchParams,
   params,
 }: ServicesProps) {
-  const dictionary = await getDictionary(params.lang as Locale);
+  const dictionary = (await getDictionary(params.lang as Locale)).services;
+  const sorterDictionary = (await getDictionary(params.lang as Locale)).sorter;
 
   return (
     <main className="services-main">
       <h1 className="service-title">
-        <span>{dictionary.services.span}</span> <br />
-        {dictionary.services.nospan}
+        <span>{dictionary.span}</span> <br />
+        {dictionary.nospan}
       </h1>
       <section id="filtering">
         <SearchBar />
-        <Sorter dictionary={dictionary} />
+        <Sorter dictionary={sorterDictionary} />
       </section>
       <ServicesPage
         dictionary={dictionary}

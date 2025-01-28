@@ -5,6 +5,7 @@ const nextConfig = {
       'cdn.dummyjson.com',
       'lh3.googleusercontent.com',
       'xokcbkhdwtmekcclfkwl.supabase.co',
+      'rkztyyanbfhhmqicfozg.supabase.co',
     ],
   },
 };

@@ -42,6 +42,9 @@
 
   height: 100%;
 }
+.createService #title_in {
+  height: unset;
+}
 .createService textarea {
   height: 100px;
   grid-area: span 1 / span 3;
