@@ -4,10 +4,11 @@ import Sorter from '../../components/ServicesStuff/sorter';
 import SearchBar from '../../components/ServicesStuff/searchBar';
 import { getDictionary, Locale } from '../../../../get-dictionaries';
 import Logo from '../../utils/logo';
+import { Metadata } from 'next';
 
 interface ServicesProps {
   params: {
-    lang: Locale; // The language parameter passed to the component
+    lang: Locale;
   };
   searchParams: {
     sort?:
@@ -15,12 +16,33 @@ interface ServicesProps {
       | 'price-low-to-high'
       | 'tier-high-to-low'
       | 'tier-low-to-high'
-      | undefined; // Optional sort parameter
-    search?: string; // Optional search parameter
+      | undefined;
+    search?: string;
   };
 }
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: Locale };
+}): Promise<Metadata> {
+  const dictionary = await getDictionary(params.lang);
 
-// The main Services component
+  return {
+    title: dictionary.services.metaTitle,
+    description: dictionary.services.metaDescription,
+    alternates: {
+      canonical: `https://servit.vercel.app/${params.lang}/services`,
+      languages: {
+        en: 'https://servit.vercel.app/en/services',
+        ka: 'https://servit.vercel.app/ka/services',
+      },
+    },
+  };
+}
+export async function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'ka' }];
+}
+
 export default async function Services({
   searchParams,
   params,

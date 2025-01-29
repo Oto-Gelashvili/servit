@@ -1,56 +1,36 @@
 import './ServiceItem.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import { createClient } from '../../../../../utils/supabase/server';
-import { Database } from '../../../utils/database.types';
 import { Star } from 'lucide-react';
+import { Database } from '../../../utils/database.types';
 
 interface ServiceItemProps {
   lang: string;
   id: number;
   img: string;
-  categoryId: number;
   title: string;
   desc: string;
   // avatar: string;
   // name: string;
   // tier: string;
   price: number;
-  user_id: number;
+  profileData: Database['public']['Tables']['profiles']['Row'];
+  categoryData: Database['public']['Tables']['categories']['Row'];
 }
 
 export default async function ServiceItem({
   lang,
   id,
   img,
-  categoryId,
   title,
   desc,
   // avatar,
   // name,
   // tier,
   price,
-  user_id,
+  profileData,
+  categoryData,
 }: ServiceItemProps) {
-  const supabase = await createClient();
-
-  const { data: profileData } = (await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user_id)
-    .single()) as {
-    data: Database['public']['Tables']['profiles']['Row'];
-    error: Error | null;
-  };
-  const { data: categoryData } = (await supabase
-    .from('categories')
-    .select('*')
-    .eq('id', categoryId)
-    .single()) as {
-    data: Database['public']['Tables']['categories']['Row'];
-    error: Error | null;
-  };
-
   return (
     <div className="service-item">
       <Link href={`/${lang}/services/${id}`}>

@@ -61,7 +61,9 @@
     "msg": "Send a Message",
     "notFound": "No services found matching your search.",
     "next": "Next",
-    "prev": "Previous"
+    "prev": "Previous",
+    "metaTitle": "Services",
+    "metaDescription": "Services List, browse services that sers have to offer"
   },
   "products": {
     "products": "Products",

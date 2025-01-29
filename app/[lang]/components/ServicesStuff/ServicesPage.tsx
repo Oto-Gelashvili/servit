@@ -33,7 +33,7 @@ export default async function ServicesPage({
   dictionary,
   lang,
 }: ServicesPageProps) {
-  const pageSize = 2;
+  const pageSize = 24;
   const currentPage = searchParams.page ? Number(searchParams.page) : 1;
   const { data: services, count } = await getLocalizedServices(
     lang,
@@ -118,14 +118,14 @@ export default async function ServicesPage({
               key={service.id}
               lang={lang}
               img={service.image_urls[0]}
-              categoryId={service.categoryId}
               desc={
                 lang === 'en' ? service.description_en : service.description_ka
               }
               price={service.price}
               title={lang === 'en' ? service.title_en : service.title_ka}
               id={service.id}
-              user_id={service.user_id}
+              profileData={service.profiles}
+              categoryData={service.categories}
             />
           ))
         )}

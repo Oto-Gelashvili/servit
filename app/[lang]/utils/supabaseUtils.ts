@@ -23,14 +23,21 @@ export async function getAllItems<T extends TableName>(
 export async function getLocalizedServices(
   lang: Locale,
   page: number = 1,
-  pageSize: number = 10
+  pageSize: number = 24
 ) {
   const from = (page - 1) * pageSize;
   const to = page * pageSize - 1;
 
   const { data, error, count } = await supabase
     .from('services')
-    .select('*', { count: 'exact' })
+    .select(
+      `
+      *,
+      categories!categoryId (category_en, category_ka),
+      profiles!user_id (username, avatar_url, rating)
+    `,
+      { count: 'exact' }
+    )
     .not(`title_${lang}`, 'is', null)
     .not(`title_${lang}`, 'eq', '')
     .not(`description_${lang}`, 'is', null)
@@ -42,7 +49,15 @@ export async function getLocalizedServices(
     return { data: [], count: 0 };
   }
 
-  return { data, count: count || 0 };
+  return {
+    data: data as Array<
+      Database['public']['Tables']['services']['Row'] & {
+        categories: Database['public']['Tables']['categories']['Row'];
+        profiles: Database['public']['Tables']['profiles']['Row'];
+      }
+    >,
+    count: count || 0,
+  };
 }
 // Generic function to fetch an item by ID
 export async function getItemById<T extends TableName>(

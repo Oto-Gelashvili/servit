@@ -65,6 +65,8 @@ export interface Dictionary {
     notFound: string;
     next: string;
     prev: string;
+    metaTitle: string;
+    metaDescription: string;
   };
   products: {
     products: string;

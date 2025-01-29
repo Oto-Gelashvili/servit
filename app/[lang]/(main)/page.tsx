@@ -2,6 +2,10 @@ import { getDictionary } from '../../../get-dictionaries';
 import { Locale } from '../../../get-dictionaries';
 import Link from 'next/link';
 
+export async function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'ka' }];
+}
+
 export default async function Home({ params }: { params: { lang: Locale } }) {
   const dictionary = await getDictionary(params.lang);
 
