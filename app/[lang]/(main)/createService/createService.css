@@ -2,7 +2,11 @@
   color: var(--text-color);
   font-size: 1.6rem;
   max-width: 700px;
+  width: 100%;
+  height: 100%;
   padding-top: 10rem;
+  padding-inline: 2.4rem;
+  margin-inline: auto;
 }
 
 .dark .createService form {
@@ -32,16 +36,15 @@
 .createService input,
 .createService select,
 .createService textarea,
-.createService label,
-.createService {
+.createService label {
   width: 100%;
   padding: 0.8rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background-color: var(--accent-color);
-
   height: 100%;
 }
+
 .createService #title_in {
   height: unset;
 }
@@ -207,7 +210,6 @@
   .createService input,
   .createService select,
   .createService textarea,
-  .createService label,
   .createService {
     height: unset;
   }

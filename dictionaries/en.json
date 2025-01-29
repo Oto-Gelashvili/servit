@@ -56,8 +56,7 @@
   },
 
   "services": {
-    "span": "ServIt Up:",
-    "nospan": "Let Skills Meet Opportunities!",
+    "heading2": "Let Skills Meet Opportunities!",
     "contacts": "Contacts:",
     "msg": "Send a Message",
     "notFound": "No services found matching your search."

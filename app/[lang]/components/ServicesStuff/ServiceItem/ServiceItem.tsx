@@ -10,7 +10,6 @@ interface ServiceItemProps {
   id: number;
   img: string;
   categoryId: number;
-  // hyperlink: string;
   title: string;
   desc: string;
   // avatar: string;
@@ -43,6 +42,14 @@ export default async function ServiceItem({
     data: Database['public']['Tables']['profiles']['Row'];
     error: Error | null;
   };
+  const { data: categoryData } = (await supabase
+    .from('categories')
+    .select('*')
+    .eq('id', categoryId)
+    .single()) as {
+    data: Database['public']['Tables']['categories']['Row'];
+    error: Error | null;
+  };
 
   return (
     <div className="service-item">
@@ -59,41 +66,42 @@ export default async function ServiceItem({
         </div>
         <div className="text-container">
           <h6>
-            <p>{categoryId}</p>
+            {lang === 'en' ? (
+              <p>{categoryData.category_en}</p>
+            ) : (
+              <p>{categoryData.category_ka}</p>
+            )}
           </h6>
           <h2>
             <div>{title}</div>
           </h2>
           <p className="desc">{desc}</p>
-          <div className="info">
-            <div className="profile-info">
-              <div>
-                <Image
-                  src={
-                    profileData.avatar_url
-                      ? profileData.avatar_url
-                      : '/images/anonProfile.jpg'
-                    // avatar.includes('undefined')
-                    //   ? '/images/anonProfile.jpg'
-                    //   : img
-                  }
-                  alt={`${profileData.username}'s avatar`}
-                  width={40}
-                  height={40}
-                  className="avatar-image"
-                />
-              </div>
-              <div className="tier-container">
-                <p className="name">{profileData.username}</p>
-                <div className="ratingCont">
-                  <p>{Number(profileData.rating).toFixed(2)}</p>
-                  <Star />
-                </div>
-              </div>
+        </div>
+      </Link>
+      <Link href={'/'} className="info">
+        <div className="profile-info">
+          <div className="w-[32px]">
+            <Image
+              src={
+                profileData.avatar_url
+                  ? profileData.avatar_url
+                  : '/images/anonProfile.jpg'
+              }
+              alt={`${profileData.username}'s avatar`}
+              width={40}
+              height={40}
+              className="avatar-image"
+            />
+          </div>
+          <div className="tier-container">
+            <p className="name">{profileData.username}</p>
+            <div className="ratingCont">
+              <p>{Number(profileData.rating).toFixed(2)}</p>
+              <Star />
             </div>
-            <h4 className="pricing">{price}</h4>
           </div>
         </div>
+        <h4 className="pricing">{price.toFixed(2)}₾</h4>
       </Link>
     </div>
   );

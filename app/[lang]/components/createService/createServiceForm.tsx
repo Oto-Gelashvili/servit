@@ -56,7 +56,7 @@ export async function CreateServiceForm({
             name="price"
             placeholder={dictionary.price}
             min="0"
-            step="1.0"
+            step="0.01"
           />
           {searchParams?.error &&
             searchParams.error === dictionary.priceReq && (

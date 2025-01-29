@@ -59,8 +59,7 @@ export interface Dictionary {
   };
 
   services: {
-    span: string;
-    nospan: string;
+    heading2: string;
     contacts: string;
     msg: string;
     notFound: string;

@@ -3,6 +3,7 @@ import ServicesPage from '../../components/ServicesStuff/ServicesPage';
 import Sorter from '../../components/ServicesStuff/sorter';
 import SearchBar from '../../components/ServicesStuff/searchBar';
 import { getDictionary, Locale } from '../../../../get-dictionaries';
+import Logo from '../../utils/logo';
 
 interface ServicesProps {
   params: {
@@ -29,10 +30,10 @@ export default async function Services({
 
   return (
     <main className="services-main">
-      <h1 className="service-title">
-        <span>{dictionary.span}</span> <br />
-        {dictionary.nospan}
-      </h1>
+      <div className="heading">
+        <Logo />
+        <h2>{dictionary.heading2}</h2>
+      </div>
       <section id="filtering">
         <SearchBar />
         <Sorter dictionary={sorterDictionary} />
