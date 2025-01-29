@@ -1,6 +1,9 @@
 import './ServiceItem.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import { createClient } from '../../../../../utils/supabase/server';
+import { Database } from '../../../utils/database.types';
+import { Star } from 'lucide-react';
 
 interface ServiceItemProps {
   lang: string;
@@ -10,26 +13,37 @@ interface ServiceItemProps {
   // hyperlink: string;
   title: string;
   desc: string;
-  avatar: string;
-  name: string;
-  tier: string;
+  // avatar: string;
+  // name: string;
+  // tier: string;
   price: number;
   user_id: number;
 }
 
-export default function ServiceItem({
+export default async function ServiceItem({
   lang,
   id,
   img,
   categoryId,
   title,
   desc,
-  avatar,
-  name,
-  tier,
+  // avatar,
+  // name,
+  // tier,
   price,
-  // user_id,
+  user_id,
 }: ServiceItemProps) {
+  const supabase = await createClient();
+
+  const { data: profileData } = (await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', user_id)
+    .single()) as {
+    data: Database['public']['Tables']['profiles']['Row'];
+    error: Error | null;
+  };
+
   return (
     <div className="service-item">
       <Link href={`/${lang}/services/${id}`}>
@@ -56,19 +70,25 @@ export default function ServiceItem({
               <div>
                 <Image
                   src={
-                    avatar.includes('undefined')
-                      ? '/images/anonProfile.jpg'
-                      : img
+                    profileData.avatar_url
+                      ? profileData.avatar_url
+                      : '/images/anonProfile.jpg'
+                    // avatar.includes('undefined')
+                    //   ? '/images/anonProfile.jpg'
+                    //   : img
                   }
-                  alt={`${name}'s avatar`}
+                  alt={`${profileData.username}'s avatar`}
                   width={40}
                   height={40}
                   className="avatar-image"
                 />
               </div>
               <div className="tier-container">
-                <p className="name">{name}</p>
-                <p>{tier}</p>
+                <p className="name">{profileData.username}</p>
+                <div className="ratingCont">
+                  <p>{Number(profileData.rating).toFixed(2)}</p>
+                  <Star />
+                </div>
               </div>
             </div>
             <h4 className="pricing">{price}</h4>

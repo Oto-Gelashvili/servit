@@ -177,18 +177,21 @@ export interface Database {
           username: string;
           email: string;
           avatar_url: string;
+          rating: number;
         };
         Insert: {
           id: number;
           username: string;
           email: string;
           avatar_url: string;
+          rating: number;
         };
         Update: {
           id: number;
           username: string;
           email: string;
           avatar_url: string;
+          rating: number;
         };
       };
       products_ka: {

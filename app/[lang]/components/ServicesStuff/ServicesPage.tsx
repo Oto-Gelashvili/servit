@@ -115,9 +115,9 @@ export default async function ServicesPage({
             price={service.price}
             title={lang === 'en' ? service.title_en : service.title_ka}
             id={service.id}
-            avatar={service.image_urls[0]}
-            name={'test'}
-            tier={'5'}
+            // avatar={service.image_urls[0]}
+            // name={'test'}
+            // tier={'5'}
             user_id={service.user_id}
           />
         ))

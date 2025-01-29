@@ -116,3 +116,13 @@
 .service-item .text-container .profile-info .tier-container .name:hover {
   color: var(--primary-color);
 }
+.service-item .ratingCont {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  color: var(--primary-color);
+}
+.service-item .ratingCont svg {
+  width: 1.2rem;
+  fill: var(--primary-color);
+}

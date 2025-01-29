@@ -5,13 +5,7 @@ import Footer from '../components/Footer/Footer';
 import { getDictionary, Locale } from '../../../get-dictionaries';
 import { createClient } from '../../../utils/supabase/server';
 import { HamburgerDropdown, HamburgerProvider } from '../utils/hamburger';
-
-interface Profile {
-  id: number;
-  username: string;
-  email: string;
-  avatar_url: string;
-}
+import { Database } from '../utils/database.types';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -38,7 +32,10 @@ export default async function MainLayout({
     .from('profiles')
     .select('*')
     .eq('id', userId)
-    .single()) as { data: Profile; error: Error | null };
+    .single()) as {
+    data: Database['public']['Tables']['profiles']['Row'];
+    error: Error | null;
+  };
 
   return (
     <div className="main-layout main flex-col flex-1 flex">
