@@ -5,10 +5,11 @@ import { signOutAction } from '../../actions/authActions';
 import ThemeToggle from './themeToggle';
 import { CircleUser } from 'lucide-react';
 import { HeaderProps } from './Header';
+import Image from 'next/image';
 
 export default function ProfileDropdown({
   avatar,
-  mail,
+  username,
   dictionary,
   lang,
 }: HeaderProps) {
@@ -56,7 +57,7 @@ export default function ProfileDropdown({
         className="profile-icon cursor-pointer rounded-full"
       >
         {avatar ? (
-          <img
+          <Image
             src={avatar}
             alt="User profile"
             width={36}
@@ -73,7 +74,7 @@ export default function ProfileDropdown({
         ref={dropdownRef}
         className={`profile-dropdown ${isDropdownOpen ? 'flex' : 'hidden'}`}
       >
-        <p className="mail">{mail}</p>
+        <p className="mail">{username}</p>
         <Link href={`/${lang}/profile`}>{dictionary.profile}</Link>
         <Link href={`/${lang}/bookmarks`}>{dictionary.bookmarks}</Link>
         <div className="themeCont flex justify-between items-center">

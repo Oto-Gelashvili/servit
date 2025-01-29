@@ -17,11 +17,11 @@ export interface HeaderLangProps {
 }
 export interface avatarProps {
   avatar: string;
-  mail: string;
+  username: string;
 }
 
 export interface HeaderProps extends HeaderLangProps, avatarProps {}
-const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, mail }) => {
+const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, username }) => {
   return (
     <header>
       <div className="navCont">
@@ -38,7 +38,7 @@ const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, mail }) => {
         <LocaleSwitcher lang={lang} />
         <Avatar
           avatar={avatar}
-          mail={mail}
+          username={username}
           dictionary={dictionary}
           lang={lang}
         />
@@ -47,7 +47,7 @@ const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, mail }) => {
         lang={lang}
         dictionary={dictionary}
         avatar={avatar}
-        mail={mail}
+        username={username}
       />
     </header>
   );

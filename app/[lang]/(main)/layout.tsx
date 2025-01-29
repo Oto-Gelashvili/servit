@@ -6,6 +6,13 @@ import { getDictionary, Locale } from '../../../get-dictionaries';
 import { createClient } from '../../../utils/supabase/server';
 import { HamburgerDropdown, HamburgerProvider } from '../utils/hamburger';
 
+interface Profile {
+  id: number;
+  username: string;
+  email: string;
+  avatar_url: string;
+}
+
 interface MainLayoutProps {
   children: React.ReactNode;
   params: {
@@ -18,34 +25,43 @@ export default async function MainLayout({
   params,
 }: MainLayoutProps) {
   const supabase = await createClient();
+  const dictionary = await getDictionary(params.lang);
 
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  let metadata = user?.user_metadata;
-  const dictionary = await getDictionary(params.lang);
+
+  const userId = user?.id;
+
+  // Fetch the profile data
+  const { data: profileData } = (await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', userId)
+    .single()) as { data: Profile; error: Error | null };
 
   return (
-    <div className="main-layout main flex-col  flex-1 flex">
+    <div className="main-layout main flex-col flex-1 flex">
       <HamburgerProvider>
         <Header
           lang={params.lang}
           dictionary={dictionary['header']}
-          avatar={metadata?.avatar_url}
-          mail={metadata?.email}
+          avatar={profileData?.avatar_url}
+          username={profileData?.username}
         />
         <HamburgerDropdown
           lang={params.lang}
           dictionary={dictionary['header']}
-          avatar={metadata?.avatar_url}
-          mail={metadata?.email}
+          avatar={profileData?.avatar_url}
+          username={profileData?.username}
         />
         {children}
       </HamburgerProvider>
       <Footer
         lang={params.lang}
         dictionary={dictionary['footer']}
-        mail={metadata?.email}
+        mail={profileData?.email}
+        username={profileData?.username}
       />
     </div>
   );

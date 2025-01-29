@@ -7,10 +7,16 @@ import Link from 'next/link';
 interface FooterProps {
   lang: Locale;
   dictionary: Dictionary['footer'];
+  username: string;
   mail: string;
 }
 
-export default function Footer({ lang, dictionary, mail }: FooterProps) {
+export default function Footer({
+  lang,
+  dictionary,
+  username,
+  mail,
+}: FooterProps) {
   return (
     <footer>
       <div className="footer-header">
@@ -66,7 +72,7 @@ export default function Footer({ lang, dictionary, mail }: FooterProps) {
       </div>
       <div className="grid-cont">
         <div className="personal">
-          <p>{mail}</p>
+          <p>{username}</p>
           <Link href={`/${lang}/profile`}>{dictionary.profile}</Link>
           <Link href={`/${lang}/bookmarks`}>{dictionary.bookmarks}</Link>
         </div>

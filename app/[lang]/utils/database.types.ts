@@ -171,6 +171,26 @@ export interface Database {
           category_ka?: string;
         };
       };
+      profiles: {
+        Row: {
+          id: number;
+          username: string;
+          email: string;
+          avatar_url: string;
+        };
+        Insert: {
+          id: number;
+          username: string;
+          email: string;
+          avatar_url: string;
+        };
+        Update: {
+          id: number;
+          username: string;
+          email: string;
+          avatar_url: string;
+        };
+      };
       products_ka: {
         Row: {
           id: number;
