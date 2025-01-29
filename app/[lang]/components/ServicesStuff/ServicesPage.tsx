@@ -1,6 +1,7 @@
 import ServiceItem from './ServiceItem/ServiceItem';
 import { getLocalizedServices } from '../../utils/supabaseUtils';
 import { Dictionary, Locale } from '../../../../get-dictionaries';
+import Pagination from './Pagination';
 
 type ServicesPageProps = {
   searchParams?: {
@@ -10,6 +11,7 @@ type ServicesPageProps = {
       | 'tier-high-to-low'
       | 'tier-low-to-high';
     search?: string;
+    page?: string;
   };
   dictionary: Dictionary['services'];
   lang: Locale;
@@ -27,11 +29,18 @@ type ServicesPageProps = {
 // };
 
 export default async function ServicesPage({
-  // searchParams = {},
+  searchParams = {},
   dictionary,
   lang,
 }: ServicesPageProps) {
-  const services = await getLocalizedServices(lang);
+  const pageSize = 2;
+  const currentPage = searchParams.page ? Number(searchParams.page) : 1;
+  const { data: services, count } = await getLocalizedServices(
+    lang,
+    currentPage,
+    pageSize
+  );
+  const totalPages = Math.ceil((count || 0) / pageSize);
 
   // const sortType = searchParams?.sort || '';
   // const searchTerm = searchParams?.search || '';
@@ -99,28 +108,35 @@ export default async function ServicesPage({
   //   return false;
   // });
   return (
-    <div className="services-list">
-      {services.length === 0 ? (
-        <div className="no-results">{dictionary.notFound}</div>
-      ) : (
-        services.map((service) => (
-          <ServiceItem
-            key={service.id}
-            lang={lang}
-            img={service.image_urls[0]}
-            categoryId={service.categoryId}
-            desc={
-              lang === 'en' ? service.description_en : service.description_ka
-            }
-            price={service.price}
-            title={lang === 'en' ? service.title_en : service.title_ka}
-            id={service.id}
-            // avatar={service.image_urls[0]}
-            // name={'test'}
-            // tier={'5'}
-            user_id={service.user_id}
-          />
-        ))
+    <div>
+      <div className="services-list">
+        {services.length === 0 ? (
+          <div className="no-results">{dictionary.notFound}</div>
+        ) : (
+          services.map((service) => (
+            <ServiceItem
+              key={service.id}
+              lang={lang}
+              img={service.image_urls[0]}
+              categoryId={service.categoryId}
+              desc={
+                lang === 'en' ? service.description_en : service.description_ka
+              }
+              price={service.price}
+              title={lang === 'en' ? service.title_en : service.title_ka}
+              id={service.id}
+              user_id={service.user_id}
+            />
+          ))
+        )}
+      </div>
+      {totalPages > 1 && (
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          lang={lang}
+          dictionary={dictionary}
+        />
       )}
     </div>
   );

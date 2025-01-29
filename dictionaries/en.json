@@ -59,7 +59,9 @@
     "heading2": "Let Skills Meet Opportunities!",
     "contacts": "Contacts:",
     "msg": "Send a Message",
-    "notFound": "No services found matching your search."
+    "notFound": "No services found matching your search.",
+    "next": "Next",
+    "prev": "Previous"
   },
   "products": {
     "products": "Products",

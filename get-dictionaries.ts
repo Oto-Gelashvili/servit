@@ -63,6 +63,8 @@ export interface Dictionary {
     contacts: string;
     msg: string;
     notFound: string;
+    next: string;
+    prev: string;
   };
   products: {
     products: string;

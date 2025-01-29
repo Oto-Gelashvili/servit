@@ -20,22 +20,29 @@ export async function getAllItems<T extends TableName>(
   return data as Database['public']['Tables'][T]['Row'][];
 }
 
-export async function getLocalizedServices(lang: Locale) {
-  const { data, error } = await supabase
+export async function getLocalizedServices(
+  lang: Locale,
+  page: number = 1,
+  pageSize: number = 10
+) {
+  const from = (page - 1) * pageSize;
+  const to = page * pageSize - 1;
+
+  const { data, error, count } = await supabase
     .from('services')
-    .select('*')
-    // Check both title and description fields for the selected language
+    .select('*', { count: 'exact' })
     .not(`title_${lang}`, 'is', null)
     .not(`title_${lang}`, 'eq', '')
     .not(`description_${lang}`, 'is', null)
-    .not(`description_${lang}`, 'eq', '');
+    .not(`description_${lang}`, 'eq', '')
+    .range(from, to);
 
   if (error) {
     console.error('Error fetching localized services:', error);
-    return [];
+    return { data: [], count: 0 };
   }
 
-  return data;
+  return { data, count: count || 0 };
 }
 // Generic function to fetch an item by ID
 export async function getItemById<T extends TableName>(

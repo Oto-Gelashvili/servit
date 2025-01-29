@@ -27,7 +27,7 @@
   align-items: center;
   justify-items: center;
   padding-block: 2.4rem;
-  margin-bottom: 4.8rem;
+  margin-bottom: 2.4rem;
   gap: 2.4rem;
   max-width: 1200px;
   margin-inline: auto;
@@ -119,12 +119,45 @@
 .services-main .no-results {
   font-size: 2.4rem;
   color: var(--text-color);
-  grid-column: 1 / -1; /* Start at column 1 and end at the last column */
+  grid-column: 1 / -1;
   grid-row: 1 / -1;
   margin-top: 4.8rem;
   margin-bottom: 4.8rem;
   text-align: center;
 }
+.services-main .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding-block: 2.4rem;
+}
+
+.services-main .pagination-link {
+  padding: 0.6rem 1.2rem;
+  font-size: 1.4rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--accent-color);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.services-main .pagination-link.active {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.services-main .pagination-link.active:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.services-main .pagination-link:hover {
+  background-color: var(--hover-color);
+  border-color: var(--secondary-color);
+}
+
 @media only screen and (max-width: 1260px) {
   .services-list {
     grid-template-columns: repeat(3, 1fr);
