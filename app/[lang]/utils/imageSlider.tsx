@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useState } from 'react';
 import React from 'react';
 
@@ -31,7 +32,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
 
   return (
     <div className="slider">
-      <img src={images[imageIndex]} alt="product image" className="image" />
+      <Image src={images[imageIndex]} alt="product image" className="image" />
       {images.length > 1 && (
         <>
           <button onClick={ShowPrevImg} className="imageSliderBtn left">

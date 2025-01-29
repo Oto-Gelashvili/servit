@@ -6,6 +6,7 @@ const nextConfig = {
       'lh3.googleusercontent.com',
       'xokcbkhdwtmekcclfkwl.supabase.co',
       'rkztyyanbfhhmqicfozg.supabase.co',
+      'avatars.githubusercontent.com',
     ],
   },
 };

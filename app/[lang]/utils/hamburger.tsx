@@ -15,6 +15,7 @@ import {
   House,
   LogOut,
 } from 'lucide-react';
+import Image from 'next/image';
 
 export const HamburgerContext = React.createContext({
   isOpen: false,
@@ -124,7 +125,7 @@ export const HamburgerDropdown: React.FC<HeaderProps> = ({
           className="profile-icon cursor-pointer rounded-full"
         >
           {avatar ? (
-            <img
+            <Image
               src={avatar}
               alt="User profile"
               width={36}
