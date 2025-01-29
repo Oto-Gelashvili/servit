@@ -20,6 +20,23 @@ export async function getAllItems<T extends TableName>(
   return data as Database['public']['Tables'][T]['Row'][];
 }
 
+export async function getLocalizedServices(lang: Locale) {
+  const { data, error } = await supabase
+    .from('services')
+    .select('*')
+    // Check both title and description fields for the selected language
+    .not(`title_${lang}`, 'is', null)
+    .not(`title_${lang}`, 'eq', '')
+    .not(`description_${lang}`, 'is', null)
+    .not(`description_${lang}`, 'eq', '');
+
+  if (error) {
+    console.error('Error fetching localized services:', error);
+    return [];
+  }
+
+  return data;
+}
 // Generic function to fetch an item by ID
 export async function getItemById<T extends TableName>(
   tableName: T,
