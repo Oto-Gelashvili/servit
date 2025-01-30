@@ -49,10 +49,10 @@
   },
   "sorter": {
     "options": "Sort Options",
-    "prhigh": "Price High to Low",
-    "prlow": "Price Low to High",
-    "trhigh": "Tier High to Low",
-    "trlow": "Tier Low to High"
+    "prhigh": "Decreasing Price",
+    "prlow": "Increasing Price",
+    "trhigh": "Decreasing Rating",
+    "trlow": "Increasing Rating"
   },
 
   "services": {

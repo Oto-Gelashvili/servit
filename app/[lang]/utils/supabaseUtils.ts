@@ -20,29 +20,64 @@ export async function getAllItems<T extends TableName>(
   return data as Database['public']['Tables'][T]['Row'][];
 }
 
+// utils/supabaseUtils.ts
 export async function getLocalizedServices(
   lang: Locale,
   page: number = 1,
-  pageSize: number = 24
+  pageSize: number = 24,
+  searchTerm?: string,
+  sortOption?: string
 ) {
   const from = (page - 1) * pageSize;
   const to = page * pageSize - 1;
 
-  const { data, error, count } = await supabase
+  let query = supabase
     .from('services')
     .select(
-      `
-      *,
-      categories!categoryId (category_en, category_ka),
-      profiles!user_id (username, avatar_url, rating)
-    `,
+      `*, 
+       categories!categoryId (category_en, category_ka),
+       profiles!user_id (username, avatar_url, rating)`,
       { count: 'exact' }
     )
     .not(`title_${lang}`, 'is', null)
     .not(`title_${lang}`, 'eq', '')
     .not(`description_${lang}`, 'is', null)
-    .not(`description_${lang}`, 'eq', '')
-    .range(from, to);
+    .not(`description_${lang}`, 'eq', '');
+
+  // Add search filtering
+  if (searchTerm) {
+    const searchWords = searchTerm.toLowerCase().split(' ');
+    const searchFilters = searchWords.map(
+      (word) => `title_${lang}.ilike.%${word}%`
+    );
+    query = query.or(searchFilters.join(','));
+  }
+
+  // Add sorting
+  switch (sortOption) {
+    case 'price-high-to-low':
+      query = query.order('price', { ascending: false, nullsFirst: false });
+      break;
+    case 'price-low-to-high':
+      query = query.order('price', { ascending: true, nullsFirst: false });
+      break;
+    case 'rating-high-to-low':
+      query = query.order('profiles(rating)', {
+        ascending: false,
+        nullsFirst: false,
+      });
+      break;
+    case 'rating-low-to-high':
+      query = query.order('profiles(rating)', {
+        ascending: true,
+        nullsFirst: false,
+      });
+      break;
+    default:
+      query = query.order('updatedat', { ascending: false });
+      break;
+  }
+  const { data, error, count } = await query.range(from, to);
 
   if (error) {
     console.error('Error fetching localized services:', error);
@@ -59,6 +94,7 @@ export async function getLocalizedServices(
     count: count || 0,
   };
 }
+
 // Generic function to fetch an item by ID
 export async function getItemById<T extends TableName>(
   tableName: T,

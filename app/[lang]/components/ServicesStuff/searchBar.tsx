@@ -11,6 +11,8 @@ export default function SearchBar() {
 
   const updateSearchQuery = useDebouncedCallback((typedStuff: string) => {
     const params = new URLSearchParams(searchParams.toString());
+    params.delete('page');
+
     if (typedStuff) {
       params.set('search', typedStuff);
     } else {
@@ -26,6 +28,7 @@ export default function SearchBar() {
       <input
         id="searchBar"
         type="text"
+        name="search"
         placeholder="Search services"
         autoComplete="off"
         defaultValue={searchParams.get('search') || ''}

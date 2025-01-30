@@ -33,80 +33,20 @@ export default async function ServicesPage({
   dictionary,
   lang,
 }: ServicesPageProps) {
-  const pageSize = 24;
+  const pageSize = 2;
   const currentPage = searchParams.page ? Number(searchParams.page) : 1;
+  const searchTerm = searchParams.search || '';
+  const sortOption = searchParams.sort || '';
+
   const { data: services, count } = await getLocalizedServices(
     lang,
     currentPage,
-    pageSize
+    pageSize,
+    searchTerm,
+    sortOption
   );
   const totalPages = Math.ceil((count || 0) / pageSize);
 
-  // const sortType = searchParams?.sort || '';
-  // const searchTerm = searchParams?.search || '';
-
-  // Filtering by title and description
-  // let filteredServices = searchTerm
-  //   ? services.filter((service) => {
-  //       const searchWords = searchTerm.toLowerCase().split(' ');
-  //       if (lang === 'en') {
-  //         const titleLower = service.title_en.toLowerCase();
-  //         const descLower = service.description_en.toLowerCase();
-  //         return searchWords.every(
-  //           (word) => titleLower.includes(word) || descLower.includes(word)
-  //         );
-  //       } else {
-  //         const titleLower = service.title_ka.toLowerCase();
-  //         const descLower = service.description_ka.toLowerCase();
-  //         return searchWords.every(
-  //           (word) => titleLower.includes(word) || descLower.includes(word)
-  //         );
-  //       }
-  //     })
-  //   : [...services];
-
-  // Sorting logic
-  // switch (sortType) {
-  //   case 'price-high-to-low':
-  //     filteredServices.sort(
-  //       (a, b) =>
-  //         convertPriceToNumber(b.price.toString()) -
-  //         convertPriceToNumber(a.price.toString())
-  //     );
-  //     break;
-  //   case 'price-low-to-high':
-  //     filteredServices.sort(
-  //       (a, b) =>
-  //         convertPriceToNumber(a.price.toString()) -
-  //         convertPriceToNumber(b.price.toString())
-  //     );
-  //     break;
-  //   case 'tier-high-to-low':
-  //     filteredServices.sort(
-  //       (a, b) =>
-  //         convertTierToNumber(b.tier.toString()) -
-  //         convertTierToNumber(a.tier.toString())
-  //     );
-  //     break;
-  //   case 'tier-low-to-high':
-  //     filteredServices.sort(
-  //       (a, b) =>
-  //         convertTierToNumber(a.tier.toString()) -
-  //         convertTierToNumber(b.tier.toString())
-  //     );
-  //     break;
-  //   default:
-  //     break;
-  // }
-  // Filter services based on the language
-  // const filteredServices = services.filter((service) => {
-  //   if (lang === 'en') {
-  //     return service.title_en && service.description_en;
-  //   } else if (lang === 'ka') {
-  //     return service.title_ka && service.description_ka;
-  //   }
-  //   return false;
-  // });
   return (
     <div>
       <div className="services-list">

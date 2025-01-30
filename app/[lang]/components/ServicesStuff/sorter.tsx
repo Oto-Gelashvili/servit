@@ -19,8 +19,8 @@ const Sorter = ({ dictionary }: SorterProps) => {
   const sortOptions: { [key: string]: string } = {
     'price-high-to-low': dictionary.prhigh,
     'price-low-to-high': dictionary.prlow,
-    'tier-high-to-low': dictionary.trhigh,
-    'tier-low-to-high': dictionary.trlow,
+    'rating-high-to-low': dictionary.trhigh,
+    'rating-low-to-high': dictionary.trlow,
   };
 
   const handleSortChange = (option: string) => {
