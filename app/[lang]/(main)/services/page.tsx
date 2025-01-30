@@ -5,6 +5,8 @@ import SearchBar from '../../components/ServicesStuff/searchBar';
 import { getDictionary, Locale } from '../../../../get-dictionaries';
 import Logo from '../../utils/logo';
 import { Metadata } from 'next';
+import CategorySelector from '../../components/ServicesStuff/ServiceCategorySelector';
+import { getAllItems } from '../../utils/supabaseUtils';
 
 interface ServicesProps {
   params: {
@@ -49,16 +51,26 @@ export default async function Services({
 }: ServicesProps) {
   const dictionary = (await getDictionary(params.lang as Locale)).services;
   const sorterDictionary = (await getDictionary(params.lang as Locale)).sorter;
-
+  const categoriesData = await getAllItems(`categories`);
+  // const categories = categoriesData.map(
+  //   (category) => category[`category_${lang}`]
+  // );
   return (
-    <main className="services-main">
+    <main className="services-main flex flex-col">
       <div className="heading">
         <Logo />
         <h2>{dictionary.heading2}</h2>
       </div>
       <section id="filtering">
         <SearchBar />
-        <Sorter dictionary={sorterDictionary} />
+        <div className="categorySort flex gap-4">
+          <CategorySelector
+            categories={categoriesData}
+            dictionary={dictionary}
+            lang={params.lang}
+          />
+          <Sorter dictionary={sorterDictionary} />
+        </div>
       </section>
       <ServicesPage
         dictionary={dictionary}

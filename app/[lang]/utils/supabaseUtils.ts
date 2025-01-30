@@ -20,13 +20,15 @@ export async function getAllItems<T extends TableName>(
   return data as Database['public']['Tables'][T]['Row'][];
 }
 
-// utils/supabaseUtils.ts
-export async function getLocalizedServices(
+// this fetches everything needed for building services page/serviced[id] pages
+// including filtering,sorting,seraching
+export async function getServicesNeeds(
   lang: Locale,
   page: number = 1,
   pageSize: number = 24,
   searchTerm?: string,
-  sortOption?: string
+  sortOption?: string,
+  categoryIds?: number[]
 ) {
   const from = (page - 1) * pageSize;
   const to = page * pageSize - 1;
@@ -44,6 +46,10 @@ export async function getLocalizedServices(
     .not(`description_${lang}`, 'is', null)
     .not(`description_${lang}`, 'eq', '');
 
+  //category filtering
+  if (categoryIds && categoryIds.length > 0) {
+    query = query.in('categoryId', categoryIds);
+  }
   // Add search filtering
   if (searchTerm) {
     const searchWords = searchTerm.toLowerCase().split(' ');

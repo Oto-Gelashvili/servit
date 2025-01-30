@@ -67,6 +67,7 @@ export interface Dictionary {
     prev: string;
     metaTitle: string;
     metaDescription: string;
+    selectCategory: string;
   };
   products: {
     products: string;

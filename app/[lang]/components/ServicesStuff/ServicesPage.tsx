@@ -1,5 +1,5 @@
 import ServiceItem from './ServiceItem/ServiceItem';
-import { getLocalizedServices } from '../../utils/supabaseUtils';
+import { getServicesNeeds } from '../../utils/supabaseUtils';
 import { Dictionary, Locale } from '../../../../get-dictionaries';
 import Pagination from './Pagination';
 
@@ -12,6 +12,7 @@ type ServicesPageProps = {
       | 'tier-low-to-high';
     search?: string;
     page?: string;
+    category?: string;
   };
   dictionary: Dictionary['services'];
   lang: Locale;
@@ -33,23 +34,27 @@ export default async function ServicesPage({
   dictionary,
   lang,
 }: ServicesPageProps) {
-  const pageSize = 2;
+  const pageSize = 24;
   const currentPage = searchParams.page ? Number(searchParams.page) : 1;
   const searchTerm = searchParams.search || '';
   const sortOption = searchParams.sort || '';
+  const categoryIds = searchParams.category
+    ? searchParams.category.split(',').map(Number)
+    : undefined;
 
-  const { data: services, count } = await getLocalizedServices(
+  const { data: services, count } = await getServicesNeeds(
     lang,
     currentPage,
     pageSize,
     searchTerm,
-    sortOption
+    sortOption,
+    categoryIds
   );
   const totalPages = Math.ceil((count || 0) / pageSize);
 
   return (
-    <div>
-      <div className="services-list">
+    <div className="flex-1 flex justify-center items-center flex-col">
+      <div className="services-list w-full">
         {services.length === 0 ? (
           <div className="no-results">{dictionary.notFound}</div>
         ) : (

@@ -38,19 +38,20 @@ const Sorter = ({ dictionary }: SorterProps) => {
     <div className="sorter">
       <button onClick={() => setIsOpen(!isOpen)} className="SortButton">
         {sortOptions[currentSortOption] || dictionary.options}
-        {isOpen && (
-          <div className="sortMenu">
-            {Object.keys(sortOptions).map((option) => (
-              <div
-                key={option}
-                className="sortOption"
-                onClick={() => handleSortChange(option)}
-              >
-                {sortOptions[option]}
-              </div>
-            ))}
-          </div>
-        )}
+
+        <div
+          className={`sortMenu ${isOpen ? 'h-[185px] border border-[#e1e1e1]' : 'h-0'}`}
+        >
+          {Object.keys(sortOptions).map((option) => (
+            <div
+              key={option}
+              className="sortOption"
+              onClick={() => handleSortChange(option)}
+            >
+              {sortOptions[option]}
+            </div>
+          ))}
+        </div>
       </button>
     </div>
   );

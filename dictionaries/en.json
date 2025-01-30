@@ -63,7 +63,8 @@
     "next": "Next",
     "prev": "Previous",
     "metaTitle": "Services",
-    "metaDescription": "Services List, browse services that sers have to offer"
+    "metaDescription": "Services List, browse services that sers have to offer",
+    "selectCategory": "Select Category"
   },
   "products": {
     "products": "Products",
