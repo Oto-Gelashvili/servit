@@ -1,11 +1,41 @@
 import Link from 'next/link';
 import { getDictionary, Locale } from '../../../../../get-dictionaries';
 import { createClient } from '../../../../../utils/supabase/server';
-import { getServiceById } from '../../../utils/supabaseUtils';
+import { getAllItems, getServiceById } from '../../../utils/supabaseUtils';
 import './ServicePage.css';
+import { Metadata } from 'next';
 
 interface ServiceDetailsPageProps {
   params: { id: string | number; lang: Locale };
+}
+export async function generateStaticParams() {
+  const services = await getAllItems('services');
+  const locales = ['en', 'ka'];
+
+  const paths = services.flatMap((service) =>
+    locales.map((lang) => ({
+      id: service.id.toString(),
+      lang,
+    }))
+  );
+
+  return paths;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string | number; lang: Locale };
+}): Promise<Metadata> {
+  const service = await getServiceById(params.id);
+
+  return {
+    title: service?.title_en || 'Service Details',
+    description: service?.description_en || 'Service description',
+    openGraph: {
+      images: service?.image_urls?.[0] || '/default-service.jpg',
+    },
+  };
 }
 
 export default async function serviceDetailsPage({
@@ -35,9 +65,7 @@ export default async function serviceDetailsPage({
   return (
     <main className="space-y-4">
       {user_id === service.user_id.toString() && (
-        <Link
-          href={`/${params.lang}/updateService?id=${user_id}&service=${service.id}`}
-        >
+        <Link href={`/${params.lang}/updateService?service=${service.id}`}>
           edit
         </Link>
       )}

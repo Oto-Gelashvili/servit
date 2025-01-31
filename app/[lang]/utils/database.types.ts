@@ -22,7 +22,7 @@ export interface Database {
           price: number;
           user_id: number;
           stripe_product_id: string;
-          stripe_pride_id: string;
+          stripe_price_id: string;
           createdat: string;
           updatedat: string;
         };

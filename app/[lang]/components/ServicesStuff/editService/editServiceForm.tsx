@@ -1,30 +1,32 @@
 import { Locale, getDictionary } from '../../../../../get-dictionaries';
 import { CategorySelector } from '../components/categorySelector';
-import { getAllItems, getServiceById } from '../../../utils/supabaseUtils';
-import updateService from '../../../actions/ServicesActions';
+import { getAllItems } from '../../../utils/supabaseUtils';
 import { SubmitButton } from '../../../utils/submitButton';
-import ImageUpdater from '../components/imgUpdater';
+import updateService from '../../../actions/updateServiceAction';
+import { Database } from '../../../utils/database.types';
 
+export type ServiceWithRelations =
+  Database['public']['Tables']['services']['Row'] & {
+    categories: Database['public']['Tables']['categories']['Row'];
+    profiles: Database['public']['Tables']['profiles']['Row'];
+  };
 export async function EditServiceForm({
   lang,
   searchParams,
+  service,
 }: {
   lang: Locale;
   searchParams: {
     error?: string;
-    id?: string;
     service?: string;
   };
+  service: ServiceWithRelations;
 }) {
   const dictionary = (await getDictionary(lang))['addService'];
   const categoriesData = await getAllItems(`categories`);
   const categories = categoriesData.map(
     (category) => category[`category_${lang}`]
   );
-
-  const service = searchParams.service
-    ? await getServiceById(searchParams.service)
-    : null;
 
   return (
     <>
@@ -33,6 +35,21 @@ export async function EditServiceForm({
       <form action={updateService}>
         <input type="hidden" name="lang" defaultValue={lang} />
         <input type="hidden" name="serviceId" defaultValue={service?.id} />
+        <input
+          type="hidden"
+          name="initialPrice"
+          defaultValue={service?.price}
+        />
+        <input
+          type="hidden"
+          name="priceId"
+          defaultValue={service?.stripe_price_id}
+        />
+        <input
+          type="hidden"
+          name="stripeId"
+          defaultValue={service?.stripe_product_id}
+        />
         <div className="error-container">
           <input
             defaultValue={lang === 'en' ? service?.title_en : service?.title_ka}
@@ -98,13 +115,13 @@ export async function EditServiceForm({
               <div className=" error">{searchParams.error}</div>
             )}
         </div>
-
-        <label htmlFor="service_images" className="custom-file-upload">
-          <p className="w-full p-2 text-center flex items-center justify-center">
-            {dictionary.image}
-          </p>
-          <ImageUpdater uploadedImages={service?.image_urls} />
-        </label>
+        <input
+          type="text"
+          name="service_images"
+          id="service_images"
+          hidden
+          defaultValue={service?.image_urls}
+        />
         <div className="otherVersion">
           <h2>{dictionary.inOther}</h2>
           <p className="optional">({dictionary.optional})</p>

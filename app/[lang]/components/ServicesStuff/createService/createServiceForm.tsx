@@ -1,5 +1,5 @@
 import { getDictionary, Locale } from '../../../../../get-dictionaries';
-import createService from '../../../actions/ServicesActions';
+import createService from '../../../actions/createServiceAction';
 import { SubmitButton } from '../../../utils/submitButton';
 import { getAllItems } from '../../../utils/supabaseUtils';
 import { CategorySelector } from '../components/categorySelector';
