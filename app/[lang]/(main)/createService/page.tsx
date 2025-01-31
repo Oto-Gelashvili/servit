@@ -1,5 +1,5 @@
-import { CreateServiceForm } from '../../components/createService/createServiceForm';
 import { Locale } from '../../../../get-dictionaries';
+import { CreateServiceForm } from '../../components/ServicesStuff/createService/createServiceForm';
 import './createService.css';
 import { Metadata } from 'next';
 

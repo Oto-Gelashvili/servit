@@ -219,6 +219,7 @@
     "priceReq": "Price Required",
     "categoryReq": "Category Required",
     "descriptionReq": "Description Required",
-    "globalError": "Error occured scroll up to view the problem"
+    "globalError": "Error occured scroll up to view the problem",
+    "updateHeading": "Update Service"
   }
 }

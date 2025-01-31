@@ -1,16 +1,20 @@
 'use client';
 import { useState } from 'react';
-import { Dictionary } from '../../../../get-dictionaries';
 import { ChevronDown } from 'lucide-react';
+import { Dictionary } from '../../../../../get-dictionaries';
 
 export function CategorySelector({
   dictionary,
   categories,
+  selectedCategory,
 }: {
   dictionary: Dictionary['addService'];
   categories: string[];
+  selectedCategory: string | undefined;
 }) {
-  const [category, setCategory] = useState(dictionary.selectCategory);
+  const [category, setCategory] = useState(
+    selectedCategory ? selectedCategory : dictionary.selectCategory
+  );
   const [open, setOpen] = useState(false);
 
   return (

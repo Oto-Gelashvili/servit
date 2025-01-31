@@ -1,11 +1,11 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Locale } from '../../../../get-dictionaries';
-import { Database } from '../../utils/database.types';
+import { Locale } from '../../../../../get-dictionaries';
+import { Database } from '../../../utils/database.types';
 import { useState } from 'react';
 import { ChevronDown, X } from 'lucide-react';
-import { Dictionary } from '../../../../get-dictionaries';
+import { Dictionary } from '../../../../../get-dictionaries';
 
 export default function CategorySelector({
   categories,

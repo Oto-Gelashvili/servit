@@ -187,6 +187,7 @@ export interface Dictionary {
   };
   addService: {
     heading: string;
+    updateHeading: string;
     title: string;
     title_in: string;
     price: string;

@@ -1,11 +1,11 @@
 import './Services.css';
 import ServicesPage from '../../components/ServicesStuff/ServicesPage';
-import Sorter from '../../components/ServicesStuff/sorter';
-import SearchBar from '../../components/ServicesStuff/searchBar';
+import Sorter from '../../components/ServicesStuff/components/sorter';
+import SearchBar from '../../components/ServicesStuff/components/searchBar';
 import { getDictionary, Locale } from '../../../../get-dictionaries';
 import Logo from '../../utils/logo';
 import { Metadata } from 'next';
-import CategorySelector from '../../components/ServicesStuff/ServiceCategorySelector';
+import CategorySelector from '../../components/ServicesStuff/components/ServiceCategorySelector';
 import { getAllItems } from '../../utils/supabaseUtils';
 
 interface ServicesProps {
@@ -52,9 +52,7 @@ export default async function Services({
   const dictionary = (await getDictionary(params.lang as Locale)).services;
   const sorterDictionary = (await getDictionary(params.lang as Locale)).sorter;
   const categoriesData = await getAllItems(`categories`);
-  // const categories = categoriesData.map(
-  //   (category) => category[`category_${lang}`]
-  // );
+
   return (
     <main className="services-main flex flex-col">
       <div className="heading">

@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Dictionary } from '../../../../get-dictionaries';
+import { Dictionary } from '../../../../../get-dictionaries';
 
 interface SorterProps {
   dictionary: Dictionary['sorter'];

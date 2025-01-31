@@ -1,7 +1,7 @@
 import ServiceItem from './ServiceItem/ServiceItem';
 import { getServicesNeeds } from '../../utils/supabaseUtils';
 import { Dictionary, Locale } from '../../../../get-dictionaries';
-import Pagination from './Pagination';
+import Pagination from './components/Pagination';
 
 type ServicesPageProps = {
   searchParams?: {

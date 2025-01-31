@@ -155,3 +155,25 @@ export async function getCategoryIdByName(
 
   return data.id;
 }
+
+export async function getServiceById(id: string | number) {
+  const { data, error } = await supabase
+    .from('services')
+    .select(
+      `*, 
+       categories!categoryId (category_en, category_ka),
+       profiles!user_id (username, avatar_url, rating)`
+    )
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    console.error(`Error fetching service with id ${id}:`, error);
+    return null;
+  }
+
+  return data as Database['public']['Tables']['services']['Row'] & {
+    categories: Database['public']['Tables']['categories']['Row'];
+    profiles: Database['public']['Tables']['profiles']['Row'];
+  };
+}

@@ -3,8 +3,8 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
-import { Dictionary, Locale } from '../../../../get-dictionaries';
-import LoadingComponent from '../../(main)/loading';
+import { Dictionary, Locale } from '../../../../../get-dictionaries';
+import LoadingComponent from '../../../(main)/loading';
 
 export default function Pagination({
   totalPages,

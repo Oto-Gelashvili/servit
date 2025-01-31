@@ -1,58 +1,46 @@
-// import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { getItemById } from '../../../utils/supabaseUtils';
+import Link from 'next/link';
+import { getDictionary, Locale } from '../../../../../get-dictionaries';
+import { createClient } from '../../../../../utils/supabase/server';
+import { getServiceById } from '../../../utils/supabaseUtils';
 import './ServicePage.css';
-// import { getDictionary, Locale } from '../../../../../get-dictionaries';
 
-interface ParamsType {
-  params: {
-    // lang: Locale;
-    id: string;
-  };
+interface ServiceDetailsPageProps {
+  params: { id: string | number; lang: Locale };
 }
 
-export default async function ServicePage({ params }: ParamsType) {
-  // const dictionary = await getDictionary(params.lang as Locale);
-  const numericId = params.id.split('-').pop();
+export default async function serviceDetailsPage({
+  params,
+}: ServiceDetailsPageProps) {
+  const supabase = await createClient();
+  const userResponse = await supabase.auth.getUser();
+  const user_id = userResponse.data?.user?.id;
 
-  if (!numericId) {
-    notFound();
+  if (!user_id) {
+    console.error('User not authenticated');
+    throw new Error('Authentication required');
   }
 
-  const service = await getItemById(`services`, numericId);
+  const { id } = params;
+  const dictionary = (await getDictionary(params.lang as Locale)).services;
+  const service = await getServiceById(id);
 
   if (!service) {
-    notFound();
+    return (
+      <main className="flex flex-1 justify-center items-center text-4xl">
+        {dictionary.notFound}
+      </main>
+    );
   }
 
   return (
-    <div className="product-page">
-      not built yet
-      {/* <div className="cont">
-        <div className="profile-info">
-          {service.avatar && (
-            <Image
-              src={service.avatar}
-              alt="avatar"
-              width={100}
-              height={100}
-              className="rounded-full mr-4 object-cover"
-            />
-          )}
-          <div className="profile-text-info">
-            <h4>{service.name}</h4>
-            <p>{service.tier}</p>
-          </div>
-        </div>
-        <h1>{service.title}</h1>
-        <p className="price">{service.price}</p>
-      </div>
-      <p className="desc">{service.desc}</p>
-      <div className="contacts">
-        <h6>{dictionary.serviceID.contacts}</h6>
-        <p className="number">{service.number}</p>
-        <button>{dictionary.serviceID.msg}</button>
-      </div> */}
-    </div>
+    <main className="space-y-4">
+      {user_id === service.user_id.toString() && (
+        <Link
+          href={`/${params.lang}/updateService?id=${user_id}&service=${service.id}`}
+        >
+          edit
+        </Link>
+      )}
+    </main>
   );
 }
