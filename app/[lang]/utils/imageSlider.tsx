@@ -32,7 +32,13 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
 
   return (
     <div className="slider">
-      <Image src={images[imageIndex]} alt="product image" className="image" />
+      <Image
+        src={images[imageIndex]}
+        width={100}
+        height={100}
+        alt="product image"
+        className="image"
+      />
       {images.length > 1 && (
         <>
           <button onClick={ShowPrevImg} className="imageSliderBtn left">

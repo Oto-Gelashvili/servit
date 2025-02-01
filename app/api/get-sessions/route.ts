@@ -23,8 +23,7 @@ export async function GET(req: Request) {
     if (!session || !session.metadata) {
       throw new Error('Metadata not found in the session');
     }
-
-    // Return metadata as a JSON response
+    console.log(session.metadata);
     return NextResponse.json({ metadata: session.metadata });
   } catch (error) {
     console.error('Error retrieving session:', error);

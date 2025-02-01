@@ -137,7 +137,8 @@
     }
   },
   "payment": {
-    "success": "Payment Successful!"
+    "success": "Payment Successful!",
+    "failure": "Payment Unsuccessful!"
   },
   "addPage": {
     "title": "Create Product",

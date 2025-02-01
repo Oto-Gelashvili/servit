@@ -4,6 +4,7 @@ import { createClient } from '../../../../../utils/supabase/server';
 import { getAllItems, getServiceById } from '../../../utils/supabaseUtils';
 import './ServicePage.css';
 import { Metadata } from 'next';
+import BuyButton from '../../../components/Products/BuyButton';
 
 interface ServiceDetailsPageProps {
   params: { id: string | number; lang: Locale };
@@ -52,6 +53,8 @@ export default async function serviceDetailsPage({
 
   const { id } = params;
   const dictionary = (await getDictionary(params.lang as Locale)).services;
+  const dictionaryBuyBtn = (await getDictionary(params.lang as Locale))
+    .productsID;
   const service = await getServiceById(id);
 
   if (!service) {
@@ -69,6 +72,11 @@ export default async function serviceDetailsPage({
           edit
         </Link>
       )}
+      <BuyButton
+        product={service}
+        dictionary={dictionaryBuyBtn}
+        locale={params.lang}
+      />
     </main>
   );
 }

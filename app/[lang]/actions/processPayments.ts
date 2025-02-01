@@ -18,7 +18,7 @@ export async function processPayment(sessionId: string) {
 
     // Check if already processed
     const { data: existingData } = await supabase
-      .from('orders')
+      .from('usedServices')
       .select('session_id')
       .eq('session_id', sessionId)
       .maybeSingle();
@@ -45,13 +45,12 @@ export async function processPayment(sessionId: string) {
     const metadata = data.metadata;
 
     // Insert into database
-    const { error: insertError } = await supabase.from('orders').insert([
+    const { error: insertError } = await supabase.from('usedServices').insert([
       {
         session_id: sessionId,
-        product_id: metadata.product_id,
-        Date: metadata.Date,
+        service_id: metadata.service_id,
+        date: metadata.Date,
         user_id: metadata.user_id,
-        locale: metadata.locale,
       },
     ]);
 

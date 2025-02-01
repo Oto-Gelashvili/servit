@@ -1,67 +1,61 @@
 'use client';
-
-import { useEffect, useState } from 'react';
+import { CheckCircle, XCircle } from 'lucide-react';
+import { Dictionary } from '../../../../get-dictionaries';
 import { useSearchParams } from 'next/navigation';
-import { CheckCircle } from 'lucide-react';
-import { processPayment } from '../../actions/processPayments';
+import { useEffect, useState } from 'react';
+import { createClient } from '../../../../utils/supabase/client';
+import LoadingComponent from '../../loading';
 
-interface Dictionary {
-  payment: {
-    success: string;
-  };
-}
-
-export function PaymentSuccess({ dictionary }: { dictionary: Dictionary }) {
+export default function PaymentResult(dictionary: Dictionary['payment']) {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session_id');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [status, setStatus] = useState<'success' | 'failure' | 'loading'>(
+    'loading'
+  );
 
   useEffect(() => {
-    if (sessionId) {
-      processPayment(sessionId)
-        .then((result) => {
-          if (result.error) {
-            setError(result.error);
-          }
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    } else {
-      setLoading(false);
+    if (!sessionId) {
+      setStatus('failure');
+      return;
     }
+
+    const checkPaymentStatus = async () => {
+      const supabase = createClient();
+      const { data, error } = await supabase
+        .from('usedServices')
+        .select('session_id')
+        .eq('session_id', sessionId)
+        .maybeSingle();
+
+      if (error) {
+        console.error('Error fetching payment status:', error);
+        setStatus('failure');
+      } else if (data) {
+        setStatus('success');
+      } else {
+        setStatus('failure');
+      }
+    };
+
+    checkPaymentStatus();
   }, [sessionId]);
 
-  if (loading) {
-    return (
-      <main className="flex-1 flex items-center justify-center bg-white dark:bg-black">
-        <div className="max-w-md w-full mx-auto text-center p-8">
-          <p className="text-gray-700 dark:text-gray-300 text-3xl">
-            Loading...
-          </p>
-        </div>
-      </main>
-    );
-  }
-
-  if (error) {
-    return (
-      <main className="flex-1 flex items-center justify-center bg-white dark:bg-black">
-        <div className="max-w-md w-full mx-auto text-center p-8">
-          <p className="text-red-500">{error}</p>
-        </div>
-      </main>
-    );
-  }
-
   return (
-    <main className="flex-1 flex items-center justify-center bg-white dark:bg-black">
+    <main className="flex-1 flex items-center justify-center">
       <div className="max-w-md w-full mx-auto text-center p-8">
-        <CheckCircle className="mx-auto h-16 w-16 text-green-500" />
-        <h1 className="mt-6 text-3xl font-bold text-gray-900 dark:text-white">
-          {dictionary.payment.success}
-        </h1>
+        {status === 'loading' ? (
+          <LoadingComponent />
+        ) : status === 'success' ? (
+          <>
+            <CheckCircle className="mx-auto h-16 w-16 text-green-500" />
+            <h1 className="mt-6 text-3xl font-bold">{dictionary.success}</h1>
+          </>
+        ) : (
+          <>
+            <XCircle className="mx-auto h-16 w-16 text-red-500" />
+            <h1 className="mt-6 text-3xl font-bold">{dictionary.failure}</h1>
+          </>
+        )}
       </div>
     </main>
   );

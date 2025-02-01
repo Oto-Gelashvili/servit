@@ -1,4 +1,4 @@
-import { PaymentSuccess } from '../../../components/payment-result-pages/results';
+import PaymentResult from '../../../components/payment-result-pages/results';
 import { getDictionary, Locale } from '../../../../../get-dictionaries';
 
 export default async function SuccessPage({
@@ -6,7 +6,9 @@ export default async function SuccessPage({
 }: {
   params: { lang: Locale };
 }) {
-  const dictionary = await getDictionary(params.lang as Locale);
+  const dictionary = (await getDictionary(params.lang as Locale))['payment'];
 
-  return <PaymentSuccess dictionary={dictionary} />;
+  return (
+    <PaymentResult success={dictionary.success} failure={dictionary.failure} />
+  );
 }

@@ -120,7 +120,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <button className="addCartBtn">{dictionary.productsID.cart}</button>
             <BuyButton
               product={product}
-              dictionary={dictionary}
+              dictionary={dictionary.productsID}
               locale={params.lang}
             />
           </div>

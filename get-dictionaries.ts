@@ -126,6 +126,7 @@ export interface Dictionary {
   };
   payment: {
     success: string;
+    failure: String;
   };
   addPage: {
     title: string;

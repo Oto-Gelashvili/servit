@@ -12,15 +12,17 @@ export async function POST(req: Request) {
     const { product, locale } = body;
     const supabase = await createClient();
 
-    // Get user id from Supabase with error handling
     const userResponse = await supabase.auth.getUser();
     const user_id = userResponse.data?.user?.id;
 
     if (!user_id) {
       console.error('User not authenticated');
-      throw new Error('Authentication required');
+      return NextResponse.json(
+        { error: 'Authentication required' },
+        { status: 401 }
+      );
     }
-    // Create Checkout Session
+
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       payment_method_types: ['card'],
@@ -29,25 +31,24 @@ export async function POST(req: Request) {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: product.title,
-              images: [product.thumbnail],
+              name: locale == 'en' ? product.title_en : product.title_ka,
+              images: [product.image_urls[0]],
             },
-            unit_amount: product.price * 100, // Amount in cents
+            unit_amount: product.price * 100,
           },
           quantity: 1,
         },
       ],
-      // Your original code, updated with the correct success_url
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/payment/success?session_id={CHECKOUT_SESSION_ID}&product_id=${product.id}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/products/${product.id}`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/services/${product.id}`,
       metadata: {
-        product_id: product.id,
-        title: product.title,
-        price: product.price,
-        thumbnail: product.thumbnail,
+        service_id: product.id,
         Date: new Date().toISOString(),
         user_id,
-        locale,
+        // locale,
+      },
+      payment_intent_data: {
+        setup_future_usage: 'off_session', // This ensures we can process refunds if needed
       },
     });
 

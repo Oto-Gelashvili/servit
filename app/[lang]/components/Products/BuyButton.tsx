@@ -5,7 +5,7 @@ import { getStripe } from '../../../../lib/stripe-client';
 import { Dictionary, Locale } from '../../../../get-dictionaries';
 interface BuyButtonProps {
   product: any;
-  dictionary: Dictionary;
+  dictionary: Dictionary['productsID'];
   locale: Locale;
 }
 
@@ -35,7 +35,7 @@ export default function BuyButton({
 
   return (
     <button data-cy="buy-product-btn" className="buyBtn" onClick={handleBuyNow}>
-      {dictionary.productsID.buy}
+      {dictionary.buy}
     </button>
   );
 }
