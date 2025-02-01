@@ -46,7 +46,7 @@ export default function DeleteButton({
         <Trash2 /> <p>{dictionary.delete}</p>
       </button>
       {isError && (
-        <div className="flex fixed top-1/2 left-1/2 translateMid bg-[var(--error)]  rounded-lg p-8 items-center justify-between max-w-[280px] w-full text-2xl font-semibold  text-center gap-4 text-white">
+        <div className="flex fixed top-[90%] left-1/2 translateMid bg-[var(--error)]  rounded-lg p-4 items-center justify-between max-w-[280px] w-full text-2xl font-semibold  text-center gap-4 text-white">
           {dictionary.delete_error}
           <X className="cursor-pointer" onClick={() => setIsError(false)} />
         </div>

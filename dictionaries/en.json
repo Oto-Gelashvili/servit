@@ -70,7 +70,10 @@
     "cancel": "No",
     "noReturn": "Deleted Service can not be restored",
     "confirm_delete_title": "Keep in mind",
-    "delete_error": "Couldn't delete, try again"
+    "delete_error": "Couldn't delete, try again",
+    "addBookmark": "Bookmark",
+    "removeBookmark": "Remove Bookmark",
+    "bookmark_error": "Bookmark Operation Error"
   },
   "products": {
     "products": "Products",

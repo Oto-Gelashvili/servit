@@ -73,7 +73,10 @@ export interface Dictionary {
     cancel: string;
     noReturn: string;
     confirm_delete_title: string;
-    delete_error: String;
+    delete_error: string;
+    addBookmark: string;
+    removeBookmark: string;
+    bookmark_error: string;
   };
   products: {
     products: string;

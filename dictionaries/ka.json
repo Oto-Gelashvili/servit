@@ -71,7 +71,10 @@
     "cancel": "არა",
     "noReturn": "წაშლილი სერვისის აღდგენა შეუძლებელია",
     "confirm_delete_title": "გაითვალისწინეთ",
-    "delete_error": "ვერ წაიშალა, სცადეთ თავიდან"
+    "delete_error": "ვერ წაიშალა, სცადეთ თავიდან",
+    "addBookmark": "დაამატე შენახულებში",
+    "removeBookmark": "წაშალე შენახულებიდან",
+    "bookmark_error": "მოხდა ხარვეზი"
   },
   "products": {
     "products": "პროდუქტები",

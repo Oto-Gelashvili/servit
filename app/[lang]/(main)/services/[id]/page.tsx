@@ -6,6 +6,7 @@ import './ServicePage.css';
 import { Metadata } from 'next';
 import BuyButton from '../../../components/Products/BuyButton';
 import DeleteButton from '../../../components/Products/DeleteButton';
+import BookmarkButton from '../../../components/ServicesStuff/components/bookmarkButton';
 
 interface ServiceDetailsPageProps {
   params: { id: string | number; lang: Locale };
@@ -57,6 +58,14 @@ export default async function serviceDetailsPage({
   const dictionaryBuyBtn = (await getDictionary(params.lang as Locale))
     .productsID;
   const service = await getServiceById(id);
+  const { data: bookmark } = await supabase
+    .from('bookmarks')
+    .select()
+    .eq('user_id', user_id)
+    .eq('service_id', service?.id)
+    .maybeSingle();
+
+  const isBookmarked = !!bookmark;
 
   if (!service) {
     return (
@@ -84,6 +93,11 @@ export default async function serviceDetailsPage({
         product={service}
         dictionary={dictionaryBuyBtn}
         locale={params.lang}
+      />
+      <BookmarkButton
+        serviceId={service.id}
+        initialIsBookmarked={isBookmarked}
+        dictionary={dictionary}
       />
     </main>
   );
