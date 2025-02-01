@@ -1,21 +1,20 @@
-// utils/deleteProduct.ts
 'use server';
 
 import { createClient } from '../../../utils/supabase/server';
 import { revalidatePath } from 'next/cache';
 
-export async function deleteProduct(productId: number, lang: string) {
+export async function deleteProduct(serviceId: number, lang: string) {
   const supabase = await createClient();
 
   try {
     const { error } = await supabase
-      .from(`products_${lang}`)
+      .from(`services`)
       .delete()
-      .eq('id', productId);
+      .eq('id', serviceId);
 
     if (error) throw error;
 
-    revalidatePath(`/${lang}/products`);
+    revalidatePath(`/${lang}/services`);
 
     return { success: true };
   } catch (error) {

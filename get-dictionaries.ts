@@ -68,6 +68,12 @@ export interface Dictionary {
     metaTitle: string;
     metaDescription: string;
     selectCategory: string;
+    delete: string;
+    confirm: string;
+    cancel: string;
+    noReturn: string;
+    confirm_delete_title: string;
+    delete_error: String;
   };
   products: {
     products: string;

@@ -65,7 +65,13 @@
     "prev": "უკან",
     "metaTitle": "სერვისები",
     "metaDescription": "სერვისების სია, სერვისების მარკეტი, სერვისები",
-    "selectCategory": "აირჩიეთ კატეგორია"
+    "selectCategory": "აირჩიეთ კატეგორია",
+    "delete": "წაშალეთ სერვისი",
+    "confirm": "კი",
+    "cancel": "არა",
+    "noReturn": "წაშლილი სერვისის აღდგენა შეუძლებელია",
+    "confirm_delete_title": "გაითვალისწინეთ",
+    "delete_error": "ვერ წაიშალა, სცადეთ თავიდან"
   },
   "products": {
     "products": "პროდუქტები",

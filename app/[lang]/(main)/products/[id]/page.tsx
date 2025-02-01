@@ -77,9 +77,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
         {product.user_id === user_id && (
           <DeleteButton
-            productId={product.id}
+            serviceId={product.id}
             lang={params.lang}
-            dictionary={dictionary}
+            dictionary={dictionary.services}
           />
         )}
       </div>

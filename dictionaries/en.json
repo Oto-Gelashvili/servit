@@ -64,7 +64,13 @@
     "prev": "Previous",
     "metaTitle": "Services",
     "metaDescription": "Services List, browse services that sers have to offer",
-    "selectCategory": "Select Category"
+    "selectCategory": "Select Category",
+    "delete": "Delete Service",
+    "confirm": "Yes",
+    "cancel": "No",
+    "noReturn": "Deleted Service can not be restored",
+    "confirm_delete_title": "Keep in mind",
+    "delete_error": "Couldn't delete, try again"
   },
   "products": {
     "products": "Products",

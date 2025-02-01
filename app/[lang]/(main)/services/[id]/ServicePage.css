@@ -1,12 +1,3 @@
-#editBtn:checked ~ input[data-editable='true'] {
-  pointer-events: auto;
-  opacity: 1;
-  cursor: text;
-  background: rgba(0, 0, 0, 0.8);
-  display: block;
-}
-
-input[data-editable='true'] {
-  pointer-events: none;
-  opacity: 0.7;
+.translateMid {
+  transform: translate(-50%, -50%);
 }

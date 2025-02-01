@@ -5,6 +5,7 @@ import { getAllItems, getServiceById } from '../../../utils/supabaseUtils';
 import './ServicePage.css';
 import { Metadata } from 'next';
 import BuyButton from '../../../components/Products/BuyButton';
+import DeleteButton from '../../../components/Products/DeleteButton';
 
 interface ServiceDetailsPageProps {
   params: { id: string | number; lang: Locale };
@@ -68,9 +69,16 @@ export default async function serviceDetailsPage({
   return (
     <main className="space-y-4">
       {user_id === service.user_id.toString() && (
-        <Link href={`/${params.lang}/updateService?service=${service.id}`}>
-          edit
-        </Link>
+        <div className="cont">
+          <Link href={`/${params.lang}/updateService?service=${service.id}`}>
+            edit
+          </Link>
+          <DeleteButton
+            serviceId={service.id}
+            lang={params.lang}
+            dictionary={dictionary}
+          />
+        </div>
       )}
       <BuyButton
         product={service}
