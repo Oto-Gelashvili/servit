@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '../../../utils/supabase/service';
 
-export const runtime = 'edge'; // This line sets the runtime to Edge Functions (optional based on your setup)
+// export const runtime = 'edge'; // This line sets the runtime to Edge Functions (optional based on your setup)
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2024-12-18.acacia',
