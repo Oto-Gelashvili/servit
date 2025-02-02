@@ -1,6 +1,6 @@
 'use server';
 import './productPage.css';
-import ImageSlider from '../../../utils/imageSlider';
+import ImageSlider from '../../../components/ServicesStuff/components/imageSlider';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';

@@ -74,7 +74,10 @@
     "delete_error": "ვერ წაიშალა, სცადეთ თავიდან",
     "addBookmark": "დაამატე შენახულებში",
     "removeBookmark": "წაშალე შენახულებიდან",
-    "bookmark_error": "მოხდა ხარვეზი"
+    "bookmark_error": "მოხდა ხარვეზი",
+    "edit": "რედაქტირება",
+    "price": "ფასი",
+    "desc": "აღწერა"
   },
   "products": {
     "products": "პროდუქტები",

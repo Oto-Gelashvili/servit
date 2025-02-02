@@ -7,6 +7,9 @@ import { Metadata } from 'next';
 import BuyButton from '../../../components/Products/BuyButton';
 import DeleteButton from '../../../components/Products/DeleteButton';
 import BookmarkButton from '../../../components/ServicesStuff/components/bookmarkButton';
+import Image from 'next/image';
+import ImageSlider from '../../../components/ServicesStuff/components/imageSlider';
+import { Star } from 'lucide-react';
 
 interface ServiceDetailsPageProps {
   params: { id: string | number; lang: Locale };
@@ -76,29 +79,90 @@ export default async function serviceDetailsPage({
   }
 
   return (
-    <main className="space-y-4">
-      {user_id === service.user_id.toString() && (
-        <div className="cont">
-          <Link href={`/${params.lang}/updateService?service=${service.id}`}>
-            edit
-          </Link>
-          <DeleteButton
-            serviceId={service.id}
-            lang={params.lang}
-            dictionary={dictionary}
-          />
+    <main className="serviceDetailsPage">
+      <div className="heading ">
+        <div className="titleCont">
+          <h1>
+            {params.lang === 'en'
+              ? service.title_en || service.title_ka
+              : service.title_ka || service.title_en}
+          </h1>
+
+          <p className="category">
+            {params.lang === 'en'
+              ? service.categories.category_en
+              : service.categories.category_ka}
+          </p>
         </div>
-      )}
-      <BuyButton
-        product={service}
-        dictionary={dictionaryBuyBtn}
-        locale={params.lang}
-      />
-      <BookmarkButton
-        serviceId={service.id}
-        initialIsBookmarked={isBookmarked}
-        dictionary={dictionary}
-      />
+        <div className="updateCont">
+          {user_id === service.user_id.toString() ? (
+            <Link
+              className="editBtn"
+              href={`/${params.lang}/updateService?service=${service.id}`}
+            >
+              {dictionary.edit}
+            </Link>
+          ) : (
+            <BookmarkButton
+              serviceId={service.id}
+              initialIsBookmarked={isBookmarked}
+              dictionary={dictionary}
+            />
+          )}
+          <p className="date">
+            {new Date(service.updatedat).toLocaleDateString()}
+          </p>
+        </div>
+      </div>
+      <div className="gridCont">
+        <div className="sliderCont">
+          <ImageSlider images={service.image_urls ? service.image_urls : []} />
+        </div>
+        <div className="cont">
+          <div className="priceCont">
+            <p className="price">
+              {dictionary.price}: {service.price.toFixed(2)}₾
+            </p>
+            {user_id === service.user_id.toString() ? (
+              <DeleteButton
+                serviceId={service.id}
+                lang={params.lang}
+                dictionary={dictionary}
+              />
+            ) : (
+              <BuyButton
+                product={service}
+                dictionary={dictionaryBuyBtn}
+                locale={params.lang}
+              />
+            )}
+          </div>
+          <div className="profileCont">
+            <div className="rating">
+              <p>{Number(service.profiles.rating).toFixed(2)}</p>
+              <Star />
+            </div>{' '}
+            <Image
+              src={
+                service.profiles.avatar_url
+                  ? service.profiles.avatar_url
+                  : '/images/anonProfile.jpg'
+              }
+              alt="Service Avatar"
+              width={80}
+              height={80}
+              className="avatar"
+            />
+            <p className="username">{service.profiles.username}</p>
+          </div>
+        </div>
+        <div className="desc">
+          <h2>{dictionary.desc}</h2>
+          {params.lang === 'en'
+            ? service.description_en || service.description_ka
+            : service.description_ka || service.description_en}
+        </div>
+      </div>
     </main>
   );
 }

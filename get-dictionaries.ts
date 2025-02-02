@@ -77,6 +77,9 @@ export interface Dictionary {
     addBookmark: string;
     removeBookmark: string;
     bookmark_error: string;
+    edit: string;
+    price: string;
+    desc: string;
   };
   products: {
     products: string;

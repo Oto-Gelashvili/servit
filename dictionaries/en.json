@@ -73,7 +73,10 @@
     "delete_error": "Couldn't delete, try again",
     "addBookmark": "Bookmark",
     "removeBookmark": "Remove Bookmark",
-    "bookmark_error": "Bookmark Operation Error"
+    "bookmark_error": "Bookmark Operation Error",
+    "edit": "Edit",
+    "price": "Price",
+    "desc": "Description"
   },
   "products": {
     "products": "Products",

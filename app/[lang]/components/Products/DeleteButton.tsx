@@ -41,7 +41,7 @@ export default function DeleteButton({
       <button
         data-cy="delete-product-btn"
         onClick={() => setIsModalOpen(true)}
-        className="flex justify-center items-center gap-2 deleteBtn"
+        className="flex flex-row-reverse justify-center items-center gap-2 deleteBtn"
       >
         <Trash2 /> <p>{dictionary.delete}</p>
       </button>
@@ -69,7 +69,7 @@ export default function DeleteButton({
             </button>
             <button
               onClick={handleDelete}
-              className="px-4 py-3 text-2xl text-white bg-[var(--error)] hover:scale-105 border border-transparent rounded-lg w-20  transition d\"
+              className="px-4 py-3 text-2xl text-white bg-[var(--error)] hover:scale-105 border border-transparent rounded-lg w-20  transition "
             >
               {dictionary.confirm}
             </button>

@@ -3,6 +3,8 @@
 // import { useRouter } from 'next/router';
 import { getStripe } from '../../../../lib/stripe-client';
 import { Dictionary, Locale } from '../../../../get-dictionaries';
+import LoadingComponent from '../../loading';
+import { useState } from 'react';
 interface BuyButtonProps {
   product: any;
   dictionary: Dictionary['productsID'];
@@ -15,8 +17,10 @@ export default function BuyButton({
   locale,
 }: BuyButtonProps) {
   //   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleBuyNow = async () => {
+    setIsLoading(true);
     const response = await fetch('/api/create-product-checkout-session', {
       method: 'POST',
       headers: {
@@ -36,6 +40,7 @@ export default function BuyButton({
   return (
     <button data-cy="buy-product-btn" className="buyBtn" onClick={handleBuyNow}>
       {dictionary.buy}
+      {isLoading && <LoadingComponent />}
     </button>
   );
 }

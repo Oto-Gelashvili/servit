@@ -1,19 +1,229 @@
+.serviceDetailsPage {
+  max-width: 1200px;
+  margin-inline: auto;
+}
 .translateMid {
   transform: translate(-50%, -50%);
 }
-.bookmark-button {
-  padding: 0.5rem 1rem;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+
+.serviceDetailsPage .heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4.8rem;
+  /* align-items: center; */
+}
+.serviceDetailsPage h1 {
+  font-size: 2.4rem;
+  color: var(--primary-color);
+  font-weight: 400;
+}
+.serviceDetailsPage .category {
+  display: flex;
+  font-size: 1.4rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: var(--hover-color);
+  /* color: var(--secondary-color); */
+  border-radius: 50rem;
+  padding: 0.4rem 0.8rem;
+  width: fit-content;
+  transition: 0.4s;
   cursor: pointer;
 }
-
-.bookmark-button:hover {
-  background-color: #e0e0e0;
+.serviceDetailsPage .category:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.serviceDetailsPage .updateCont {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 0.8rem;
+  justify-content: space-between;
+}
+.serviceDetailsPage .titleCont {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.8rem;
+  justify-content: space-between;
 }
 
-.bookmark-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.serviceDetailsPage .date {
+  font-size: 1.4rem;
+  color: var(--text-color);
+}
+.serviceDetailsPage .editBtn,
+.serviceDetailsPage .buyBtn,
+.serviceDetailsPage .bookmark-button {
+  font-size: 1.6rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--primary-color);
+  color: #fff;
+
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.4s;
+  font-weight: 400;
+  border: 1px solid transparent;
+}
+.serviceDetailsPage .editBtn:hover,
+.serviceDetailsPage .buyBtn:hover,
+.serviceDetailsPage .bookmark-button:hover {
+  border: 1px solid var(--primary-color);
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+.serviceDetailsPage .gridCont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.8rem;
+}
+.serviceDetailsPage .gridCont .slider {
+  position: relative;
+  min-height: 200px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--border-color);
+}
+.serviceDetailsPage .gridCont .slider .sliderSide {
+  position: relative;
+  background-color: var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+}
+.serviceDetailsPage .gridCont .slider .imageSliderBtn {
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+.serviceDetailsPage .sliderCont {
+  border-radius: 8px;
+}
+.serviceDetailsPage .desc {
+  background-color: var(--accent-color);
+  /* or hover color */
+  color: var(--text-color);
+  font-size: 1.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2.4rem;
+  white-space: pre-wrap;
+  grid-area: 1/1/3/2;
+}
+
+.serviceDetailsPage .desc h2 {
+  color: var(--primary-color);
+  font-weight: 400;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+.serviceDetailsPage .profileCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--border-color);
+  border-radius: 8px;
+  padding-inline: 4.8rem;
+  padding-block: 2.4rem;
+  align-items: center;
+  color: var(--text-color);
+  position: relative;
+  width: fit-content;
+  justify-self: end;
+  gap: 0.4rem;
+}
+.serviceDetailsPage .profileCont .rating {
+  display: flex;
+  align-items: center;
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+.serviceDetailsPage .profileCont .rating svg {
+  fill: var(--primary-color);
+  width: 20px;
+}
+.serviceDetailsPage .profileCont .avatar {
+  border-radius: 50%;
+}
+.serviceDetailsPage .profileCont .username {
+  font-size: 1.8rem;
+}
+.serviceDetailsPage .priceCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  background-color: var(--border-color);
+  border-radius: 8px;
+}
+.serviceDetailsPage .deleteBtn {
+  background-color: var(--error);
+  color: #fff;
+  font-size: 1.6rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.4s;
+  font-weight: 400;
+  border: 1px solid transparent;
+}
+.serviceDetailsPage .deleteBtn:hover {
+  border: 1px solid var(--error);
+  background-color: var(--accent-color);
+  color: var(--error);
+}
+.serviceDetailsPage .price {
+  color: var(--text-color);
+  font-size: 1.6rem;
+}
+.serviceDetailsPage .cont {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 1024px) {
+  .serviceDetailsPage .desc {
+    grid-area: 2/1/3/3;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .serviceDetailsPage .gridCont {
+    grid-template-columns: 1fr;
+  }
+  .serviceDetailsPage .desc {
+    grid-area: 2/1/3/2;
+  }
+}
+@media only screen and (max-width: 475px) {
+  .serviceDetailsPage .heading {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .serviceDetailsPage .updateCont {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .serviceDetailsPage .titleCont {
+    align-items: center;
+  }
+  .serviceDetailsPage .cont {
+    flex-direction: column;
+  }
+  .serviceDetailsPage .profileCont {
+    width: 100%;
+  }
+  .serviceDetailsPage .priceCont {
+    padding: 4.4rem;
+  }
 }
