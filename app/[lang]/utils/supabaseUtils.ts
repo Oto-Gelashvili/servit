@@ -177,3 +177,28 @@ export async function getServiceById(id: string | number) {
     profiles: Database['public']['Tables']['profiles']['Row'];
   };
 }
+export async function getBookmarkedServices(userId: string) {
+  const { data, error } = await supabase
+    .from('services')
+    .select(
+      `*,
+       bookmarks!inner(user_id, service_id),
+       categories!categoryId (category_en, category_ka),
+       profiles!user_id (username, avatar_url, rating)`,
+      { count: 'exact' }
+    )
+    .eq('bookmarks.user_id', userId);
+
+  if (error) {
+    console.error('Error fetching bookmarked services:', error);
+    return { data: [] };
+  }
+  return {
+    data: data as Array<
+      Database['public']['Tables']['services']['Row'] & {
+        categories: Database['public']['Tables']['categories']['Row'];
+        profiles: Database['public']['Tables']['profiles']['Row'];
+      }
+    >,
+  };
+}

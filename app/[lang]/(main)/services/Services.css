@@ -9,7 +9,8 @@
 .services-main .heading svg {
   width: 150px;
 }
-.services-main .heading {
+.services-main .heading,
+.services-main h1 {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;

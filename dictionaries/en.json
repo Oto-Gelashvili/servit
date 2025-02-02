@@ -234,5 +234,8 @@
     "descriptionReq": "Description Required",
     "globalError": "Error occured scroll up to view the problem",
     "updateHeading": "Update Service"
+  },
+  "bookmarks": {
+    "heading": "Bookmarks"
   }
 }

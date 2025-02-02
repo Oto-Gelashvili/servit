@@ -1,7 +1,7 @@
 // components/Pagination.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { Dictionary, Locale } from '../../../../../get-dictionaries';
 import LoadingComponent from '../../../(main)/loading';
@@ -21,9 +21,9 @@ export default function Pagination({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, [currentPage]);
+  // useEffect(() => {
+  //   setIsLoading(false);
+  // }, [currentPage]);
 
   const getHref = (page: number) => {
     const params = new URLSearchParams(searchParams);

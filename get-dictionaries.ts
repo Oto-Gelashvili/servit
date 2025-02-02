@@ -221,6 +221,9 @@ export interface Dictionary {
 
     globalError: string;
   };
+  bookmarks: {
+    heading: string;
+  };
 }
 
 // Enumerate supported locales

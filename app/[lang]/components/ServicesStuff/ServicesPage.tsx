@@ -18,17 +18,6 @@ type ServicesPageProps = {
   lang: Locale;
 };
 
-// const convertTierToNumber = (tier: string): number => {
-//   const match = tier.match(/\d+/);
-//   return match ? parseInt(match[0], 10) : 0;
-// };
-
-// const convertPriceToNumber = (price: string): number => {
-//   if (price === 'TBD') return 0;
-//   const match = price.match(/\d+/);
-//   return match ? parseInt(match[0], 10) : 0;
-// };
-
 export default async function ServicesPage({
   searchParams = {},
   dictionary,

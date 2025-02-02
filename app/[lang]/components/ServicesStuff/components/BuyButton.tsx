@@ -1,9 +1,9 @@
 'use client';
 
 // import { useRouter } from 'next/router';
-import { getStripe } from '../../../../lib/stripe-client';
-import { Dictionary, Locale } from '../../../../get-dictionaries';
-import LoadingComponent from '../../loading';
+import { getStripe } from '../../../../../lib/stripe-client';
+import { Dictionary, Locale } from '../../../../../get-dictionaries';
+import LoadingComponent from '../../../loading';
 import { useState } from 'react';
 interface BuyButtonProps {
   product: any;
