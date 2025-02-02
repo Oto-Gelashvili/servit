@@ -1,9 +1,9 @@
 'use client';
 import { Trash2, X } from 'lucide-react';
-import { deleteProduct } from '../../actions/productsActions';
-import { Locale } from '../../../../get-dictionaries';
+import { deleteProduct } from '../../../actions/productsActions';
+import { Locale } from '../../../../../get-dictionaries';
 import { useRouter } from 'next/navigation';
-import { Dictionary } from '../../../../get-dictionaries';
+import { Dictionary } from '../../../../../get-dictionaries';
 import { useState } from 'react';
 
 type DeleteButtonProps = {
@@ -53,7 +53,7 @@ export default function DeleteButton({
       )}
 
       {isModalOpen && (
-        <div className="fixed top-1/2 left-1/2 translateMid bg-[var(--accent-color)] border border-[var(--border-color)] rounded-lg p-6 max-w-md w-full">
+        <div className="fixed top-1/2 left-1/2 translateMid bg-[var(--accent-color)] border border-[var(--border-color)] rounded-lg p-6 max-w-md w-full z-50">
           <h3 className="text-3xl font-semibold mb-4 text-center text-[var(--secondary-color)]">
             {dictionary.confirm_delete_title}
           </h3>

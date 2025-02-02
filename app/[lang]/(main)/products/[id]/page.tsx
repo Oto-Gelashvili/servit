@@ -7,9 +7,9 @@ import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 import QuantitySelector from '../../../utils/quantitySelector';
 import { getItemById } from '../../../utils/supabaseUtils'; // Import the function to fetch data from Supabase
 import { getDictionary, Locale } from '../../../../../get-dictionaries';
-import BuyButton from '../../../components/Products/BuyButton'; // Import the BuyButton component
+import BuyButton from '../../../components/ServicesStuff/components/BuyButton'; // Import the BuyButton component
 import { createClient } from '../../../../../utils/supabase/server';
-import DeleteButton from '../../../components/Products/DeleteButton';
+import DeleteButton from '../../../components/ServicesStuff/components/DeleteButton';
 // import { deleteProduct } from '../../../actions/productsActions';
 
 const renderStars = (rating: number) => {
