@@ -3,13 +3,11 @@ import React from 'react';
 import { useState } from 'react';
 import { getStripe } from '../../../../lib/stripe-client';
 import { Locale } from '../../../../get-dictionaries';
-export const TierType = {
-  JUNIOR: 'junior',
-  MIDDLE: 'middle',
-  SENIOR: 'senior',
-} as const;
 
-// export type TierType = (typeof TierType)[keyof typeof TierType];
+export const TierType = {
+  BASIC: 'basic',
+  PREMIUM: 'premium',
+} as const;
 
 export interface SubTierFrequency {
   id: string;
@@ -58,19 +56,13 @@ interface Dictionary {
       annually: string;
     };
     tiers: {
-      junior: {
+      basic: {
         name: string;
         description: string;
         features: string[];
         cta: string;
       };
-      middle: {
-        name: string;
-        description: string;
-        features: string[];
-        cta: string;
-      };
-      senior: {
+      premium: {
         name: string;
         description: string;
         features: string[];
@@ -81,17 +73,7 @@ interface Dictionary {
 }
 
 const PRICE_IDS: PriceIds = {
-  [TierType.MIDDLE]: {
-    monthly: {
-      en: 'price_1QYlwxKYelKYEeeeHGgP2by3',
-      ka: 'price_1QZCsRKYelKYEeeecnYQVo3b',
-    },
-    annual: {
-      en: 'price_1QYlz1KYelKYEeeeHmGfAvdL',
-      ka: 'price_1QZCsjKYelKYEeeezqesTfM5',
-    },
-  },
-  [TierType.SENIOR]: {
+  [TierType.PREMIUM]: {
     monthly: {
       en: 'price_1QYm0EKYelKYEeeebEwxK4yQ',
       ka: 'price_1QZCtMKYelKYEeee1dc6io1k',
@@ -120,43 +102,30 @@ const getFrequencies = (dictionary: Dictionary): SubTierFrequency[] => [
 
 const getTiers = (dictionary: Dictionary): SubTier[] => [
   {
-    name: dictionary.sub.tiers.junior.name,
+    name: dictionary.sub.tiers.basic.name,
     id: '0',
     href: '/',
     price: { '1': '$0', '2': '$0' },
-    description: dictionary.sub.tiers.junior.description,
-    features: dictionary.sub.tiers.junior.features,
+    description: dictionary.sub.tiers.basic.description,
+    features: dictionary.sub.tiers.basic.features,
     featured: false,
     highlighted: false,
     soldOut: false,
-    cta: dictionary.sub.tiers.junior.cta,
-    tierType: TierType.JUNIOR,
+    cta: dictionary.sub.tiers.basic.cta,
+    tierType: TierType.BASIC,
   },
   {
-    name: dictionary.sub.tiers.middle.name,
+    name: dictionary.sub.tiers.premium.name,
     id: '1',
     href: '/subscribe',
-    price: { '1': '$4.99', '2': '$49.99' },
-    description: dictionary.sub.tiers.middle.description,
-    features: dictionary.sub.tiers.middle.features,
+    price: { '1': '$14.99', '2': '$139.99' },
+    description: dictionary.sub.tiers.premium.description,
+    features: dictionary.sub.tiers.premium.features,
     featured: true,
     highlighted: false,
     soldOut: false,
-    cta: dictionary.sub.tiers.middle.cta,
-    tierType: TierType.MIDDLE,
-  },
-  {
-    name: dictionary.sub.tiers.senior.name,
-    id: '2',
-    href: '/subscribe',
-    price: { '1': '$14.99', '2': '$139.99' },
-    description: dictionary.sub.tiers.senior.description,
-    features: dictionary.sub.tiers.senior.features,
-    featured: false,
-    highlighted: false,
-    soldOut: false,
-    cta: dictionary.sub.tiers.senior.cta,
-    tierType: TierType.SENIOR,
+    cta: dictionary.sub.tiers.premium.cta,
+    tierType: TierType.PREMIUM,
   },
 ];
 
@@ -195,10 +164,7 @@ export default function SubscriptionContent({
     try {
       setLoading(tier.id);
 
-      // Skip for free tier
-      if (tier.id === '0') {
-        return;
-      }
+      if (tier.id === '0') return; // Skip basic tier
 
       const priceId =
         PRICE_IDS[tier.tierType as keyof PriceIds][
@@ -256,14 +222,11 @@ export default function SubscriptionContent({
           className="radiogroup"
           style={{ gridTemplateColumns: 'repeat(2, minmax(0, 1fr))' }}
         >
-          <p className="sr-only">Payment frequency</p>
           {getFrequencies(dictionary).map((option) => (
             <label
               className={cn(
-                frequency.value === option.value
-                  ? 'bg-purple-700 text-white dark:bg-purple-700 dark:text-white'
-                  : 'bg-white text-black hover:bg-purple-700 hover:text-white',
-                'cursor-pointer rounded-full px-2.5 py-2 transition-all'
+                frequency.value === option.value ? 'active ' : 'nonActive',
+                'cursor-pointer rounded-full px-2.5 py-2 '
               )}
               key={option.value}
               htmlFor={option.value}

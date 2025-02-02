@@ -1,14 +1,6 @@
 .sub-main {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 2.4rem;
-  padding: 4.8rem;
-  padding-bottom: 8.4rem;
-  background-color: var(--backround-color);
-  color: var(--text-color);
-  justify-content: space-evenly;
+  max-width: 1100px;
+  margin-inline: auto;
 }
 .sub-main .titles {
   text-align: center;
@@ -26,13 +18,32 @@
   color: var(--text-color);
 }
 .sub-main .toggle {
-  background-color: var(--backround-color);
   border-radius: 100rem;
   font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.4rem;
 }
 .sub-main .toggle .radiogroup {
   display: flex;
-  gap: 4px;
+  gap: 0.2rem;
+  background-color: var(--accent-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 50rem;
+}
+.sub-main .active {
+  border: 1px solid transparent;
+  transition: 0.4s;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 400;
+}
+.sub-main .nonActive {
+  border: 1px solid var(--border-color);
+  background-color: var(--hover-color);
+  transition: 0.4s;
+  color: var(--secondary-color);
+  font-weight: 400;
 }
 .sub-main .sub-cont {
   display: flex;
@@ -42,40 +53,41 @@
   max-width: 350px;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: var(--accent-color);
   padding: 3.6rem 2.4rem;
-  border: 2px solid #e0e3e9;
-  border-radius: 32px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
   gap: 2.4rem;
+  width: 100%;
 }
 .sub-main .sub-cont h3 {
   font-size: 2.4rem;
-  color: black;
+  color: var(--secondary-color);
   font-weight: 500;
 }
 .sub-main .sub-cont .desc {
   font-size: 1.6rem;
-  color: #636c78;
+  color: var(--text-color);
   /* height: fill; */
 }
 .sub-main .sub-cont .price {
   font-size: 3.6rem;
-  color: black;
+  color: var(--secondary-color);
   margin-right: 8px;
   font-weight: 500;
 }
 .sub-main .sub-cont .suffix {
   font-size: 1.4rem;
-  color: #636c78;
+  color: var(--text-color);
   font-weight: 600;
 }
 .sub-main .sub-cont .btn {
   width: 100%;
   padding: 0.8rem 1.6rem;
-  background-color: #f3f4f6;
-  color: black;
+  background-color: var(--secondary-color);
+  color: var(--accent-color);
   border-radius: 8px;
-  border: 1px solid #e0e3e9;
+  border: 1px solid var(--accent-color);
   text-align: center;
   font-size: 1.8rem;
   font-weight: 500;
@@ -90,7 +102,7 @@
   gap: 1.2rem;
   align-items: center;
   font-size: 1.6rem;
-  color: #636c78;
+  color: var(--text-color);
 }
 
 .checkIcon {
@@ -98,66 +110,46 @@
   height: 22px;
 }
 .sub-main .sub-cont .btn:hover {
-  background-color: #e0e3e9;
-  border-color: #f3f4f6;
+  background-color: var(--accent-color);
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
   cursor: pointer;
   transition: 0.4s;
 }
 .sub-main .sub-cont .featured {
-  background-color: #7e22ce;
+  background-color: var(--accent-color);
 }
 
 .sub-main .sub-cont .featured h3 {
-  color: #fff;
+  color: var(--primary-color);
 }
 .sub-main .sub-cont .featured .desc {
-  color: #e3e3e3;
+  color: var(--text-color);
 }
 .sub-main .sub-cont .featured .price {
-  color: #fff;
+  color: var(--primary-color);
 }
 .sub-main .sub-cont .featured .suffix {
-  color: #e3e3e3;
+  color: var(--text-color);
 }
 .sub-main .sub-cont .featured .btn {
-  background-color: #fff;
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
 .sub-main .sub-cont .featured li {
-  color: #e3e3e3;
+  color: var(--text-color);
 }
 .sub-main .sub-cont .featured .btn:hover {
-  background-color: #7e22ce;
-  color: #fff;
-  border-color: #fff;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
   cursor: pointer;
   transition: 0.4s;
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 768px) {
   .sub-main .sub-cont {
     flex-direction: column;
     align-items: center;
-  }
-  .sub-main .sub-cont .sub-type {
-    max-width: 450px;
-  }
-}
-@media only screen and (max-width: 575px) {
-  .sub-main .sub-cont .sub-type {
-    max-width: 100%;
-  }
-  .sub-main .sub-cont ul {
-    justify-content: center;
-  }
-  .sub-main .sub-cont li {
-    font-size: 1.4rem;
-  }
-  .sub-main .sub-cont .desc {
-    font-size: 1.4rem;
-  }
-}
-@media only screen and (max-width: 375px) {
-  .sub-main {
-    padding-inline: 2.4rem;
   }
 }

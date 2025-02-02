@@ -116,19 +116,13 @@ export interface Dictionary {
       annually: string;
     };
     tiers: {
-      junior: {
+      basic: {
         name: string;
         description: string;
         features: string[];
         cta: string;
       };
-      middle: {
-        name: string;
-        description: string;
-        features: string[];
-        cta: string;
-      };
-      senior: {
+      premium: {
         name: string;
         description: string;
         features: string[];

@@ -102,8 +102,8 @@
     "mail": "Mail:"
   },
   "sub": {
-    "title": "Pricing",
-    "subtitle": "Upgrade Your Subscription tier to gain benefits",
+    "title": "Choose Your Plan",
+    "subtitle": "Select the package that works best for you",
     "frequencies": {
       "monthly": "Monthly",
       "annually": "Annually"
@@ -113,38 +113,25 @@
       "annually": "/year"
     },
     "tiers": {
-      "junior": {
-        "name": "Junior",
-        "description": "Great for users who are interested in posting Services or Tasks",
+      "basic": {
+        "name": "Basic",
+        "description": "Service Oriented",
         "features": [
-          "Ability to post Services",
-          "Ability to post Tasks",
-          "Can complete 1 Task",
-          "15% Task fee"
+          "Can browse services",
+          "Can manage services",
+          "Can browse tasks"
         ],
-        "cta": "Free to use"
+        "cta": "Free"
       },
-      "middle": {
-        "name": "Middle",
-        "description": "Great for users who are interested in completing few Tasks a month",
+      "premium": {
+        "name": "Premium",
+        "description": "Task Oriented",
         "features": [
-          "All in the free plan plus",
-          "Task listing priority",
-          "Can complete up to 3 tasks",
-          "10% Task fee"
+          "Can browse services and tasks",
+          "Can manage services",
+          "Can manage tasks"
         ],
-        "cta": "Get started"
-      },
-      "senior": {
-        "name": "Senior",
-        "description": "Great for users who are interested in completing many Tasks a month",
-        "features": [
-          "All in the middle plan plus",
-          "Service listing priority",
-          "Unlimited Tasks to complete",
-          "8% Task fee"
-        ],
-        "cta": "Get started"
+        "cta": "Go Premium"
       }
     }
   },
