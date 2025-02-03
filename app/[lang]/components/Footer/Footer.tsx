@@ -29,8 +29,8 @@ export default function Footer({
             <Link href={`/${lang}/services`} className={`nav-link `}>
               {dictionary.services}
             </Link>
-            <Link href={`/${lang}/products`} className={`nav-link`}>
-              {dictionary.products}
+            <Link href={`/${lang}/tasks`} className={`nav-link`}>
+              {dictionary.tasks}
             </Link>
             <Link href={`/${lang}/pricing`} className={`nav-link `}>
               {dictionary.pricing}

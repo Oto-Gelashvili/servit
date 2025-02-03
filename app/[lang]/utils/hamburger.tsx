@@ -98,11 +98,11 @@ export const HamburgerDropdown: React.FC<HeaderProps> = ({
         <p>{dictionary.services}</p>
       </Link>
       <Link
-        href={`/${lang}/products`}
-        className={`nav-link ${pathname === `/${lang}/products` ? 'active' : ''} flex justify-between`}
+        href={`/${lang}/tasks`}
+        className={`nav-link ${pathname === `/${lang}/tasks` ? 'active' : ''} flex justify-between`}
       >
         <CircleCheck className="text-black dark:text-white" />
-        <p>{dictionary.products}</p>
+        <p>{dictionary.tasks}</p>
       </Link>
 
       <Link
@@ -111,6 +111,13 @@ export const HamburgerDropdown: React.FC<HeaderProps> = ({
       >
         <CirclePlus className="text-black dark:text-white" />
         <p>{dictionary.createService}</p>
+      </Link>
+      <Link
+        href={`/${lang}/createTask`}
+        className={`nav-link ${pathname === `/${lang}/createTask` ? 'active' : ''} flex justify-between`}
+      >
+        <CirclePlus className="text-black dark:text-white" />
+        <p>{dictionary.createTasks}</p>
       </Link>
       <div className="border-Cont">
         <div className="border-line"></div>
@@ -141,7 +148,7 @@ export const HamburgerDropdown: React.FC<HeaderProps> = ({
       </Link>
       <Link
         className="dropdown-link cursor-pointer  flex justify-between"
-        href={`/${lang}/profile`}
+        href={`/${lang}/bookmarks`}
       >
         <Bookmark className="text-black dark:text-white" />
         <p>{dictionary.bookmarks}</p>

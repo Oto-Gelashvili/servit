@@ -49,6 +49,7 @@ export interface Dictionary {
     orders: string;
     bookmarks: string;
     theme: string;
+    createTasks: string;
   };
   sorter: {
     options: string;

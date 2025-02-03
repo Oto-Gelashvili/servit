@@ -77,6 +77,8 @@ export default function ProfileDropdown({
         <p className="mail">{username}</p>
         <Link href={`/${lang}/profile`}>{dictionary.profile}</Link>
         <Link href={`/${lang}/bookmarks`}>{dictionary.bookmarks}</Link>
+        <Link href={`/${lang}/createTask`}>{dictionary.createTasks}</Link>
+
         <div className="themeCont flex justify-between items-center">
           <p>{dictionary.theme}</p>
           <ThemeToggle />

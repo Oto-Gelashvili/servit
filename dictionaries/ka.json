@@ -46,7 +46,8 @@
     "theme": "თემა",
     "logout": "გასვლა",
     "orders": "შეკვეთები",
-    "createService": "სერვისის დამატება"
+    "createService": "სერვისის დამატება",
+    "createTasks": "დაამატე დავალება"
   },
   "sorter": {
     "options": "სორტირება",

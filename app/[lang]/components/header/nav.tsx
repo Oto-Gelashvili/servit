@@ -80,10 +80,10 @@ export default function Nav({ lang, dictionary }: HeaderLangProps) {
       </Link>
       <Link
         onMouseEnter={() => bgTransition(3)}
-        href={`/${lang}/products`}
-        className={`nav-link ${pathname === `/${lang}/products` ? 'active' : ''}`}
+        href={`/${lang}/tasks`}
+        className={`nav-link ${pathname === `/${lang}/tasks` ? 'active' : ''}`}
       >
-        {dictionary.products}
+        {dictionary.tasks}
       </Link>
       <Link
         onMouseEnter={() => bgTransition(4)}

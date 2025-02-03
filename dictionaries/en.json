@@ -45,7 +45,8 @@
     "theme": "Theme",
     "bookmarks": "Bookmarks",
     "orders": "Orders",
-    "createService": "Add Service"
+    "createService": "Add Service",
+    "createTasks": "Add Task"
   },
   "sorter": {
     "options": "Sort Options",

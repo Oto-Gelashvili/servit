@@ -26,7 +26,9 @@ const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, username }) => {
     <header>
       <div className="navCont">
         <div className="title-cont">
-          <Logo />
+          <Link href={`/${lang}/`}>
+            <Logo />
+          </Link>
         </div>
         <Nav lang={lang} dictionary={dictionary} />
       </div>
@@ -35,7 +37,9 @@ const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, username }) => {
         <Link href={`/${lang}/createService`} className={`contactLink`}>
           {dictionary.createService}
         </Link>
+
         <LocaleSwitcher lang={lang} />
+
         <Avatar
           avatar={avatar}
           username={username}
