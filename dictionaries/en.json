@@ -79,21 +79,7 @@
     "price": "Price",
     "desc": "Description"
   },
-  "products": {
-    "products": "Products",
-    "noProducts": "No products found"
-  },
-  "productsID": {
-    "stock": "Amount in stock",
-    "order": "Minimum order quantity",
-    "cart": "Add to cart",
-    "buy": "Buy now",
-    "dimensions": "Dimensions",
-    "width": "Width",
-    "height": "Height",
-    "depth": "Depth",
-    "delete": "Delete Product"
-  },
+
   "language": {
     "lang": "ქარ"
   },
@@ -157,9 +143,7 @@
     "description": "Description",
     "submit": "Submit"
   },
-  "order": {
-    "title": "Your Orders"
-  },
+
   "auth": {
     "header": "Sign in",
     "headerRegister": "Sign up",

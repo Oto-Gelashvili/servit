@@ -9,9 +9,7 @@ export interface Dictionary {
     title: string;
     desc: string;
   };
-  order: {
-    title: string;
-  };
+
   footer: {
     tasks: string;
     contactUs: string;
@@ -82,21 +80,7 @@ export interface Dictionary {
     price: string;
     desc: string;
   };
-  products: {
-    products: string;
-    noProducts: string;
-  };
-  productsID: {
-    stock: string;
-    order: string;
-    cart: string;
-    buy: string;
-    dimensions: string;
-    width: string;
-    height: string;
-    depth: string;
-    delete: string;
-  };
+
   language: {
     lang: string;
   };
