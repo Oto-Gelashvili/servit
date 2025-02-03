@@ -29,7 +29,7 @@ export async function POST(req: Request) {
       line_items: [
         {
           price_data: {
-            currency: 'usd',
+            currency: 'gel',
             product_data: {
               name: locale == 'en' ? product.title_en : product.title_ka,
               images: [product.image_urls[0]],

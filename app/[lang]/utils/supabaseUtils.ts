@@ -156,9 +156,9 @@ export async function getCategoryIdByName(
   return data.id;
 }
 
-export async function getServiceById(id: string | number) {
+export async function getById(id: string | number, tableName: string) {
   const { data, error } = await supabase
-    .from('services')
+    .from(tableName)
     .select(
       `*, 
        categories!categoryId (category_en, category_ka),

@@ -6,7 +6,7 @@ import {
   EditServiceForm,
   ServiceWithRelations,
 } from '../../components/ServicesStuff/editService/editServiceForm';
-import { getServiceById } from '../../utils/supabaseUtils';
+import { getById } from '../../utils/supabaseUtils';
 
 export async function generateMetadata({
   params,
@@ -36,7 +36,7 @@ export default async function UpdateService({
   const userResponse = await supabase.auth.getUser();
   const user_id = userResponse.data?.user?.id;
   const service = searchParams.service
-    ? await getServiceById(searchParams.service)
+    ? await getById(searchParams.service, 'services')
     : null;
 
   return (

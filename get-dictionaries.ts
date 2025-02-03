@@ -222,6 +222,27 @@ export interface Dictionary {
   bookmarks: {
     heading: string;
   };
+  tasks: {
+    add: {
+      heading: string;
+      updateHeading: string;
+      title: string;
+      title_in: string;
+      category: string;
+      description: string;
+      description_in: string;
+      submit: string;
+      selectCategory: string;
+      inOther: string;
+      descOther: string;
+      optional: string;
+      loading: string;
+      titleReq: string;
+      descriptionReq: string;
+      categoryReq: string;
+      globalError: string;
+    };
+  };
 }
 
 // Enumerate supported locales

@@ -185,7 +185,13 @@
   grid-area: span 1 / span 3;
   text-align: center;
 }
+.createTask .category-error-container {
+  grid-area: 1/2/2/4;
+}
 @media (max-width: 700px) {
+  .createTask .category-error-container {
+    grid-area: unset;
+  }
   .createService {
     max-width: unset;
   }

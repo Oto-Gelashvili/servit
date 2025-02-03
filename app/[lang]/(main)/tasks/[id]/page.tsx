@@ -2,28 +2,23 @@ import Link from 'next/link';
 import { getDictionary, Locale } from '../../../../../get-dictionaries';
 import { createClient } from '../../../../../utils/supabase/server';
 import { getAllItems, getById } from '../../../utils/supabaseUtils';
-import './ServicePage.css';
 import { Metadata } from 'next';
-import BuyButton from '../../../components/ServicesStuff/components/BuyButton';
 import DeleteButton from '../../../components/ServicesStuff/components/DeleteButton';
-import BookmarkButton from '../../../components/ServicesStuff/components/bookmarkButton';
 import Image from 'next/image';
-import ImageSlider from '../../../components/ServicesStuff/components/imageSlider';
 import { Star } from 'lucide-react';
+import './TaskPage.css';
 
 interface ServiceDetailsPageProps {
   params: { id: string | number; lang: Locale };
 }
 export async function generateStaticParams() {
-  const services = await getAllItems('services');
-  const locales = ['en', 'ka'];
+  const services = await getAllItems('tasks');
 
-  const paths = services.flatMap((service) =>
-    locales.map((lang) => ({
+  const paths = services.flatMap((service) => [
+    {
       id: service.id.toString(),
-      lang,
-    }))
-  );
+    },
+  ]);
 
   return paths;
 }
@@ -33,13 +28,13 @@ export async function generateMetadata({
 }: {
   params: { id: string | number; lang: Locale };
 }): Promise<Metadata> {
-  const service = await getById(params.id, 'services');
+  const task = await getById(params.id, 'tasks');
 
   return {
-    title: service?.title_en || 'Service Details',
-    description: service?.description_en || 'Service description',
+    title: task?.title_en || 'tasks Details',
+    description: task?.description_en || 'tasks description',
     openGraph: {
-      images: service?.image_urls?.[0] || '/default-service.jpg',
+      images: task?.image_urls?.[0],
     },
   };
 }
@@ -58,19 +53,9 @@ export default async function serviceDetailsPage({
 
   const { id } = params;
   const dictionary = (await getDictionary(params.lang as Locale)).services;
-  const dictionaryBuyBtn = (await getDictionary(params.lang as Locale))
-    .productsID;
-  const service = await getById(id, 'services');
-  const { data: bookmark } = await supabase
-    .from('bookmarks')
-    .select()
-    .eq('user_id', user_id)
-    .eq('service_id', service?.id)
-    .maybeSingle();
+  const task = await getById(id, 'tasks');
 
-  const isBookmarked = !!bookmark;
-
-  if (!service) {
+  if (!task) {
     return (
       <main className="flex flex-1 justify-center items-center text-4xl">
         {dictionary.notFound}
@@ -79,74 +64,56 @@ export default async function serviceDetailsPage({
   }
 
   return (
-    <main className="serviceDetailsPage">
+    <main className="taskDetailsPage">
       <div className="heading ">
         <div className="titleCont">
           <h1>
             {params.lang === 'en'
-              ? service.title_en || service.title_ka
-              : service.title_ka || service.title_en}
+              ? task.title_en || task.title_ka
+              : task.title_ka || task.title_en}
           </h1>
 
           <p className="category">
             {params.lang === 'en'
-              ? service.categories.category_en
-              : service.categories.category_ka}
+              ? task.categories.category_en
+              : task.categories.category_ka}
           </p>
         </div>
         <div className="updateCont">
-          {user_id === service.user_id.toString() ? (
+          {user_id === task.user_id.toString() && (
             <Link
               className="editBtn"
-              href={`/${params.lang}/updateService?service=${service.id}`}
+              href={`/${params.lang}/updateTask?task=${task.id}`}
             >
               {dictionary.edit}
             </Link>
-          ) : (
-            <BookmarkButton
-              serviceId={service.id}
-              initialIsBookmarked={isBookmarked}
-              dictionary={dictionary}
-            />
           )}
           <p className="date">
-            {new Date(service.updatedat).toLocaleDateString()}
+            {new Date(task.updatedat).toLocaleDateString()}
           </p>
         </div>
       </div>
       <div className="gridCont">
-        <div className="sliderCont">
-          <ImageSlider images={service.image_urls ? service.image_urls : []} />
-        </div>
         <div className="cont">
           <div className="priceCont">
-            <p className="price">
-              {dictionary.price}: {service.price.toFixed(2)}₾
-            </p>
-            {user_id === service.user_id.toString() ? (
+            {user_id === task.user_id.toString() && (
               <DeleteButton
-                Id={service.id}
+                Id={task.id}
                 lang={params.lang}
                 dictionary={dictionary}
-                tableName={'services'}
-              />
-            ) : (
-              <BuyButton
-                product={service}
-                dictionary={dictionaryBuyBtn}
-                locale={params.lang}
+                tableName={'tasks'}
               />
             )}
           </div>
           <div className="profileCont">
             <div className="rating">
-              <p>{Number(service.profiles.rating).toFixed(2)}</p>
+              <p>{Number(task.profiles.rating).toFixed(2)}</p>
               <Star />
             </div>{' '}
             <Image
               src={
-                service.profiles.avatar_url
-                  ? service.profiles.avatar_url
+                task.profiles.avatar_url
+                  ? task.profiles.avatar_url
                   : '/images/anonProfile.jpg'
               }
               alt="Service Avatar"
@@ -154,14 +121,14 @@ export default async function serviceDetailsPage({
               height={80}
               className="avatar"
             />
-            <p className="username">{service.profiles.username}</p>
+            <p className="username">{task.profiles.username}</p>
           </div>
         </div>
         <div className="desc">
           <h2>{dictionary.desc}</h2>
           {params.lang === 'en'
-            ? service.description_en || service.description_ka
-            : service.description_ka || service.description_en}
+            ? task.description_en || task.description_ka
+            : task.description_ka || task.description_en}
         </div>
       </div>
     </main>

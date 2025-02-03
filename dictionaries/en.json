@@ -66,10 +66,10 @@
     "metaTitle": "Services",
     "metaDescription": "Services List, browse services that sers have to offer",
     "selectCategory": "Select Category",
-    "delete": "Delete Service",
+    "delete": "Delete Item",
     "confirm": "Yes",
     "cancel": "No",
-    "noReturn": "Deleted Service can not be restored",
+    "noReturn": "Deleted Item can not be restored",
     "confirm_delete_title": "Keep in mind",
     "delete_error": "Couldn't delete, try again",
     "addBookmark": "Bookmark",
@@ -224,6 +224,27 @@
     "descriptionReq": "Description Required",
     "globalError": "Error occured scroll up to view the problem",
     "updateHeading": "Update Service"
+  },
+  "tasks": {
+    "add": {
+      "heading": "Create Task",
+      "title": "Title",
+      "title_in": "Title in Georgian",
+      "category": "Category",
+      "description": "Description",
+      "description_in": "Description in Georgian",
+      "submit": "Submit",
+      "selectCategory": "Select Category",
+      "inOther": "Georgian Version",
+      "descOther": "For listing service also on Georgian feed also",
+      "optional": "Optional",
+      "loading": "Submitting...",
+      "titleReq": "Title Required ",
+      "categoryReq": "Category Required",
+      "descriptionReq": "Description Required",
+      "globalError": "Error occured scroll up to view the problem",
+      "updateHeading": "Update Task"
+    }
   },
   "bookmarks": {
     "heading": "Bookmarks"

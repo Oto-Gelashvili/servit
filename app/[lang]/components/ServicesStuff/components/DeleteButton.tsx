@@ -1,21 +1,23 @@
 'use client';
 import { Trash2, X } from 'lucide-react';
-import { deleteProduct } from '../../../actions/productsActions';
+import { deleteProduct } from '../../../actions/deleteAction';
 import { Locale } from '../../../../../get-dictionaries';
 import { useRouter } from 'next/navigation';
 import { Dictionary } from '../../../../../get-dictionaries';
 import { useState } from 'react';
 
 type DeleteButtonProps = {
-  serviceId: number;
+  Id: number;
   lang: Locale;
   dictionary: Dictionary['services'];
+  tableName: string;
 };
 
 export default function DeleteButton({
-  serviceId,
+  Id,
   lang,
   dictionary,
+  tableName,
 }: DeleteButtonProps) {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,9 +25,9 @@ export default function DeleteButton({
 
   const handleDelete = async () => {
     try {
-      const result = await deleteProduct(serviceId, lang);
+      const result = await deleteProduct(Id, lang, tableName);
       if (result.success) {
-        router.push(`/${lang}/services`);
+        router.push(`/${lang}/${tableName}`);
       } else {
         throw new Error();
       }

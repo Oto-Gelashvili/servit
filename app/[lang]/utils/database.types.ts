@@ -59,6 +59,44 @@ export interface Database {
           updatedat: string;
         };
       };
+      tasks: {
+        Row: {
+          id: number;
+          title_en: string;
+          categoryId: number;
+          hyperlink: string;
+          title_ka: string;
+          description_en: string;
+          description_ka: string;
+          user_id: number;
+          createdat: string;
+          updatedat: string;
+        };
+        Insert: {
+          id: number;
+          title_en: string;
+          categoryId: number;
+          hyperlink: string;
+          title_ka: string;
+          description_en: string;
+          description_ka: string;
+          user_id: number;
+          createdat: string;
+          updatedat: string;
+        };
+        Update: {
+          id: number;
+          title_en: string;
+          categoryId: number;
+          hyperlink: string;
+          title_ka: string;
+          description_en: string;
+          description_ka: string;
+          user_id: number;
+          createdat: string;
+          updatedat: string;
+        };
+      };
       products_en: {
         Row: {
           id: number;
