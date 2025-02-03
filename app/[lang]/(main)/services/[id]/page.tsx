@@ -58,8 +58,6 @@ export default async function serviceDetailsPage({
 
   const { id } = params;
   const dictionary = (await getDictionary(params.lang as Locale)).services;
-  const dictionaryBuyBtn = (await getDictionary(params.lang as Locale))
-    .productsID;
   const service = await getById(id, 'services');
   const { data: bookmark } = await supabase
     .from('bookmarks')
@@ -131,11 +129,7 @@ export default async function serviceDetailsPage({
                 tableName={'services'}
               />
             ) : (
-              <BuyButton
-                product={service}
-                dictionary={dictionaryBuyBtn}
-                locale={params.lang}
-              />
+              <BuyButton product={service} locale={params.lang} />
             )}
           </div>
           <div className="profileCont">

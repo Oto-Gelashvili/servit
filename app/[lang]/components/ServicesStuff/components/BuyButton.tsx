@@ -2,20 +2,15 @@
 
 // import { useRouter } from 'next/router';
 import { getStripe } from '../../../../../lib/stripe-client';
-import { Dictionary, Locale } from '../../../../../get-dictionaries';
+import { Locale } from '../../../../../get-dictionaries';
 import LoadingComponent from '../../../loading';
 import { useState } from 'react';
 interface BuyButtonProps {
   product: any;
-  dictionary: Dictionary['productsID'];
   locale: Locale;
 }
 
-export default function BuyButton({
-  product,
-  dictionary,
-  locale,
-}: BuyButtonProps) {
+export default function BuyButton({ product, locale }: BuyButtonProps) {
   //   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -39,7 +34,7 @@ export default function BuyButton({
 
   return (
     <button data-cy="buy-product-btn" className="buyBtn" onClick={handleBuyNow}>
-      {dictionary.buy}
+      {locale === 'en' ? 'Buy' : 'შეიძინეთ'}
       {isLoading && <LoadingComponent />}
     </button>
   );

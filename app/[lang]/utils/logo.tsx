@@ -11,7 +11,6 @@ export default function Logo() {
         <g
           // className="logo-left"
           id="SvgjsG16782"
-          featurekey="nameLeftFeature-0"
           transform="matrix(2.4861879239010025,0,0,2.4861879239010025,-4.972375847802005,-13.07734904876253)"
           className="left"
           // fill="#000"
@@ -24,7 +23,6 @@ export default function Logo() {
         <g
           id="SvgjsG16783"
           // className="logo-mid"
-          featurekey="inlineSymbolFeature-0"
           transform="matrix(1.120770293955084,0,0,1.120770293955084,53.25648239616183,-38.082914720271305)"
           fill="#44BBA4"
         >
@@ -35,7 +33,6 @@ export default function Logo() {
         <g
           id="SvgjsG16784"
           // className="logo-right"
-          featurekey="nameRightFeature-0"
           transform="matrix(2.5714285714285716,0,0,2.5714285714285716,127.57142857142857,-14.142857142857144)"
           className="right "
           // fill="#000"
