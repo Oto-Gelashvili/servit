@@ -3,6 +3,8 @@ import React from 'react';
 import { useState } from 'react';
 import { getStripe } from '../../../../lib/stripe-client';
 import { Locale } from '../../../../get-dictionaries';
+import { Database } from '../../utils/database.types';
+import { X } from 'lucide-react';
 
 export const TierType = {
   BASIC: 'basic',
@@ -27,6 +29,7 @@ export interface SubTier {
   highlighted?: boolean;
   soldOut?: boolean;
   cta: string;
+  unsubscribe: string;
   tierType: string;
 }
 
@@ -61,12 +64,14 @@ interface Dictionary {
         description: string;
         features: string[];
         cta: string;
+        unsubscribe: string;
       };
       premium: {
         name: string;
         description: string;
         features: string[];
         cta: string;
+        unsubscribe: string;
       };
     };
   };
@@ -112,6 +117,7 @@ const getTiers = (dictionary: Dictionary): SubTier[] => [
     highlighted: false,
     soldOut: false,
     cta: dictionary.sub.tiers.basic.cta,
+    unsubscribe: dictionary.sub.tiers.basic.cta,
     tierType: TierType.BASIC,
   },
   {
@@ -125,6 +131,7 @@ const getTiers = (dictionary: Dictionary): SubTier[] => [
     highlighted: false,
     soldOut: false,
     cta: dictionary.sub.tiers.premium.cta,
+    unsubscribe: dictionary.sub.tiers.premium.unsubscribe,
     tierType: TierType.PREMIUM,
   },
 ];
@@ -150,60 +157,102 @@ const cn = (...args: (string | boolean | undefined | null)[]) =>
 export default function SubscriptionContent({
   dictionary,
   language,
+  profileData,
 }: {
   dictionary: Dictionary;
   language: Locale;
+  profileData: Database['public']['Tables']['profiles']['Row'];
 }) {
   const [frequency, setFrequency] = useState<SubTierFrequency>(
     getFrequencies(dictionary)[0]
   );
   const [loading, setLoading] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>('');
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [isSubscribed, setIsSubscribed] = useState(
+    !!profileData.subscription_id
+  );
+
   const tiers = getTiers(dictionary);
 
   const handleSubscription = async (tier: SubTier) => {
     try {
       setLoading(tier.id);
 
-      if (tier.id === '0') return; // Skip basic tier
+      if (tier.id === '0') return;
 
       const priceId =
         PRICE_IDS[tier.tierType as keyof PriceIds][
           frequency.value === '1' ? 'monthly' : 'annual'
         ][language];
+      if (!profileData.subscription_id) {
+        const response = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            priceId,
+            frequency: frequency.value,
+          }),
+        });
+        const { sessionId } = await response.json();
+        const stripe = await getStripe();
 
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          priceId,
-          frequency: frequency.value,
-        }),
-      });
+        if (!stripe) {
+          throw new Error('Failed to load Stripe');
+        }
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(
-          `HTTP error! status: ${response.status}, message: ${JSON.stringify(
-            errorData
-          )}`
-        );
-      }
+        const { error } = await stripe.redirectToCheckout({ sessionId });
+        if (error) {
+          throw error;
+        }
+      } else {
+        try {
+          const response = await fetch('/api/cancel-subscription', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              subscriptionId: profileData.subscription_id,
+            }),
+          });
 
-      const { sessionId } = await response.json();
-      const stripe = await getStripe();
+          const data = await response.json();
 
-      if (!stripe) {
-        throw new Error('Failed to load Stripe');
-      }
+          if (!response.ok) {
+            throw new Error(data.error || 'Failed to unsubscribe');
+          }
+          setIsSubscribed(false);
 
-      const { error } = await stripe.redirectToCheckout({ sessionId });
-      if (error) {
-        throw error;
+          {
+            language === 'en'
+              ? setSuccessMessage(
+                  'Your subscription will be canceled at the end of the billing period.'
+                )
+              : setSuccessMessage(
+                  'თქვენი გამოწერა გაუქმდება გადახდის პერიოდის დასრულებისას'
+                );
+          }
+        } catch (error) {
+          console.error('Error while unsubscribing:', error);
+          setErrorMessage(
+            error instanceof Error
+              ? error.message
+              : (error as { message?: string })?.message ||
+                  'An unknown error occurred'
+          );
+        }
       }
     } catch (error) {
       console.error('Detailed subscription error:', error);
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : (error as { message?: string })?.message ||
+              'An unknown error occurred'
+      );
     } finally {
       setLoading(null);
     }
@@ -211,6 +260,21 @@ export default function SubscriptionContent({
 
   return (
     <main className="sub-main">
+      {errorMessage && (
+        <div className="flex fixed top-[90%] left-1/2 translateMid bg-[var(--error)] rounded-lg p-4 items-center justify-between max-w-[280px] w-full text-2xl font-semibold text-center gap-4 text-white">
+          {errorMessage}
+          <X className="cursor-pointer" onClick={() => setErrorMessage(null)} />
+        </div>
+      )}
+      {successMessage && (
+        <div className="flex fixed top-[90%] left-1/2 translateMid bg-[var(--success)] rounded-lg p-4 items-center justify-between max-w-[280px] w-full text-2xl font-semibold text-center gap-4 text-white">
+          {successMessage}
+          <X
+            className="cursor-pointer"
+            onClick={() => setSuccessMessage(null)}
+          />
+        </div>
+      )}
       <div className="titles">
         <h1>{dictionary.sub.title}</h1>
         <p>{dictionary.sub.subtitle}</p>
@@ -274,7 +338,9 @@ export default function SubscriptionContent({
                 ? 'Loading...'
                 : tier.soldOut
                   ? 'Sold out'
-                  : tier.cta}
+                  : isSubscribed
+                    ? tier.unsubscribe
+                    : tier.cta}
             </button>
 
             <ul>

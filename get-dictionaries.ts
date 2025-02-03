@@ -108,6 +108,7 @@ export interface Dictionary {
   sub: {
     title: string;
     subtitle: string;
+
     frequencies: {
       monthly: string;
       annually: string;
@@ -122,12 +123,14 @@ export interface Dictionary {
         description: string;
         features: string[];
         cta: string;
+        unsubscribe: string;
       };
       premium: {
         name: string;
         description: string;
         features: string[];
         cta: string;
+        unsubscribe: string;
       };
     };
   };

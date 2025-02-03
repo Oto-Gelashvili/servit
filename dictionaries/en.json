@@ -122,7 +122,8 @@
           "Can manage services",
           "Can browse tasks"
         ],
-        "cta": "Free"
+        "cta": "Free",
+        "unsubscribe": "Free"
       },
       "premium": {
         "name": "Premium",
@@ -132,7 +133,8 @@
           "Can manage services",
           "Can manage tasks"
         ],
-        "cta": "Go Premium"
+        "cta": "Go Premium",
+        "unsubscribe": "Unsubscribe"
       }
     }
   },

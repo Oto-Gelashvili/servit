@@ -14,10 +14,26 @@ export default function PaymentResult(dictionary: Dictionary['payment']) {
   );
 
   useEffect(() => {
-    if (!sessionId) {
-      setStatus('failure');
-      return;
-    }
+    const checkSubscriptionStatus = async () => {
+      const supabase = createClient();
+      const userResponse = await supabase.auth.getUser();
+      const user_id = userResponse.data?.user?.id;
+
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('subscription_id')
+        .eq('id', user_id)
+        .maybeSingle();
+
+      if (error) {
+        console.error('Error fetching subscription status:', error);
+        setStatus('failure');
+      } else if (data?.subscription_id) {
+        setStatus('success');
+      } else {
+        setStatus('failure');
+      }
+    };
 
     const checkPaymentStatus = async () => {
       const supabase = createClient();
@@ -37,7 +53,11 @@ export default function PaymentResult(dictionary: Dictionary['payment']) {
       }
     };
 
-    checkPaymentStatus();
+    if (sessionId) {
+      checkPaymentStatus();
+    } else {
+      checkSubscriptionStatus();
+    }
   }, [sessionId]);
 
   return (

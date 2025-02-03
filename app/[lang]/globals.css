@@ -41,7 +41,10 @@
 .auth-layout header .logo-mid {
   fill: #a2a2a2;
 }
-
+.translateMid {
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
 /* .auth-layout header .looka-1j8o68f {
   width: 130px;
 } */

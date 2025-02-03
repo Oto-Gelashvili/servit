@@ -27,7 +27,8 @@
     "**/*.tsx",
     "app/[lang]/utils/logo.jsx",
     "app/api/create-subscription/route.js",
-    "app/[lang]/subscriptions/page.js"
+    "app/[lang]/subscriptions/page.js",
+    "app/api/cancel-subscription"
   ],
   "exclude": ["node_modules"]
 }

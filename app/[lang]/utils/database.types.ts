@@ -178,6 +178,7 @@ export interface Database {
           email: string;
           avatar_url: string;
           rating: number;
+          subscription_id: string;
         };
         Insert: {
           id: number;
@@ -185,6 +186,7 @@ export interface Database {
           email: string;
           avatar_url: string;
           rating: number;
+          subscription_id: string;
         };
         Update: {
           id: number;
@@ -192,6 +194,7 @@ export interface Database {
           email: string;
           avatar_url: string;
           rating: number;
+          subscription_id: string;
         };
       };
       products_ka: {

@@ -2,9 +2,6 @@
   max-width: 1200px;
   margin-inline: auto;
 }
-.translateMid {
-  transform: translate(-50%, -50%);
-}
 
 .serviceDetailsPage .heading {
   display: flex;
