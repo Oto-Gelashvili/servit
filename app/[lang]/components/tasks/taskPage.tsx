@@ -1,7 +1,7 @@
-import ServiceItem from './ServiceItem/ServiceItem';
 import { getServicesNeeds } from '../../utils/supabaseUtils';
 import { Dictionary, Locale } from '../../../../get-dictionaries';
-import Pagination from './components/Pagination';
+import Pagination from '../ServicesStuff/components/Pagination';
+import TaskItem from './taskItem';
 
 type ServicesPageProps = {
   searchParams?: {
@@ -18,7 +18,7 @@ type ServicesPageProps = {
   lang: Locale;
 };
 
-export default async function ServicesPage({
+export default async function TasksPage({
   searchParams = {},
   dictionary,
   lang,
@@ -30,8 +30,8 @@ export default async function ServicesPage({
   const categoryIds = searchParams.category
     ? searchParams.category.split(',').map(Number)
     : undefined;
-  const tableName = 'services';
-  const { data: services, count } = await getServicesNeeds(
+  const tableName = 'tasks';
+  const { data: tasks, count } = await getServicesNeeds(
     lang,
     currentPage,
     pageSize,
@@ -44,23 +44,18 @@ export default async function ServicesPage({
 
   return (
     <div className="flex-1 flex justify-center items-center flex-col">
-      <div className="services-list w-full">
-        {services.length === 0 ? (
-          <div className="no-results">{dictionary.notFound}</div>
+      <div className="tasks-list w-full">
+        {tasks.length === 0 ? (
+          <div className="no-results">{dictionary.notFoundTasks}</div>
         ) : (
-          services.map((service) => (
-            <ServiceItem
-              key={service.id}
+          tasks.map((task) => (
+            <TaskItem
+              key={task.id}
               lang={lang}
-              img={service.image_urls[0]}
-              desc={
-                lang === 'en' ? service.description_en : service.description_ka
-              }
-              price={service.price}
-              title={lang === 'en' ? service.title_en : service.title_ka}
-              id={service.id}
-              profileData={service.profiles}
-              categoryData={service.categories}
+              title={lang === 'en' ? task.title_en : task.title_ka}
+              id={task.id}
+              profileData={task.profiles}
+              categoryData={task.categories}
             />
           ))
         )}

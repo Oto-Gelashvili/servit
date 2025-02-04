@@ -59,6 +59,8 @@ export interface Dictionary {
 
   services: {
     heading2: string;
+    headingTasks: string;
+    notFoundTasks: string;
     contacts: string;
     msg: string;
     notFound: string;

@@ -26,6 +26,7 @@ export async function getServicesNeeds(
   lang: Locale,
   page: number = 1,
   pageSize: number = 24,
+  tableName: string,
   searchTerm?: string,
   sortOption?: string,
   categoryIds?: number[]
@@ -34,7 +35,7 @@ export async function getServicesNeeds(
   const to = page * pageSize - 1;
 
   let query = supabase
-    .from('services')
+    .from(tableName)
     .select(
       `*, 
        categories!categoryId (category_en, category_ka, id),
@@ -183,7 +184,7 @@ export async function getBookmarkedServices(userId: string) {
     .select(
       `*,
        bookmarks!inner(user_id, service_id),
-       categories!categoryId (category_en, category_ka,id),
+       categories!categoryId (category_en, category_ka),
        profiles!user_id (username, avatar_url, rating)`,
       { count: 'exact' }
     )

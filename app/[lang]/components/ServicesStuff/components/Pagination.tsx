@@ -1,10 +1,9 @@
-// components/Pagination.tsx
 'use client';
 
-import { useState } from 'react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { Dictionary, Locale } from '../../../../../get-dictionaries';
-import LoadingComponent from '../../../(main)/loading';
+import { useTransition } from 'react';
+import LoadingComponent from '../../../utils/loadingForPagination';
 
 export default function Pagination({
   totalPages,
@@ -16,14 +15,10 @@ export default function Pagination({
   lang: Locale;
   dictionary: Dictionary['services'];
 }) {
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
-  // useEffect(() => {
-  //   setIsLoading(false);
-  // }, [currentPage]);
+  const [isPending, startTransition] = useTransition();
 
   const getHref = (page: number) => {
     const params = new URLSearchParams(searchParams);
@@ -32,19 +27,20 @@ export default function Pagination({
   };
 
   const handleNavigation = (page: number) => {
-    setIsLoading(true);
-    router.push(getHref(page));
+    startTransition(() => {
+      router.push(getHref(page));
+    });
   };
 
   return (
-    <div className="pagination">
-      {isLoading && <LoadingComponent />}
+    <div className="pagination relative">
+      {isPending && <LoadingComponent />}
 
       {currentPage > 1 && (
         <button
           onClick={() => handleNavigation(currentPage - 1)}
           className="pagination-link"
-          disabled={isLoading}
+          disabled={isPending}
         >
           {dictionary.prev}
         </button>
@@ -55,7 +51,7 @@ export default function Pagination({
           key={page}
           onClick={() => handleNavigation(page)}
           className={`pagination-link ${currentPage === page ? 'active' : ''}`}
-          disabled={isLoading || currentPage === page}
+          disabled={currentPage === page || isPending}
         >
           {page}
         </button>
@@ -65,7 +61,7 @@ export default function Pagination({
         <button
           onClick={() => handleNavigation(currentPage + 1)}
           className="pagination-link"
-          disabled={isLoading}
+          disabled={isPending}
         >
           {dictionary.next}
         </button>

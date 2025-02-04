@@ -1,11 +1,11 @@
-import '../services/Services.css';
-import ServicesPage from '../../components/ServicesStuff/ServicesPage';
+import './tasks.css';
 import SearchBar from '../../components/ServicesStuff/components/searchBar';
 import { getDictionary, Locale } from '../../../../get-dictionaries';
 import Logo from '../../utils/logo';
 import { Metadata } from 'next';
 import CategorySelector from '../../components/ServicesStuff/components/ServiceCategorySelector';
 import { getAllItems } from '../../utils/supabaseUtils';
+import TasksPage from '../../components/tasks/taskPage';
 
 interface ServicesProps {
   params: {
@@ -55,7 +55,7 @@ export default async function Services({
     <main className=" task-main flex flex-col">
       <div className="heading">
         <Logo />
-        <h2>{dictionary.heading2}</h2>
+        <h2>{dictionary.headingTasks}</h2>
       </div>
       <section id="filtering">
         <SearchBar />
@@ -67,7 +67,7 @@ export default async function Services({
           />
         </div>
       </section>
-      <ServicesPage
+      <TasksPage
         dictionary={dictionary}
         searchParams={searchParams}
         lang={params.lang}

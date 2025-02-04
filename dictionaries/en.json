@@ -58,9 +58,11 @@
 
   "services": {
     "heading2": "Let Skills Meet Opportunities!",
+    "headingTasks": "Help community with their tasks",
     "contacts": "Contacts:",
     "msg": "Send a Message",
     "notFound": "No services found matching your search.",
+    "notFoundTasks": "No Tasks found matching your search.",
     "next": "Next",
     "prev": "Previous",
     "metaTitle": "Services",
