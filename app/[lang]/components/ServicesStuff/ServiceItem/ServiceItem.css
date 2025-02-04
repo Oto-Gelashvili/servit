@@ -42,7 +42,7 @@
   flex-direction: column;
   gap: 1.2rem;
 }
-.service-item .text-container h6 {
+.service-item .text-container button {
   display: flex;
   font-size: 1.4rem;
   overflow: hidden;
@@ -56,7 +56,7 @@
   transition: 0.4s;
 }
 
-.service-item .text-container h6:hover {
+.service-item .text-container button:hover {
   background-color: var(--primary-color);
   color: #fff;
 }

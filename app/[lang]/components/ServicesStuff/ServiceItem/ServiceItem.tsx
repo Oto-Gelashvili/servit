@@ -3,9 +3,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
 import { Database } from '../../../utils/database.types';
+import CategoryLink from '../components/categoryLink';
+import { Locale } from '../../../../../get-dictionaries';
 
 interface ServiceItemProps {
-  lang: string;
+  lang: Locale;
   id: number;
   img: string;
   title: string;
@@ -45,13 +47,7 @@ export default async function ServiceItem({
           />
         </div>
         <div className="text-container">
-          <h6>
-            {lang === 'en' ? (
-              <p>{categoryData.category_en}</p>
-            ) : (
-              <p>{categoryData.category_ka}</p>
-            )}
-          </h6>
+          <CategoryLink lang={lang} categoryData={categoryData} />
           <h2>
             <div>{title}</div>
           </h2>
