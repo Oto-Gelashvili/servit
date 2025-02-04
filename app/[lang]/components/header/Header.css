@@ -304,7 +304,7 @@ header a:active {
   min-height: 450px;
   height: calc(100vh - 7rem);
   position: absolute;
-  z-index: 10;
+  z-index: 100;
   background: var(--accent-color);
   flex-direction: column;
   display: flex;
