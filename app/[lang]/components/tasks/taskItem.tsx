@@ -21,7 +21,7 @@ export default async function TaskItem({
 }: TaskItemProps) {
   return (
     <div className="task-item">
-      <Link href={'/'} className="info">
+      <Link href={`/${lang}/profile/${profileData.user_slug}`} className="info">
         <div className="profile-info">
           <div className="w-[32px]">
             <Image

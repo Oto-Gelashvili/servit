@@ -45,12 +45,14 @@ export default async function MainLayout({
           dictionary={dictionary['header']}
           avatar={profileData?.avatar_url}
           username={profileData?.username}
+          slug={profileData.user_slug}
         />
         <HamburgerDropdown
           lang={params.lang}
           dictionary={dictionary['header']}
           avatar={profileData?.avatar_url}
           username={profileData?.username}
+          slug={profileData.user_slug}
         />
         {children}
       </HamburgerProvider>

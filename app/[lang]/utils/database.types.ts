@@ -122,6 +122,7 @@ export interface Database {
           avatar_url: string;
           rating: number;
           subscription_id: string;
+          user_slug: string;
         };
         Insert: {
           id: number;
@@ -130,6 +131,7 @@ export interface Database {
           avatar_url: string;
           rating: number;
           subscription_id: string;
+          user_slug: string;
         };
         Update: {
           id: number;
@@ -138,6 +140,7 @@ export interface Database {
           avatar_url: string;
           rating: number;
           subscription_id: string;
+          user_slug: string;
         };
       };
     };

@@ -39,7 +39,7 @@ export async function getServicesNeeds(
     .select(
       `*, 
        categories!categoryId (category_en, category_ka, id),
-       profiles!user_id (username, avatar_url, rating)`,
+       profiles!user_id (username, avatar_url, rating,user_slug)`,
       { count: 'exact' }
     )
     .not(`title_${lang}`, 'is', null)
@@ -185,7 +185,7 @@ export async function getBookmarkedServices(userId: string) {
       `*,
        bookmarks!inner(user_id, service_id),
        categories!categoryId (category_en, category_ka),
-       profiles!user_id (username, avatar_url, rating)`,
+       profiles!user_id (username, avatar_url, rating,user_slug)`,
       { count: 'exact' }
     )
     .eq('bookmarks.user_id', userId);

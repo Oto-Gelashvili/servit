@@ -10,6 +10,9 @@ import Avatar from './avatar';
 import Nav from './nav';
 import Link from 'next/link';
 import { Hamburger } from '../../utils/hamburger';
+import { createClient } from '../../../../utils/supabase/server';
+import { Database } from '../../utils/database.types';
+// import { Database } from '../../utils/database.types';
 
 export interface HeaderLangProps {
   lang: Locale;
@@ -18,10 +21,33 @@ export interface HeaderLangProps {
 export interface avatarProps {
   avatar: string;
   username: string;
+  slug: string;
 }
 
 export interface HeaderProps extends HeaderLangProps, avatarProps {}
-const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, username }) => {
+const Header: FC<HeaderProps> = async ({
+  lang,
+  dictionary,
+  avatar,
+  username,
+}) => {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const userId = user?.id;
+
+  const { data: slugData } = (await supabase
+    .from('profiles')
+    .select('user_slug')
+    .eq('id', userId)
+    .single()) as {
+    data: Database['public']['Tables']['profiles']['Row'];
+    error: Error | null;
+  };
+  const slug = slugData?.user_slug;
+
   return (
     <header>
       <div className="navCont">
@@ -45,6 +71,7 @@ const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, username }) => {
           username={username}
           dictionary={dictionary}
           lang={lang}
+          slug={slug}
         />
       </div>
       <Hamburger
@@ -52,6 +79,7 @@ const Header: FC<HeaderProps> = ({ lang, dictionary, avatar, username }) => {
         dictionary={dictionary}
         avatar={avatar}
         username={username}
+        slug={slug}
       />
     </header>
   );

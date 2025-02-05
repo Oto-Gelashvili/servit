@@ -12,6 +12,7 @@ export default function ProfileDropdown({
   username,
   dictionary,
   lang,
+  slug,
 }: HeaderProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
@@ -75,7 +76,7 @@ export default function ProfileDropdown({
         className={`profile-dropdown ${isDropdownOpen ? 'flex' : 'hidden'}`}
       >
         <p className="mail">{username}</p>
-        <Link href={`/${lang}/profile`}>{dictionary.profile}</Link>
+        <Link href={`/${lang}/profile/${slug}`}>{dictionary.profile}</Link>
         <Link href={`/${lang}/bookmarks`}>{dictionary.bookmarks}</Link>
         <Link href={`/${lang}/createTask`}>{dictionary.createTasks}</Link>
 

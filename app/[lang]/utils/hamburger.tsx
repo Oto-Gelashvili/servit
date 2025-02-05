@@ -74,6 +74,7 @@ export const HamburgerDropdown: React.FC<HeaderProps> = ({
   lang,
   dictionary,
   avatar,
+  slug,
 }) => {
   const { isOpen } = React.useContext(HamburgerContext);
   const pathname = usePathname();
@@ -125,7 +126,7 @@ export const HamburgerDropdown: React.FC<HeaderProps> = ({
 
       <Link
         className="dropdown-link cursor-pointer  flex justify-between"
-        href={`/${lang}/profile`}
+        href={`/${lang}/profile/${slug}`}
       >
         <div
           data-cy="avatar"

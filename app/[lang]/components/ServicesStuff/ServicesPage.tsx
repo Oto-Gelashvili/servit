@@ -23,7 +23,7 @@ export default async function ServicesPage({
   dictionary,
   lang,
 }: ServicesPageProps) {
-  const pageSize = 1;
+  const pageSize = 24;
   const currentPage = searchParams.page ? Number(searchParams.page) : 1;
   const searchTerm = searchParams.search || '';
   const sortOption = searchParams.sort || '';
