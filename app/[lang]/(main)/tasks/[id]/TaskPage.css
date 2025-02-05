@@ -112,7 +112,7 @@
   justify-self: end;
   gap: 0.4rem;
 }
-.taskDetailsPage .profileCont .rating {
+.taskDetailsPage .rating {
   display: flex;
   align-items: center;
   color: var(--primary-color);
@@ -120,8 +120,9 @@
   position: absolute;
   top: 5%;
   right: 5%;
+  z-index: 100;
 }
-.taskDetailsPage .profileCont .rating svg {
+.taskDetailsPage .rating svg {
   fill: var(--primary-color);
   width: 20px;
 }
@@ -159,6 +160,7 @@
   padding: 2.4rem;
   border-radius: 8px;
   align-items: center;
+  position: relative;
 }
 @media only screen and (max-width: 700px) {
   .taskDetailsPage .gridCont {

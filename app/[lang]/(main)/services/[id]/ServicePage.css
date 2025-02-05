@@ -65,6 +65,9 @@
   font-weight: 400;
   border: 1px solid transparent;
 }
+.serviceDetailsPage .buyBtn {
+  width: 100%;
+}
 .serviceDetailsPage .editBtn:hover,
 .serviceDetailsPage .buyBtn:hover,
 .serviceDetailsPage .bookmark-button:hover {
@@ -163,6 +166,7 @@
   width: 100%;
   background-color: var(--border-color);
   border-radius: 8px;
+  padding: 1.2rem;
 }
 .serviceDetailsPage .deleteBtn {
   background-color: var(--error);
@@ -182,6 +186,7 @@
 }
 .serviceDetailsPage .price {
   color: var(--text-color);
+  text-align: center;
   font-size: 1.6rem;
 }
 .serviceDetailsPage .cont {

@@ -163,7 +163,7 @@ export async function getById(id: string | number, tableName: string) {
     .select(
       `*, 
        categories!categoryId (category_en, category_ka),
-       profiles!user_id (username, avatar_url, rating)`
+       profiles!user_id (username, avatar_url, rating, user_slug)`
     )
     .eq('id', id)
     .single();

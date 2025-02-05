@@ -104,12 +104,15 @@ export default async function serviceDetailsPage({
                 tableName={'tasks'}
               />
             )}
-          </div>
-          <div className="profileCont">
             <div className="rating">
               <p>{Number(task.profiles.rating).toFixed(2)}</p>
               <Star />
-            </div>{' '}
+            </div>
+          </div>
+          <Link
+            href={`/${params.lang}/profile/${task.profiles.user_slug}`}
+            className="profileCont"
+          >
             <Image
               src={
                 task.profiles.avatar_url
@@ -122,7 +125,7 @@ export default async function serviceDetailsPage({
               className="avatar"
             />
             <p className="username">{task.profiles.username}</p>
-          </div>
+          </Link>
         </div>
         <div className="desc">
           <h2>{dictionary.desc}</h2>

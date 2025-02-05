@@ -132,7 +132,10 @@ export default async function serviceDetailsPage({
               <BuyButton product={service} locale={params.lang} />
             )}
           </div>
-          <div className="profileCont">
+          <Link
+            href={`/${params.lang}/profile/${service.profiles.user_slug}`}
+            className="profileCont"
+          >
             <div className="rating">
               <p>{Number(service.profiles.rating).toFixed(2)}</p>
               <Star />
@@ -149,7 +152,7 @@ export default async function serviceDetailsPage({
               className="avatar"
             />
             <p className="username">{service.profiles.username}</p>
-          </div>
+          </Link>
         </div>
         <div className="desc">
           <h2>{dictionary.desc}</h2>
