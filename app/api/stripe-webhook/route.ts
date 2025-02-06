@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { createClient } from '../../../utils/supabase/service';
+import { createClientService } from '../../../utils/supabase/service';
 
 // export const runtime = 'edge'; // This line sets the runtime to Edge Functions (optional based on your setup)
 
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
     const paymentIntentId = session.payment_intent as string;
 
     try {
-      const supabase = await createClient({
+      const supabase = await createClientService({
         serviceRole: process.env.SUPABASE_SERVICE_ROLE_KEY,
       });
       if (session.mode === 'subscription' && session.subscription) {

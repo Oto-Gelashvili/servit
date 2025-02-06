@@ -1,5 +1,6 @@
 import { Database } from '../../../utils/database.types';
 import { createClient } from '../../../../../utils/supabase/server';
+import { createClientService } from '../../../../../utils/supabase/service';
 import ProfileForm from '../../../components/profile/profileForm';
 import { getDictionary, Locale } from '../../../../../get-dictionaries';
 import NotFound from '../../../components/notFound/notFound';
@@ -11,7 +12,7 @@ import UsedServices from '../../../components/profile/usedServices/usedServices'
 const locales = ['en', 'ka'];
 
 export async function generateStaticParams() {
-  const supabase = await createClient();
+  const supabase = await createClientService();
 
   const { data: profiles } = await supabase
     .from('profiles')

@@ -6,6 +6,7 @@ import { Metadata } from 'next';
 import CategorySelector from '../../components/ServicesStuff/components/ServiceCategorySelector';
 import { getAllItems } from '../../utils/supabaseUtils';
 import TasksPage from '../../components/tasks/taskPage';
+import { createClientService } from '../../../../utils/supabase/service';
 
 interface ServicesProps {
   params: {
@@ -40,8 +41,21 @@ export async function generateMetadata({
     },
   };
 }
+
 export async function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'ka' }];
+  const supabase = await createClientService();
+  const locales = ['en', 'ka'];
+
+  const { data: tasks } = await supabase.from('tasks').select('id');
+
+  if (!tasks) return [];
+
+  return tasks.flatMap((task) =>
+    locales.map((lang) => ({
+      id: task.id.toString(),
+      lang,
+    }))
+  );
 }
 
 export default async function Services({

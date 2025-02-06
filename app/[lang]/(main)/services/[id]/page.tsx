@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getDictionary, Locale } from '../../../../../get-dictionaries';
 import { createClient } from '../../../../../utils/supabase/server';
-import { getAllItems, getById } from '../../../utils/supabaseUtils';
+import { getById } from '../../../utils/supabaseUtils';
 import './ServicePage.css';
 import { Metadata } from 'next';
 import BuyButton from '../../../components/ServicesStuff/components/BuyButton';
@@ -10,22 +10,26 @@ import BookmarkButton from '../../../components/ServicesStuff/components/bookmar
 import Image from 'next/image';
 import ImageSlider from '../../../components/ServicesStuff/components/imageSlider';
 import { Star } from 'lucide-react';
+import { createClientService } from '../../../../../utils/supabase/service';
 
 interface ServiceDetailsPageProps {
   params: { id: string | number; lang: Locale };
 }
+
 export async function generateStaticParams() {
-  const services = await getAllItems('services');
+  const supabase = await createClientService();
   const locales = ['en', 'ka'];
 
-  const paths = services.flatMap((service) =>
+  const { data: services } = await supabase.from('profiles').select('id');
+
+  if (!services) return [];
+
+  return services.flatMap((service) =>
     locales.map((lang) => ({
       id: service.id.toString(),
       lang,
     }))
   );
-
-  return paths;
 }
 
 export async function generateMetadata({

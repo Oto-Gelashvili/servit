@@ -1,6 +1,8 @@
 import { Dictionary, Locale } from '../../../../../get-dictionaries';
 import { Database } from '../../../utils/database.types';
 import ServiceItem from '../../ServicesStuff/ServiceItem/ServiceItem';
+// import { CustomScroll } from 'react-custom-scroll';
+
 import './postedServices.css';
 interface PostedServicesProps {
   lang: Locale;
