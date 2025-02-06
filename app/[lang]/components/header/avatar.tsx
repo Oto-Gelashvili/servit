@@ -57,18 +57,20 @@ export default function ProfileDropdown({
         onClick={toggleDropdown}
         className="profile-icon cursor-pointer rounded-full"
       >
-        {avatar ? (
-          <Image
-            src={avatar}
-            alt="User profile"
-            width={36}
-            height={36}
-            className="rounded-full"
-            loading="lazy"
-          />
-        ) : (
-          <CircleUser size={32} className="circleUser" />
-        )}
+        <div className="w-[32px] relative h-[32px]">
+          {avatar ? (
+            <Image
+              src={avatar}
+              alt="User profile"
+              fill
+              sizes="32px"
+              className="rounded-full"
+              loading="lazy"
+            />
+          ) : (
+            <CircleUser size={32} className="circleUser" />
+          )}
+        </div>
       </div>
 
       <div

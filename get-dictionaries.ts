@@ -90,6 +90,14 @@ export interface Dictionary {
     title: string;
     name: string;
     mail: string;
+    username: string;
+    phone: string;
+    numberReq: string;
+    bio: string;
+    globalError: string;
+    loading: string;
+    submit: string;
+    success: string;
   };
   sub: {
     title: string;

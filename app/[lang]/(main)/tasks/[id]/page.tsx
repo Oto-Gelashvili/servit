@@ -113,17 +113,19 @@ export default async function serviceDetailsPage({
             href={`/${params.lang}/profile/${task.profiles.user_slug}`}
             className="profileCont"
           >
-            <Image
-              src={
-                task.profiles.avatar_url
-                  ? task.profiles.avatar_url
-                  : '/images/anonProfile.jpg'
-              }
-              alt="Service Avatar"
-              width={80}
-              height={80}
-              className="avatar"
-            />
+            <div className="relative w-[80px] h-[80px]">
+              <Image
+                src={
+                  task.profiles.avatar_url
+                    ? task.profiles.avatar_url
+                    : '/images/anonProfile.jpg'
+                }
+                alt="Service Avatar"
+                fill
+                sizes="80px"
+                className="avatar"
+              />
+            </div>
             <p className="username">{task.profiles.username}</p>
           </Link>
         </div>

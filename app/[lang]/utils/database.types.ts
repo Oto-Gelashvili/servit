@@ -123,6 +123,8 @@ export interface Database {
           rating: number;
           subscription_id: string;
           user_slug: string;
+          bio: string;
+          phone: string;
         };
         Insert: {
           id: number;
@@ -132,6 +134,8 @@ export interface Database {
           rating: number;
           subscription_id: string;
           user_slug: string;
+          bio: string;
+          phone: string;
         };
         Update: {
           id: number;
@@ -141,6 +145,8 @@ export interface Database {
           rating: number;
           subscription_id: string;
           user_slug: string;
+          bio: string;
+          phone: string;
         };
       };
     };

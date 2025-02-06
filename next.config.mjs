@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      'cdn.dummyjson.com',
-      'lh3.googleusercontent.com',
-      'xokcbkhdwtmekcclfkwl.supabase.co',
-      'rkztyyanbfhhmqicfozg.supabase.co',
-      'avatars.githubusercontent.com',
+    remotePatterns: [
+      { protocol: 'https', hostname: 'cdn.dummyjson.com' },
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+      { protocol: 'https', hostname: 'xokcbkhdwtmekcclfkwl.supabase.co' },
+      { protocol: 'https', hostname: 'rkztyyanbfhhmqicfozg.supabase.co' },
+      { protocol: 'https', hostname: 'avatars.githubusercontent.com' },
     ],
   },
 };

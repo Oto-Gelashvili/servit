@@ -197,7 +197,7 @@
   padding-inline: 1.2rem;
   border-left: 1px solid var(--border-color);
 }
-.category-button {
+.task-item .category-button {
   place-items: center;
   max-height: 100%;
   text-align: center;

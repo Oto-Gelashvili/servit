@@ -88,7 +88,15 @@
   "profile": {
     "title": "'s Profile",
     "name": "Full name:",
-    "mail": "Mail:"
+    "mail": "Mail",
+    "username": "Username",
+    "phone": "Phone Number",
+    "numberReq": "Not a valid number",
+    "bio": "Bio",
+    "globalError": "Error occured scroll up to view the problem",
+    "loading": "Updating...",
+    "submit": "Submit",
+    "success": "Profile Updated"
   },
   "sub": {
     "title": "Choose Your Plan",

@@ -1,0 +1,89 @@
+.avatarCont .selectedImage {
+  object-fit: cover;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  top: 0;
+}
+.avatarCont {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+.avatarCont .currentImage {
+  border-radius: 50%;
+  cursor: pointer;
+  object-fit: cover;
+  z-index: 1;
+  position: relative;
+}
+.profileForm {
+  background-color: var(--border-color);
+  width: clamp(250px, 100%, 300px);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  color: var(--text-color);
+  padding: 2.4rem;
+  border-radius: 8px;
+}
+.profileForm .ratingCont {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+}
+.profileForm .rating {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: var(--primary-color);
+}
+.profileForm .rating svg {
+  fill: var(--primary-color);
+  width: 18px;
+}
+.profileForm .profileInputCont {
+  width: 100%;
+}
+.profileForm h3 {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.profileForm .profileInputCont input,
+.profileForm .profileInputCont textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-size: 1.4rem;
+}
+.profileForm .profileInputCont input:disabled {
+  background-color: transparent;
+  padding-left: 0;
+  color: var(--primary-color);
+}
+.profileForm .submitBtn {
+  background: var(--primary-color);
+  padding: 0.6rem;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.profileForm .submitBtn:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.profileForm .error {
+  color: var(--error);
+  font-size: 1.2rem;
+  margin-top: 2px;
+}

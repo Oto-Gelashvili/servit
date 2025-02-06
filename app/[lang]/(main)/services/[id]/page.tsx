@@ -140,17 +140,19 @@ export default async function serviceDetailsPage({
               <p>{Number(service.profiles.rating).toFixed(2)}</p>
               <Star />
             </div>{' '}
-            <Image
-              src={
-                service.profiles.avatar_url
-                  ? service.profiles.avatar_url
-                  : '/images/anonProfile.jpg'
-              }
-              alt="Service Avatar"
-              width={80}
-              height={80}
-              className="avatar"
-            />
+            <div className="relative w-[80px] h-[80px]">
+              <Image
+                src={
+                  service.profiles.avatar_url
+                    ? service.profiles.avatar_url
+                    : '/images/anonProfile.jpg'
+                }
+                alt="Service Avatar"
+                fill
+                sizes="80px"
+                className="avatar"
+              />
+            </div>
             <p className="username">{service.profiles.username}</p>
           </Link>
         </div>
