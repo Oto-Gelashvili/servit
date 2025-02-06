@@ -56,10 +56,7 @@ export default function DeleteButton({
 
       {isModalOpen && (
         <div className="fixed top-1/2 left-1/2 translateMid bg-[var(--accent-color)] border border-[var(--border-color)] rounded-lg p-6 max-w-md w-full z-50">
-          <h3
-            className="text-3xl font-semibold mb-4 text-center text-[var(--secondary-color)]"
-            data-cy="confirmBtn"
-          >
+          <h3 className="text-3xl font-semibold mb-4 text-center text-[var(--secondary-color)]">
             {dictionary.confirm_delete_title}
           </h3>
           <p className="mb-6 text-2xl text-[var(--text-color)] text-center">
@@ -73,6 +70,7 @@ export default function DeleteButton({
               {dictionary.cancel}
             </button>
             <button
+              data-cy="confirmBtn"
               onClick={handleDelete}
               className="px-4 py-3 text-2xl text-white bg-[var(--error)] hover:scale-105 border border-transparent rounded-lg w-20  transition "
             >
