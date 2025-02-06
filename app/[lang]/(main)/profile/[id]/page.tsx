@@ -7,6 +7,26 @@ import ProfileFormDisabled from '../../../components/profile/profileFormDisabled
 import './profile.css';
 import PostedServices from '../../../components/profile/postedServices/postedServices';
 import UsedServices from '../../../components/profile/usedServices/usedServices';
+
+const locales = ['en', 'ka'];
+
+export async function generateStaticParams() {
+  const supabase = await createClient();
+
+  const { data: profiles } = await supabase
+    .from('profiles')
+    .select('user_slug');
+
+  if (!profiles) return [];
+
+  return profiles.flatMap((profile) =>
+    locales.map((lang) => ({
+      id: profile.user_slug,
+      lang,
+    }))
+  );
+}
+
 export default async function ProfilePage({
   params,
   searchParams,
