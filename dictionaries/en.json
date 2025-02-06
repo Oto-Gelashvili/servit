@@ -79,7 +79,9 @@
     "bookmark_error": "Bookmark Operation Error",
     "edit": "Edit",
     "price": "Price",
-    "desc": "Description"
+    "desc": "Description",
+    "usedServices": "Used Services",
+    "postedServices": "Posted Services"
   },
 
   "language": {

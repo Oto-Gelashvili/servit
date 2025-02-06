@@ -60,12 +60,12 @@
   "services": {
     "heading2": "აქ უნარები შესაძლებლებობს პოულობენ",
     "headingTasks": "Help community with their tasks",
-
+    "usedServices": "გამოყენებული სერვისები",
+    "postedServices": "თქვენი სერვისები",
     "contacts": "კონტაქტები:",
     "msg": "გააგზავნეთ მესიჯი",
     "notFound": "მსგავსი სერვისი ვერ მოიძებნა.",
     "notFoundTasks": "მსგავსი დავალება ვერ მოიძებნა.",
-
     "next": "წინ",
     "prev": "უკან",
     "metaTitle": "სერვისები",

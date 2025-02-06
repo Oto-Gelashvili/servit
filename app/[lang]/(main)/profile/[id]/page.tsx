@@ -4,7 +4,9 @@ import ProfileForm from '../../../components/profile/profileForm';
 import { getDictionary, Locale } from '../../../../../get-dictionaries';
 import NotFound from '../../../components/notFound/notFound';
 import ProfileFormDisabled from '../../../components/profile/profileFormDisabled';
-
+import './profile.css';
+import PostedServices from '../../../components/profile/postedServices/postedServices';
+import UsedServices from '../../../components/profile/usedServices/usedServices';
 export default async function ProfilePage({
   params,
   searchParams,
@@ -13,45 +15,83 @@ export default async function ProfilePage({
   searchParams: { error?: string; success: string };
 }) {
   const supabase = await createClient();
-  const { data: usersProfile } = (await supabase
+
+  const { data: profile, error } = (await supabase
     .from('profiles')
-    .select('*')
+    .select(
+      `
+    *,
+    services (
+      *,
+      categories: categories(category_en, category_ka, id)
+    ),
+    usedServices (
+      *,
+      service: services!service_id(
+        *,
+        categories: categories(category_en, category_ka, id)
+      )
+    )
+  `
+    )
     .eq('user_slug', params.id)
     .single()) as {
-    data: Database['public']['Tables']['profiles']['Row'];
+    data: Database['public']['Tables']['profiles']['Row'] & {
+      services: (Database['public']['Tables']['services']['Row'] & {
+        categories: Database['public']['Tables']['categories']['Row'];
+      })[];
+      usedServices: (Database['public']['Tables']['usedService']['Row'] & {
+        service: Database['public']['Tables']['services']['Row'] & {
+          categories: Database['public']['Tables']['categories']['Row'];
+        };
+      })[];
+    };
     error: Error | null;
   };
 
-  if (!usersProfile) return <NotFound />;
-  const dictionary = (await getDictionary(params.lang)).profile;
+  if (error) {
+    return <NotFound />;
+  }
+
   const {
     data: { user },
   } = await supabase.auth.getUser();
+  const users = {
+    id: profile.id,
+    username: profile.username,
+    avatar_url: profile.avatar_url,
+    bio: profile.bio,
+    email: profile.email,
+    phone: profile.phone,
+    rating: profile.rating,
+    user_slug: profile.user_slug,
+    subscription_id: profile.subscription_id,
+  };
+  const dictionary = await getDictionary(params.lang);
   return (
-    <main>
-      {user?.id === usersProfile.id.toString() ? (
+    <main className="profile-main">
+      {user?.id === profile.id.toString() ? (
         <ProfileForm
           lang={params.lang}
-          dictionary={dictionary}
-          users={usersProfile}
+          dictionary={dictionary.profile}
+          users={users}
           searchParams={searchParams}
-          currentImage={
-            usersProfile.avatar_url
-              ? usersProfile.avatar_url
-              : '/images/anonProfile.jpg'
-          }
         />
       ) : (
-        <ProfileFormDisabled
-          currentImage={
-            usersProfile.avatar_url
-              ? usersProfile.avatar_url
-              : '/images/anonProfile.jpg'
-          }
-          dictionary={dictionary}
-          users={usersProfile}
-        />
+        <ProfileFormDisabled dictionary={dictionary.profile} users={users} />
       )}
+      <PostedServices
+        lang={params.lang}
+        dictionary={dictionary.services}
+        services={profile.services}
+        usersProfile={users}
+      />
+      <UsedServices
+        lang={params.lang}
+        dictionary={dictionary.services}
+        usedServices={profile.usedServices}
+        usersProfile={users}
+      />
     </main>
   );
 }

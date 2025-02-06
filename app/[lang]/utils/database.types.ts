@@ -114,6 +114,33 @@ export interface Database {
           category_ka?: string;
         };
       };
+      usedService: {
+        Row: {
+          id: number;
+          user_id: number;
+          date: string;
+          session_id: string;
+          service_id: number;
+          service?: Database['public']['Tables']['services']['Row'] & {
+            categories: Database['public']['Tables']['categories']['Row'][]; // Nested categories
+          };
+        };
+        Insert: {
+          id: number;
+          user_id: number;
+          date: string;
+          session_id: string;
+          service_id: number;
+        };
+        Update: {
+          id: number;
+          user_id: number;
+          date: string;
+          session_id: string;
+          service_id: number;
+        };
+      };
+
       profiles: {
         Row: {
           id: number;

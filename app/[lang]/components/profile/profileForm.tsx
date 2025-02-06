@@ -7,14 +7,12 @@ import { SubmitButton } from '../../utils/submitButton';
 import UpdateProfile from '../../actions/updateProfile';
 interface profilePageProps {
   lang: Locale;
-  currentImage: string;
   users: Database['public']['Tables']['profiles']['Row'];
   dictionary: Dictionary['profile'];
   searchParams: { error?: string; success: string };
 }
 export default async function ProfileForm({
   lang,
-  currentImage,
   users,
   dictionary,
   searchParams,
@@ -30,7 +28,11 @@ export default async function ProfileForm({
       />
 
       <div className="ratingCont">
-        <ImageUploader currentImage={currentImage} />
+        <ImageUploader
+          currentImage={
+            users.avatar_url ? users.avatar_url : '/images/anonProfile.jpg'
+          }
+        />
         <div className="rating">
           <p>{Number(users.rating).toFixed(2)}</p>
           <Star />

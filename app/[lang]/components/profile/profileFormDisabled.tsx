@@ -5,12 +5,10 @@ import './profileForm.css';
 import UpdateProfile from '../../actions/updateProfile';
 import Image from 'next/image';
 interface profilePageProps {
-  currentImage: string;
   users: Database['public']['Tables']['profiles']['Row'];
   dictionary: Dictionary['profile'];
 }
 export default async function ProfileFormDisabled({
-  currentImage,
   users,
   dictionary,
 }: profilePageProps) {
@@ -19,7 +17,9 @@ export default async function ProfileFormDisabled({
       <div className="ratingCont">
         <div className="relative w-[80px] h-[80px] ">
           <Image
-            src={currentImage}
+            src={
+              users.avatar_url ? users.avatar_url : '/images/anonProfile.jpg'
+            }
             sizes="80px"
             className="rounded-[50%]"
             fill
