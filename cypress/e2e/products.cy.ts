@@ -48,7 +48,7 @@ describe('Products', () => {
       body: { success: false, error: 'Something went wrong' },
     }).as('deleteProductFail');
 
-    cy.get('[data-cy="delBtn"]').click();
+    cy.get('[data-cy="delete-product-btn"]').click();
     cy.get('[data-cy="confirmBtn"]').click();
 
     cy.wait('@deleteProductFail').then((interception) => {
