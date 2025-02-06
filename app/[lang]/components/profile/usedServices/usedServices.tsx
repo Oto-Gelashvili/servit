@@ -22,32 +22,29 @@ export default function UsedServices({
   return (
     <div className="usedServicesCont">
       <h2>{dictionary.usedServices}</h2>
+
       <div className="servicesCont ">
-        {usedServices.length === 0 ? (
-          <div className="no-results">{dictionary.notFound}</div>
-        ) : (
-          usedServices.map((usedService) => (
-            <ServiceItem
-              key={usedService.id}
-              lang={lang}
-              img={usedService.service?.image_urls?.[0]}
-              desc={
-                lang === 'en'
-                  ? usedService.service.description_en
-                  : usedService.service.description_ka
-              }
-              price={usedService.service.price}
-              title={
-                lang === 'en'
-                  ? usedService.service.title_en
-                  : usedService.service.title_ka
-              }
-              id={usedService.id}
-              profileData={usersProfile}
-              categoryData={usedService.service.categories}
-            />
-          ))
-        )}
+        {usedServices.map((usedService) => (
+          <ServiceItem
+            key={usedService.id}
+            lang={lang}
+            img={usedService.service?.image_urls?.[0]}
+            desc={
+              lang === 'en'
+                ? usedService.service.description_en
+                : usedService.service.description_ka
+            }
+            price={usedService.service.price}
+            title={
+              lang === 'en'
+                ? usedService.service.title_en
+                : usedService.service.title_ka
+            }
+            id={usedService.id}
+            profileData={usersProfile}
+            categoryData={usedService.service.categories}
+          />
+        ))}
       </div>
     </div>
   );

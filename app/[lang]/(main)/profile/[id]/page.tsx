@@ -90,7 +90,9 @@ export default async function ProfilePage({
   };
   const dictionary = await getDictionary(params.lang);
   return (
-    <main className="profile-main">
+    <main
+      className={`profile-main ${profile.services.length === 0 ? 'gap-0' : 'gap-[4.8rem]'}`}
+    >
       {user?.id === profile.id.toString() ? (
         <ProfileForm
           lang={params.lang}
@@ -101,18 +103,22 @@ export default async function ProfilePage({
       ) : (
         <ProfileFormDisabled dictionary={dictionary.profile} users={users} />
       )}
-      <PostedServices
-        lang={params.lang}
-        dictionary={dictionary.services}
-        services={profile.services}
-        usersProfile={users}
-      />
-      <UsedServices
-        lang={params.lang}
-        dictionary={dictionary.services}
-        usedServices={profile.usedServices}
-        usersProfile={users}
-      />
+      {profile.services.length !== 0 && (
+        <PostedServices
+          lang={params.lang}
+          dictionary={dictionary.services}
+          services={profile.services}
+          usersProfile={users}
+        />
+      )}
+      {profile.usedServices.length !== 0 && (
+        <UsedServices
+          lang={params.lang}
+          dictionary={dictionary.services}
+          usedServices={profile.usedServices}
+          usersProfile={users}
+        />
+      )}
     </main>
   );
 }

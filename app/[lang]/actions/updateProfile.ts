@@ -47,9 +47,7 @@ export default async function UpdateProfile(formData: FormData) {
       );
       if (parts.length > 1) {
         const filePath = parts[1];
-        console.log(filePath);
         const decodedFilePath = decodeURIComponent(filePath);
-        console.log('Decoded file path:', decodedFilePath);
 
         const { error: deleteError } = await supabase.storage
           .from('avatars')

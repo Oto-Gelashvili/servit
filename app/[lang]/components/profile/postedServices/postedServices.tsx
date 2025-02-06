@@ -21,25 +21,21 @@ export default function PostedServices({
     <div className="postedServicesCont">
       <h2>{dictionary.postedServices}</h2>
       <div className="servicesCont">
-        {services.length === 0 ? (
-          <div className="no-results">{dictionary.notFound}</div>
-        ) : (
-          services.map((service) => (
-            <ServiceItem
-              key={service.id}
-              lang={lang}
-              img={service.image_urls?.[0]}
-              desc={
-                lang === 'en' ? service.description_en : service.description_ka
-              }
-              price={service.price}
-              title={lang === 'en' ? service.title_en : service.title_ka}
-              id={service.id}
-              profileData={usersProfile}
-              categoryData={service.categories}
-            />
-          ))
-        )}
+        {services.map((service) => (
+          <ServiceItem
+            key={service.id}
+            lang={lang}
+            img={service.image_urls?.[0]}
+            desc={
+              lang === 'en' ? service.description_en : service.description_ka
+            }
+            price={service.price}
+            title={lang === 'en' ? service.title_en : service.title_ka}
+            id={service.id}
+            profileData={usersProfile}
+            categoryData={service.categories}
+          />
+        ))}
       </div>
     </div>
   );
