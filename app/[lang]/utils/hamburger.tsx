@@ -133,14 +133,16 @@ export const HamburgerDropdown: React.FC<HeaderProps> = ({
           className="profile-icon cursor-pointer rounded-full"
         >
           {avatar ? (
-            <Image
-              src={avatar}
-              alt="User profile"
-              width={36}
-              height={36}
-              className="rounded-full"
-              loading="lazy"
-            />
+            <div className="relative w-[28px] h-[28px]">
+              <Image
+                src={avatar}
+                alt="User profile"
+                fill
+                sizes="28px"
+                className="rounded-full"
+                loading="lazy"
+              />
+            </div>
           ) : (
             <CircleUser className="circleUser" />
           )}

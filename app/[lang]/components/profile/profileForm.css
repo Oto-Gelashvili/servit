@@ -43,6 +43,11 @@
   font-size: 1.6rem;
   color: var(--primary-color);
 }
+.profileForm .profileInputCont p {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
 .profileForm .rating svg {
   fill: var(--primary-color);
   width: 18px;
@@ -65,6 +70,9 @@
   background-color: transparent;
   padding-left: 0;
   color: var(--primary-color);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
 }
 .profileForm .submitBtn {
   background: var(--primary-color);
