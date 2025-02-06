@@ -38,7 +38,7 @@ export default async function RootLayout({
   return (
     <html lang={params.lang} suppressHydrationWarning>
       <head>
-        <link rel="icon" href="../app/favicon.ico" />
+        <link rel="icon" href="/images/favi.svg" />
       </head>
       <body>
         <ThemeProvider
