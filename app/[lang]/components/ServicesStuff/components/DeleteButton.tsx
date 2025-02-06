@@ -56,7 +56,10 @@ export default function DeleteButton({
 
       {isModalOpen && (
         <div className="fixed top-1/2 left-1/2 translateMid bg-[var(--accent-color)] border border-[var(--border-color)] rounded-lg p-6 max-w-md w-full z-50">
-          <h3 className="text-3xl font-semibold mb-4 text-center text-[var(--secondary-color)]">
+          <h3
+            className="text-3xl font-semibold mb-4 text-center text-[var(--secondary-color)]"
+            data-cy="confirmBtn"
+          >
             {dictionary.confirm_delete_title}
           </h3>
           <p className="mb-6 text-2xl text-[var(--text-color)] text-center">

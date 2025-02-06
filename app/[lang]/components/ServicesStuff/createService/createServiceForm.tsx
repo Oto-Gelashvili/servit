@@ -110,7 +110,11 @@ export async function CreateServiceForm({
             placeholder={dictionary.description_in}
           />
         </div>
-        <SubmitButton className="submitBtn" pendingText={dictionary.loading}>
+        <SubmitButton
+          className="submitBtn"
+          data-cy="submitBtn"
+          pendingText={dictionary.loading}
+        >
           {dictionary.submit}
         </SubmitButton>
         {searchParams?.error && (

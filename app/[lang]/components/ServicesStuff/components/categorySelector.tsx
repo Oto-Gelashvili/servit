@@ -21,6 +21,7 @@ export function CategorySelector({
     <div className="category-selector">
       <input type="hidden" name="category" value={category} />
       <div
+        data-cy="category"
         className="selector-title flex justify-between items-center"
         onClick={() => setOpen(!open)}
       >
@@ -32,6 +33,7 @@ export function CategorySelector({
       >
         {categories.map((category, index) => (
           <li
+            data-cy="categoryLi"
             key={index}
             onClick={() => {
               setCategory(category);

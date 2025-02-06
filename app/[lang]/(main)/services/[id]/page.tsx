@@ -131,6 +131,7 @@ export default async function serviceDetailsPage({
                 lang={params.lang}
                 dictionary={dictionary}
                 tableName={'services'}
+                data-cy="delBtn"
               />
             ) : (
               <BuyButton product={service} locale={params.lang} />
