@@ -52,7 +52,6 @@ export default function ProfileDropdown({
   return (
     <>
       <div
-        data-cy="avatar"
         ref={avatarRef}
         onClick={toggleDropdown}
         className="profile-icon cursor-pointer rounded-full"
@@ -87,7 +86,7 @@ export default function ProfileDropdown({
           <ThemeToggle />
         </div>
         <form action={signOutAction}>
-          <button data-cy="logout-btn" className="signBtn" type="submit">
+          <button className="signBtn" type="submit">
             {dictionary.logout}
           </button>
         </form>

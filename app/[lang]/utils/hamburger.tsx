@@ -54,7 +54,7 @@ export const Hamburger: React.FC<HeaderProps> = ({ lang }) => {
   return (
     <div className="hiddenNav flex items-center gap-4">
       <LocaleSwitcher lang={lang} />
-      <div className="hamburger-container">
+      <div className="hamburger-container" data-cy="hamburger">
         <label className="hamburger">
           <input type="checkbox" checked={isOpen} onChange={toggleMenu} />
           <svg viewBox="0 0 32 32">
