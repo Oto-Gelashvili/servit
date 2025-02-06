@@ -44,11 +44,17 @@
   font-size: 1.6rem;
   color: var(--primary-color);
 }
-.profileForm .profileInputCont p {
+.profileForm .profileInputCont p,
+.profileForm .profileInputCont a {
   overflow-wrap: break-word;
   word-break: break-word;
   white-space: normal;
   font-size: 1.4rem;
+}
+.profileForm .profileInputCont a:hover {
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: 0.4s;
 }
 .profileForm .rating svg {
   fill: var(--primary-color);

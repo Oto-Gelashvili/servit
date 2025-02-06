@@ -49,7 +49,9 @@ export default async function ProfileFormDisabled({
       </div>
       <div className="profileInputCont">
         <h3>{dictionary.phone}:</h3>
-        <p>{users.bio ? users.bio : 'N/A'}</p>
+        <a href={`tel:+995${users.phone}`}>
+          {users.phone ? users.phone : 'N/A'}
+        </a>
       </div>
     </form>
   );
