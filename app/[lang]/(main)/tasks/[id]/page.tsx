@@ -73,11 +73,14 @@ export default async function serviceDetailsPage({
               : task.title_ka || task.title_en}
           </h1>
 
-          <p className="category">
+          <Link
+            href={`/${params.lang}/tasks?category=${task.categoryId}`}
+            className="category"
+          >
             {params.lang === 'en'
               ? task.categories.category_en
               : task.categories.category_ka}
-          </p>
+          </Link>
         </div>
         <div className="updateCont">
           {user_id === task.user_id.toString() && (
