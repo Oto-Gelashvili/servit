@@ -122,7 +122,7 @@
   .servicesSection .heading .arrows {
     display: none;
   }
-  .home h2 {
+  .servicesSection .heading h2 {
     font-size: 1.8rem;
     text-align: left;
   }
