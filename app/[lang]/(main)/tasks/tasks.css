@@ -313,6 +313,10 @@
     width: 100%;
     justify-content: center;
   }
+
+  .task-main .category-selector {
+    width: 300px;
+  }
   .task-item .categoryCont {
     border: none;
     padding-top: 0.4rem;
@@ -332,5 +336,27 @@
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .task-main #searchForm {
+    width: 100%;
+  }
+
+  .task-main .category-selector {
+    width: 100%;
+  }
+
+  .task-main .sorter .SortButton,
+  .task-main .categorySort {
+    width: 100%;
+    height: 100%;
+  }
+  .task-main .categorySort {
+    align-items: center;
+    justify-content: center;
+  }
+  .task-main #searchBar {
+    width: 100%;
   }
 }
