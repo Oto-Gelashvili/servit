@@ -7,11 +7,13 @@
   margin-inline: auto;
   overflow: hidden;
   min-height: unset;
+  place-content: center;
 }
 .profile-main h2 {
   font-size: 2.4rem;
   color: var(--primary-color);
 }
+
 @media (max-width: 600px) {
   .profile-main {
     grid-template-columns: 1fr;

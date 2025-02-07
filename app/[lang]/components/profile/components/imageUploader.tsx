@@ -1,4 +1,5 @@
 'use client';
+import { CirclePlus } from 'lucide-react';
 import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 
@@ -22,6 +23,9 @@ export default function ImageUploader({ currentImage }: ImageUploaderProps) {
 
   return (
     <div className="avatarCont">
+      <div className="avatarBg">
+        <CirclePlus />
+      </div>
       <Image
         src={currentImage}
         alt="User's avatar"
