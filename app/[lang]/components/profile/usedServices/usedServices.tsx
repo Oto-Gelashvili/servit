@@ -40,7 +40,7 @@ export default function UsedServices({
                 ? usedService.service.title_en
                 : usedService.service.title_ka
             }
-            id={usedService.id}
+            id={usedService.service_id}
             profileData={usersProfile}
             categoryData={usedService.service.categories}
           />
