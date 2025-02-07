@@ -10,7 +10,9 @@
     "become": "Became Creator",
     "servicesProf": "Services by professionals",
     "browse": "Browse All",
-    "desc": "servit, service marketplace where skills meet opportunities,services,tasks,home"
+    "browseTasks": "Browse Latest Tasks",
+    "desc": "servit, service marketplace where skills meet opportunities,services,tasks,home",
+    "sub": "Subscripe to premium to create tasks"
   },
 
   "footer": {

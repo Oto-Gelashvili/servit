@@ -11,6 +11,8 @@ export interface Dictionary {
     servicesProf: string;
     browse: string;
     desc: string;
+    sub: string;
+    browseTasks: string;
   };
 
   footer: {
