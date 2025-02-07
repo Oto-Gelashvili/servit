@@ -111,14 +111,15 @@ export default async function ProfilePage({
           usersProfile={users}
         />
       )}
-      {profile.usedServices.length !== 0 && (
-        <UsedServices
-          lang={params.lang}
-          dictionary={dictionary.services}
-          usedServices={profile.usedServices}
-          usersProfile={users}
-        />
-      )}
+      {profile.usedServices.length !== 0 &&
+        user?.id === profile.id.toString() && (
+          <UsedServices
+            lang={params.lang}
+            dictionary={dictionary.services}
+            usedServices={profile.usedServices}
+            usersProfile={users}
+          />
+        )}
     </main>
   );
 }
