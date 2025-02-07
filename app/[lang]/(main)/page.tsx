@@ -1,24 +1,16 @@
 import { getDictionary } from '../../../get-dictionaries';
 import { Locale } from '../../../get-dictionaries';
-import Link from 'next/link';
+import Hero from '../components/home/hero/hero';
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'ka' }];
 }
 
 export default async function Home({ params }: { params: { lang: Locale } }) {
-  const dictionary = await getDictionary(params.lang);
-
+  const dictionary = (await getDictionary(params.lang)).home;
   return (
     <main className="home">
-      <h1>
-        <span>{dictionary.home.title}</span> <br />
-        {dictionary.home.desc}
-      </h1>
-      <h2>{dictionary.home.omw}</h2>
-      <Link href={`/${params.lang}/createService`} className="homeBtn">
-        {dictionary.home.btn}
-      </Link>
+      <Hero dictionary={dictionary} lang={params.lang} />
     </main>
   );
 }

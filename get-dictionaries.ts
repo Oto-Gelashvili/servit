@@ -1,9 +1,13 @@
 export interface Dictionary {
   home: {
     title: string;
-    desc: string;
-    omw: string;
-    btn: string;
+    createTask: string;
+    createService: string;
+    where: string;
+    skills: string;
+    areOn: string;
+    demand: string;
+    become: string;
   };
   about: {
     title: string;

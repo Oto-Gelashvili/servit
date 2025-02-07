@@ -1,9 +1,13 @@
 {
   "home": {
-    "title": "ServIt",
-    "desc": "Service Marketplace",
-    "omw": "Coming Soon",
-    "btn": "Create Service"
+    "title": "Service Marketplace",
+    "createTask": "Create Task",
+    "createService": "Create Service",
+    "where": "Where",
+    "skills": "Skills",
+    "areOn": "are on",
+    "demand": "Demand",
+    "become": "Became Creator"
   },
   "about": {
     "title": "ServIt is a service marketplace",
