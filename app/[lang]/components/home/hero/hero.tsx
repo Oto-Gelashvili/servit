@@ -9,7 +9,7 @@ interface heroProps {
 }
 export default function Hero({ dictionary, lang }: heroProps) {
   return (
-    <div className="heroCont">
+    <section className="heroCont">
       <div className="textCont">
         <div className="mainText">
           <Logo />
@@ -40,6 +40,6 @@ export default function Hero({ dictionary, lang }: heroProps) {
           alt="hero image"
         ></Image>
       </div>
-    </div>
+    </section>
   );
 }

@@ -7,12 +7,12 @@
     "skills": "Skills",
     "areOn": "are on",
     "demand": "Demand",
-    "become": "Became Creator"
+    "become": "Became Creator",
+    "servicesProf": "Services by professionals",
+    "browse": "Browse All",
+    "desc": "servit, service marketplace where skills meet opportunities,services,tasks,home"
   },
-  "about": {
-    "title": "ServIt is a service marketplace",
-    "desc": "designed for both service providers and seekers. Whether you need a skilled handyman, a talented graphic designer, or someone to help with everyday tasks, ServIt is here to bridge the gap. Users can easily post services they offer or tasks they need assistance with."
-  },
+
   "footer": {
     "profile": "Profile",
     "tasks": "Tasks",

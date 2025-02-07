@@ -14,10 +14,10 @@ export async function generateMetadata({
     title: dictionary.services.metaTitle,
     description: dictionary.services.metaDescription,
     alternates: {
-      canonical: `https://servit.vercel.app/${params.lang}/services`,
+      canonical: `https://servit.vercel.app/${params.lang}/bookmarks`,
       languages: {
-        en: 'https://servit.vercel.app/en/services',
-        ka: 'https://servit.vercel.app/ka/services',
+        en: 'https://servit.vercel.app/en/bookmarks',
+        ka: 'https://servit.vercel.app/ka/bookmarks',
       },
     },
   };

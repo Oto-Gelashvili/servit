@@ -8,9 +8,8 @@ export interface Dictionary {
     areOn: string;
     demand: string;
     become: string;
-  };
-  about: {
-    title: string;
+    servicesProf: string;
+    browse: string;
     desc: string;
   };
 

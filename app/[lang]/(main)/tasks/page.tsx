@@ -30,13 +30,13 @@ export async function generateMetadata({
   const dictionary = await getDictionary(params.lang);
 
   return {
-    title: dictionary.services.metaTitle,
-    description: dictionary.services.metaDescription,
+    title: dictionary.header.tasks,
+    description: dictionary.services.headingTasks,
     alternates: {
-      canonical: `https://servit.vercel.app/${params.lang}/services`,
+      canonical: `https://servit.vercel.app/${params.lang}/tasks`,
       languages: {
-        en: 'https://servit.vercel.app/en/services',
-        ka: 'https://servit.vercel.app/ka/services',
+        en: 'https://servit.vercel.app/en/tasks',
+        ka: 'https://servit.vercel.app/ka/tasks',
       },
     },
   };
