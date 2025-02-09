@@ -1,7 +1,7 @@
 'use client';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import React from 'react';
 
 type ImageSliderProps = {
@@ -10,13 +10,6 @@ type ImageSliderProps = {
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
   const [imageIndex, setImageIndex] = useState<number>(0);
-
-  useEffect(() => {
-    images.forEach((image) => {
-      const img = new window.Image();
-      img.src = image;
-    });
-  }, [images]);
 
   const ShowNextImg = () => {
     setImageIndex((index) => (index === images.length - 1 ? 0 : index + 1));
@@ -52,6 +45,22 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
           </div>
         </>
       )}
+      <div className="hidden">
+        {images.map((img, idx) => {
+          const preloadUrl = img.includes('undefined')
+            ? '/images/noImage.png'
+            : img;
+          return (
+            <Image
+              key={idx}
+              src={preloadUrl}
+              alt={`Preloaded image ${idx}`}
+              width={1}
+              height={1}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
