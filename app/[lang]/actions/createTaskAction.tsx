@@ -47,7 +47,7 @@ export default async function createTask(formData: FormData) {
     return redirect(
       `/${lang}/createTask?error=${encodeURIComponent(dictionary.descriptionReq)}`
     );
-  } else if (!category) {
+  } else if (category === dictionary.selectCategory) {
     return redirect(
       `/${lang}/createTask?error=${encodeURIComponent(dictionary.categoryReq)}`
     );

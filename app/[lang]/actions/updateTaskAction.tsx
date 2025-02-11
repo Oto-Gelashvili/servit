@@ -40,7 +40,7 @@ export default async function UpdateTask(formData: FormData) {
     return redirect(
       `/${lang}/updateTask?task=${taskId}&error=${encodeURIComponent(dictionary.descriptionReq)}`
     );
-  } else if (!category) {
+  } else if (category === dictionary.selectCategory) {
     return redirect(
       `/${lang}/updateTask?task=${taskId}&error=${encodeURIComponent(dictionary.categoryReq)}`
     );

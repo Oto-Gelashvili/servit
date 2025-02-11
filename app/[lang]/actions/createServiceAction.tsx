@@ -60,7 +60,7 @@ export default async function createService(formData: FormData) {
     return redirect(
       `/${lang}/createService?error=${encodeURIComponent(dictionary.priceReq)}`
     );
-  } else if (!category) {
+  } else if (category === dictionary.selectCategory) {
     return redirect(
       `/${lang}/createService?error=${encodeURIComponent(dictionary.categoryReq)}`
     );

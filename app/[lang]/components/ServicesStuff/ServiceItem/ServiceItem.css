@@ -135,6 +135,8 @@
   text-overflow: ellipsis;
   max-width: 100px;
   overflow: hidden;
+  white-space: nowrap;
+  height: 1.5em;
 }
 
 .service-item .profile-info .tier-container .name:hover {

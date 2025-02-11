@@ -55,7 +55,7 @@ export default async function updateService(formData: FormData) {
     return redirect(
       `/${lang}/updateService?service=${serviceId}&error=${encodeURIComponent(dictionary.priceReq)}`
     );
-  } else if (!category) {
+  } else if (category === dictionary.selectCategory) {
     return redirect(
       `/${lang}/updateService?service=${serviceId}&error=${encodeURIComponent(dictionary.categoryReq)}`
     );
