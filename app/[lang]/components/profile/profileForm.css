@@ -21,8 +21,9 @@
   position: relative;
 }
 .profileForm {
-  background-color: var(--border-color);
-  min-width: 270px;
+  border: 1px solid var(--border-color);
+  /* min-width: 270px; */
+  width: 450px;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -30,6 +31,10 @@
   padding: 2.4rem;
   border-radius: 8px;
   justify-content: space-evenly;
+}
+.profileForm input,
+.profileForm textarea {
+  border: 1px solid var(--border-color);
 }
 .profileForm .ratingCont {
   display: flex;
@@ -128,7 +133,7 @@
   opacity: 0;
 }
 
-@media (max-width: 365px) {
+@media (max-width: 600px) {
   .profileForm {
     width: 100%;
     min-width: 240px;

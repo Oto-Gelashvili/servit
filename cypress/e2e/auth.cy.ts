@@ -4,9 +4,9 @@ describe('Auth', () => {
 
     cy.wait(1000);
 
-    cy.get('input[name="email"]').type('test@gmail.com');
+    cy.get('input[name="email"]').type('babysitter@gmail.com');
 
-    cy.get('input[name="password"]').type('Testuser123');
+    cy.get('input[name="password"]').type('babysitter');
 
     cy.get('[data-cy="submit-btn"]').click();
 
@@ -40,8 +40,8 @@ describe('Auth', () => {
   it('Signs up unsuccessfully without OTP', () => {
     cy.visit('en/sign-up');
     cy.wait(1000);
-    cy.get('input[name="email"]').type('test@example.com');
-    cy.get('input[name="password"]').type('Testuser123');
+    cy.get('input[name="email"]').type('babysitter@gmail.com');
+    cy.get('input[name="password"]').type('babysitter');
     cy.get('[data-cy="submit-btn"]').click();
     cy.url().should('include', '/sign-up');
   });
@@ -50,9 +50,9 @@ describe('Auth', () => {
 
     cy.wait(1000);
 
-    cy.get('input[name="email"]').type('test@gmail.com');
+    cy.get('input[name="email"]').type('babysitter@gmail.com');
 
-    cy.get('input[name="password"]').type('Testuser123');
+    cy.get('input[name="password"]').type('babysitter');
 
     cy.get('[data-cy="submit-btn"]').click();
 

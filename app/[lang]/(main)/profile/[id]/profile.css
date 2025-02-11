@@ -1,7 +1,8 @@
 .profile-main {
   /* display: flex; */
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 1fr;
+  justify-items: center;
   row-gap: 4.8rem;
   max-width: 1200px;
   margin-inline: auto;
@@ -13,10 +14,4 @@
 .profile-main h2 {
   font-size: 2.4rem;
   color: var(--primary-color);
-}
-
-@media (max-width: 600px) {
-  .profile-main {
-    grid-template-columns: 1fr;
-  }
 }

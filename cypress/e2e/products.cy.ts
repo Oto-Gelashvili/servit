@@ -2,8 +2,8 @@ describe('Products', () => {
   beforeEach(() => {
     cy.visit('/en/sign-in');
     cy.wait(1000);
-    cy.get('input[name="email"]').type('test@gmail.com');
-    cy.get('input[name="password"]').type('Testuser123');
+    cy.get('input[name="email"]').type('babysitter@gmail.com');
+    cy.get('input[name="password"]').type('babysitter');
     cy.get('[data-cy="submit-btn"]').click();
     cy.url().should('not.include', '/sign-in');
   });
@@ -41,9 +41,9 @@ describe('Products', () => {
   });
 
   it('deletion of the service fails', () => {
-    cy.visit('/en/services/22');
+    cy.visit('/en/services/61');
 
-    cy.intercept('POST', '/en/services/22', {
+    cy.intercept('POST', '/en/services/61', {
       statusCode: 500,
       body: { success: false, error: 'Something went wrong' },
     }).as('deleteProductFail');
