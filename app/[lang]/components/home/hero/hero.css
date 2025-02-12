@@ -89,6 +89,38 @@
   object-fit: cover;
   border-radius: 24px;
 }
+.heroCont .hiddenPost {
+  position: absolute;
+  top: -5%;
+  right: -5%;
+  padding: 1.2rem;
+  font-size: 1.4rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  z-index: 10;
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+.heroCont .posterInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding-top: 8px;
+  font-size: 1.2rem;
+}
+.heroCont .posterTask {
+  padding-bottom: 8px;
+
+  border-bottom: 1px solid #fff;
+}
+.heroCont .pricingPost {
+  border-radius: 50rem;
+  background-color: #fff;
+  color: var(--primary-color);
+  padding: 0.2rem 0.4rem;
+}
 @media (max-width: 1200px) {
   .heroCont {
     padding: 8.4rem 10rem;
@@ -158,6 +190,9 @@
   }
   .heroCont .mainText svg {
     width: 140px;
+  }
+  .heroCont .hiddenPost {
+    display: none;
   }
   .heroCont .creatorCont {
     width: 100%;

@@ -36,6 +36,10 @@
 .profileForm textarea {
   border: 1px solid var(--border-color);
 }
+.profileForm input:disabled,
+.profileForm textarea:disabled {
+  border: none;
+}
 .profileForm .ratingCont {
   display: flex;
   flex-direction: column;

@@ -32,7 +32,7 @@ export default async function ProfileFormDisabled({
           <Star />
         </div>
       </div>
-      <div className="profileInputCont">
+      <div className="profileInputCont ">
         <h3>{dictionary.username}:</h3>
         <input
           type="text"

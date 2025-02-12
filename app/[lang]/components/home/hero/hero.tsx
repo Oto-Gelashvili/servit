@@ -33,6 +33,12 @@ export default function Hero({ dictionary, lang }: heroProps) {
         </div>
       </div>
       <div className="imgCont">
+        <div className="hiddenPost">
+          <p className="posterTask">Help me renovate</p>
+          <div className="posterInfo">
+            <p>Nino,Tbilisi</p> <div className="pricingPost">₾100</div>
+          </div>
+        </div>
         <Image
           src={'/images/renovate.svg'}
           fill
