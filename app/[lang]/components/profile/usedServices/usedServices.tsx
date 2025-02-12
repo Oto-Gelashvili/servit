@@ -50,7 +50,7 @@ export default function UsedServices({
   return (
     <div className="usedServicesCont">
       <div className="flex justify-between gap-6 items-center">
-        <h2>{dictionary.postedServices}</h2>
+        <h2>{dictionary.usedServices}</h2>
         <div className="arrows flex items-center">
           <ArrowLeft
             className="cursor-pointer"
