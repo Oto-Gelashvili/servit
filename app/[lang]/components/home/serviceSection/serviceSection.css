@@ -5,7 +5,7 @@
   max-width: 1200px;
   margin-inline: auto;
   justify-content: center;
-  min-height: calc(100vh - 7rem);
+  /* min-height: calc(100vh - 7rem); */
   color: var(--text-color);
   width: 100%;
 }
