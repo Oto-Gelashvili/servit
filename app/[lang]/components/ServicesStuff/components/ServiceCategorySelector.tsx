@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Locale } from '../../../../../get-dictionaries';
 import { Database } from '../../../utils/database.types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronDown, X } from 'lucide-react';
 import { Dictionary } from '../../../../../get-dictionaries';
 
@@ -18,6 +18,7 @@ export default function CategorySelector({
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
+
   const [category, setCategory] = useState(dictionary.selectCategory);
   const [open, setOpen] = useState(false);
   const handleCategoryChange = (categoryId: number) => {
@@ -36,6 +37,13 @@ export default function CategorySelector({
       scroll: false,
     });
   };
+
+  useEffect(() => {
+    const currentCat = searchParams.get('category');
+    if (currentCat !== null) {
+      setCategory(categories[parseInt(currentCat) - 1].category_en);
+    }
+  }, [searchParams, categories]);
   return (
     <div className="category-selector">
       <div
@@ -43,7 +51,6 @@ export default function CategorySelector({
         onClick={() => setOpen(!open)}
       >
         {category}
-        {/* <ChevronDown className="w-6" /> */}
       </div>
       <ul
         className={`category-list ${open ? 'h-[185px] border border-[#e1e1e1]' : 'h-0'}`}
@@ -63,7 +70,7 @@ export default function CategorySelector({
           </li>
         ))}
       </ul>
-      {category === dictionary.selectCategory ? (
+      {!searchParams.has('category') ? (
         <div className="resetBtn" onClick={() => setOpen(!open)}>
           <ChevronDown className="w-7" />
         </div>
