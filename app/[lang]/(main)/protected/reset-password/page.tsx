@@ -1,7 +1,7 @@
 import { resetPasswordAction } from '../../../actions/authActions';
 import { Locale, getDictionary } from '../../../../../get-dictionaries';
 import { SubmitButton } from '../../../utils/submitButton';
-import '../../auth.css';
+import '../../../(auth-pages)/auth.css';
 export default async function ResetPassword({
   searchParams,
   params,
@@ -11,7 +11,7 @@ export default async function ResetPassword({
 }) {
   const dictionary = await getDictionary(params.lang);
   return (
-    <div className="p-6">
+    <main className="p-6 flex items-center justify-center">
       <form className="login-form">
         <h1 className="">{dictionary.auth.reset}</h1>
         {searchParams?.error && (
@@ -48,6 +48,6 @@ export default async function ResetPassword({
           </SubmitButton>
         </div>
       </form>
-    </div>
+    </main>
   );
 }
