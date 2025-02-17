@@ -5,6 +5,7 @@ import Hero from '../components/home/hero/hero';
 import ServiceSection from '../components/home/serviceSection/serviceSection';
 import { getServicesNeeds } from '../utils/supabaseUtils';
 import TaskSection from '../components/home/taskSection/taskSection';
+import CategorySection from '../components/home/categorySection/categorySection';
 
 export async function generateMetadata({
   params,
@@ -51,6 +52,7 @@ export default async function Home({ params }: { params: { lang: Locale } }) {
         services={services}
         dictionary={dictionary}
       />
+      <CategorySection lang={params.lang} dictionary={dictionary} />
       <TaskSection lang={params.lang} dictionary={dictionary} />
     </main>
   );

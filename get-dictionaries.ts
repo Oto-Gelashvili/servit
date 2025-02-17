@@ -13,6 +13,7 @@ export interface Dictionary {
     desc: string;
     sub: string;
     browseTasks: string;
+    categorySection: string;
   };
 
   footer: {

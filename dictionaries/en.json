@@ -12,7 +12,8 @@
     "browse": "Browse All",
     "browseTasks": "Browse Latest Tasks",
     "desc": "servit, service marketplace where skills meet opportunities,services,tasks,home",
-    "sub": "Subscripe to premium to create tasks"
+    "sub": "Subscripe to premium to create tasks",
+    "categorySection": "Search by categories"
   },
 
   "footer": {
