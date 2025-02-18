@@ -26,6 +26,7 @@ footer .ending {
 footer .social-icons {
   display: flex;
   gap: 0.8rem;
+  fill: var(--secondary-color);
 }
 
 footer .social-icons svg {
